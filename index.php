@@ -46,7 +46,7 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="" data-toggle="dropdown"> SIGN IN </a>
-              <div class="dropdown-menu">
+              <div class="dropdown-menu dropdown-menu-right" style="width: 400px;">
                 <form class="px-4 py-3"> <!-- p = padding, x = Left and right -->
                   <div class="form-group">
                     <label for="exampleDropdownFormEmail1">Email address</label>
@@ -70,28 +70,11 @@
       </div>
     </nav>
 
-    <!-- Modal element for Sign up form -->
-    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="signupModalLabel">TheRecipeProject Registration</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            ... TODO ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Register</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
+    <div class="SignupFormModal">
+      
+    <?php 
+      include './view/signup_form.php';
+    ?>
 
       <div class="row">
         <div class="col-lg-12">
