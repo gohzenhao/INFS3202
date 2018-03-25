@@ -73,7 +73,7 @@
     <div class="SignupFormModal">
       
     <?php 
-      include './view/signup_form.php';
+      include './src/view/signup_form.php';
     ?>
 
       <div class="row">

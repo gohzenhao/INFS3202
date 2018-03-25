@@ -1,22 +1,24 @@
 <?php
 
 class Database {
-	private $host = "localhost";
-	private $dbName = "recipes-system";
-	private $username = "root";
-	private $password = "";
+	private static $host = "localhost";
+	private static $dbName = "recipes-system";
+	private static $username = "root";
+	private static $password = "";
 
-	private $instance = NULL;//singleton pattern
+	private static $instance = NULL;// Singleton pattern
+
+	private function __construct() {}
 
 	/**
 	* Create new PDO database connection and set default fetch mode to object. 
 	* Db connection follows Singleton Pattern.
 	*/
-	public function __construct() {
-		if($this->instance == NULL) {
+	public static function getInstance() {
+		if(!isset(self::$instance)) {
 			try{
-				$dsn = 'mysql:host='.$this->host.';dbname='.$this->dbName.'';
-				$db = new PDO($dsn, $this->username, $this->password);
+				$dsn = 'mysql:host='.self::$host.';dbname='.self::$dbName.'';
+				$db = new PDO($dsn, self::$username, self::$password);
 				
 				// Allow error handling
 				$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -24,11 +26,13 @@ class Database {
 				$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 				//$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
-				$this->instance = $db;
+				self::$instance = $db;
 			} catch(PDOException $e){
 				die($e->getMessage());
 			}
 		}
+		
+		return self::$instance;
 	}
 
 

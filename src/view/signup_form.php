@@ -9,13 +9,13 @@
         </button>
       </div>
 
-      <form class="signup-form" action="controller/signup.php" method="POST">
+      <form class="signup-form" action="../src/controller/signup.php" method="POST">
         <div class="modal-body">
-          <input type="text" name="first" placeholder="Firstname">
-          <input type="text" name="last" placeholder="Lastname">
-          <input type="text" name="email" placeholder="E-mail">
-          <input type="text" name="uid" placeholder="Username">
-          <input type="password" name="pwd" placeholder="Password">
+          <input type="text" class="form-control" name="first" placeholder="Firstname">
+          <input type="text" class="form-control" name="last" placeholder="Lastname">
+          <input type="text" class="form-control" name="email" placeholder="E-mail">
+          <input type="text" class="form-control" name="uid" placeholder="Username">
+          <input type="password" class="form-control" name="pwd" placeholder="Password">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
