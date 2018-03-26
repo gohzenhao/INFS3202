@@ -101,6 +101,12 @@ header.masthead {
 .card-body span{
   float:right
 }
+
+.signup_icon{
+  margin:auto;
+  padding:10px;
+  background-color:#ccc;
+}
 /* .rating {
   position:absolute;
   display:flex;
@@ -143,3 +149,4 @@ header.masthead {
 .rating input:checked ~ label:after{
   opacity:1;
 } */
+""
