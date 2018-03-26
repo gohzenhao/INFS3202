@@ -1,4 +1,10 @@
 <?php
+    // Database Parameters
+    define('DB_HOST', 'localhost');
+    define('DB_USER', 'root');
+    define('DB_PASS', '');
+    define('DB_NAME', 'recipes-system');
+
     // App Root (dirname will go 1 directory up)
     define('APPROOT', dirname(dirname(__FILE__)));
     // URL Root
