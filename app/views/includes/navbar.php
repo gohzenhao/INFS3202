@@ -1,6 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
   <div class="container">
-  
+
+    <!-- Logo/title button to return to home page -->
     <a class="navbar-brand" href="<?php echo URLROOT; ?>">TheRecipesProject</a>
 
     <!-- Hamburger button only becomes visible when screen size becomes smaller -->
@@ -31,7 +32,7 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>" data-toggle="modal" data-target="#signupModal">Register</a>
+          <a class="nav-link" href="<?php echo URLROOT; ?>/users/registration">Register</a>
         </li>
       </ul>
     </div>
