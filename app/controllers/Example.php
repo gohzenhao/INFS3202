@@ -12,6 +12,6 @@
 				'users' => $users
 			];
 
-			$this->view('example/index', $data);
+			$this->view('example/example', $data);
 		}
 	}

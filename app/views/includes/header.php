@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
   </head>
+  
   <body>
 
 <?php require APPROOT . '/views/includes/navbar.php'?>
