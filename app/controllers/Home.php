@@ -1,16 +1,16 @@
 <?php
 	class Home extends Controller{
 		public function __construct(){
-			echo 'Welcome';
+			
 		}
 
 		public function index(){
-			$data = ['title' => 'Welcome Peasants!'];
+			$data = ['title' => 'Welcome User!'];
 			$this->view('home/index', $data);
 		}
 
 		public function about(){
-			$data = ['title' => 'Welcome to About page!'];
+			$data = ['title' => 'Welcome to the About page!'];
 			$this->view('home/about', $data);
 		}
 	}

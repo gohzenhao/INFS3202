@@ -23,3 +23,5 @@ bootstrap.php
 
 /views
     - separated into sub folders based on name of controller (must be all lowercase for folder name), this allows for multiple views for a single controller (use different methods to load views)
+    - To change to a different view/page use URL rerouting add 
+        href="<?php echo URLROOT; ?>/controller/method/params"

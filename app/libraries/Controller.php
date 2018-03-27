@@ -1,6 +1,6 @@
 <?php
     /**
-     * All controllers extend this base controller class
+     * All controllers extend this base controller class.
      */
     class Controller {
         

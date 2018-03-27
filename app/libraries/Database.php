@@ -1,6 +1,6 @@
 <?php
 /**
- * Database with PDO
+ * The main Database class with PDO
  * Uses defined variables in config.php file
  */
 class Database {

@@ -5,7 +5,8 @@
 <?php echo APPROOT;?></br>
 <?php echo URLROOT;?></br>
 
-<button type="button" class="btn btn-warning">TEST BUTTON</button></br>
+<a class="btn btn-primary" href="<?php echo URLROOT; ?>/home" role="button">Home</a>
+<a class="btn btn-secondary" href="<?php echo URLROOT; ?>/example/about" role="button">About</a>
 
 <ul>
     <?php foreach($data['users'] as $user) : ?>
