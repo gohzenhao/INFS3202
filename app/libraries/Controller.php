@@ -1,6 +1,7 @@
 <?php
     /**
-     * All controllers extend this base controller class.
+     * All controllers extend this base controller class which contains
+     * methods for loading models and loading views.
      */
     class Controller {
         

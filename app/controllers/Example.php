@@ -14,9 +14,4 @@
 
 			$this->view('example/index', $data);
 		}
-
-		public function about(){
-			$data = ['title' => 'Welcome to Example About page!'];
-			$this->view('example/about', $data);
-		}
 	}
