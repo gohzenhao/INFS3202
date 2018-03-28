@@ -9,7 +9,7 @@
 
 <ul>
     <?php foreach($data['users'] as $user) : ?>
-        <li><?php echo $user->name; ?></li>
+        <li><?php echo $user->user_name; ?></li>
     <?php endforeach; ?>
 </ul>
 

@@ -33,14 +33,15 @@ class Database {
     }
 
     /**
-     * Prepare statement with query
+     * Prepare statement with query. Will save statment as property in database object
      */
     public function query($sql) {
         $this->stmt = $this->dbh->prepare($sql);
     }
 
     /**
-     * Bind values
+     * Binds the paramter name with the value given as second parameter
+     * Optional 3rd parameter used to specify type, e.g. PDO::PARAM_STR
      */
     public function bind($param, $value, $type = null) {
         if(is_null($type)) {
@@ -70,7 +71,8 @@ class Database {
     }
 
     /**
-     * Get result set as array of objects
+     * Returns a result set as array of objects.
+     * Will call execute automatically first
      */
     public function resultSet() {
         $this->execute();
@@ -78,7 +80,8 @@ class Database {
     }
 
     /**
-     * Get single record
+     * Returns a single record
+     * Calls execute method first then returns first value
      */
     public function single() {
         $this->execute();
@@ -86,7 +89,7 @@ class Database {
     }
 
     /**
-     * Get row count
+     * Returns row count
      */
     public function rowCount() {
         return $this->stmt->rowCount();
