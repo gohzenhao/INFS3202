@@ -1,16 +1,21 @@
 <?php require APPROOT . '/views/includes/header.php'; ?>
 
-<h1><?php echo $data['title']?></h1>
 
-<?php echo 'APPROOT: ' . APPROOT;?></br>
-<?php echo 'URLROOT: ' . URLROOT;?></br>
+<div class="jumbotron">
+    <h1><?php echo $data['title']?></h1>
 
-<a class="btn btn-primary" href="<?php echo URLROOT; ?>/home" role="button">Home</a>
+    <p class='lead'> APPROOT: <?php echo APPROOT;?></p>
+    <p class='lead'> URLROOT: <?php echo  URLROOT;?></p>
 
-<ul>
-    <?php foreach($data['users'] as $user) : ?>
-        <li><?php echo $user->user_name; ?></li>
-    <?php endforeach; ?>
-</ul>
+    <a class="btn btn-primary" href="<?php echo URLROOT; ?>/home" role="button">Home</a>
+
+    <h3>Users: </h3>
+    <ul class="list-group">
+        <?php foreach($data['users'] as $user) : ?>
+            <li class="list-group-item w-50"><?php echo $user->user_name; ?></li>
+        <?php endforeach; ?>
+    </ul>
+</div>
+
 
 <?php require APPROOT . '/views/includes/footer.php'; ?>
