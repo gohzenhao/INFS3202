@@ -2,8 +2,8 @@
 
 <h1><?php echo $data['title']?></h1>
 
-<?php echo APPROOT;?></br>
-<?php echo URLROOT;?></br>
+<?php echo 'APPROOT: ' . APPROOT;?></br>
+<?php echo 'URLROOT: ' . URLROOT;?></br>
 
 <a class="btn btn-primary" href="<?php echo URLROOT; ?>/home" role="button">Home</a>
 
