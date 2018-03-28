@@ -102,9 +102,22 @@
                     $data['password_error'] = 'Please enter your password';
                 }
 
+                // Check for existing user with username or email
+                if(!($this->userModel->findUserByEmail($data['username_email']) || $this->userModel->findUserByUsername($data['username_email']))) {
+                    $data['username_email_error'] = 'No user found';
+                }
+
                 // Make sure errors are empty
                 if(empty($data['username_email_error']) && empty($data['password_error'])) {
-                    die('SUCCESS');
+                    // Check and set logged in user
+                    $loggedInUser = $this->userModel->login($data['username_email'], $data['password']);
+                    if($loggedInUser) {
+                        // Create session
+                        die('Success');
+                    } else {
+                        $data['password_error'] = 'Password incorrect';
+                        $this->view('users/login', $data);
+                    }
                 } else {
                     // Load view with errors
                     $this->view('users/login', $data);
