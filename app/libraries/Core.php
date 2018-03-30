@@ -5,13 +5,11 @@
    * URL FORMAT - /controller/method/params
    */
   class Core {
-    protected $currentController = 'Example';
+    protected $currentController = 'Home';
     protected $currentMethod = 'index';
     protected $params = [];
 
     public function __construct(){
-		//print_r($this->getUrl());
-
 		$url = $this->getUrl();
 
 		// Look in controller for first index
@@ -27,8 +25,8 @@
 		// Check for method in second part of url
 		if(isset($url[1])){
 			if(method_exists($this->currentController, $url[1])){
-			$this->currentMethod = $url[1];
-			unset($url[1]);
+				$this->currentMethod = $url[1];
+				unset($url[1]);
 			}
 		}
 

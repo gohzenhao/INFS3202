@@ -28,7 +28,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="/" id="" data-toggle="dropdown">Sign In</a>
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown">Sign In</a>
             <div class="dropdown-menu dropdown-menu-right" style="width: 400px;">
               <form class="px-4 py-3">
                 <div class="form-group">

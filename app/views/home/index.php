@@ -97,7 +97,7 @@
     <div class="col-lg-3">
         <a href="#">
         <div class="thumbnails">
-            <img src="img/chicken.jpg" alt="chicken" style="width:100%;">
+            <img src="<?php echo URLROOT; ?>/public/img/chicken.jpg" alt="chicken" style="width:100%;">
             <div class="overlay">
             <div class="text">
                 Chicken Recipes
@@ -109,7 +109,7 @@
     <div class="col-lg-3">
         <a href="#">
         <div class="thumbnails">
-            <img src="img/beef.jpg" alt="beef" style="width:100%;">
+            <img src="<?php echo URLROOT; ?>/public/img/beef.jpg" alt="beef" style="width:100%;">
             <div class="overlay">
             <div class="text">
                 Beef Recipes
@@ -121,7 +121,7 @@
     <div class="col-lg-3">
         <a href="#">
         <div class="thumbnails">
-            <img src="img/seafood.jpg" alt="seafood" style="width:100%;">
+            <img src="<?php echo URLROOT; ?>/public/img/seafood.jpg" alt="seafood" style="width:100%;">
             <div class="overlay">
             <div class="text">
                 Seafood Recipes
@@ -133,7 +133,7 @@
     <div class="col-lg-3">
         <a href="#">
         <div class="thumbnails">
-            <img src="img/lamb.jpg" alt="curry" style="width:100%;">
+            <img src="<?php echo URLROOT; ?>/public/img/lamb.jpg" alt="curry" style="width:100%;">
             <div class="overlay">
             <div class="text">
                 Lamb Recipes
@@ -148,7 +148,7 @@
     <div class="col-lg-3">
         <a href="#">
         <div class="thumbnails">
-            <img src="img/curry.jpeg" alt="curry" style="width:100%;">
+            <img src="<?php echo URLROOT; ?>/public/img/curry.jpeg" alt="curry" style="width:100%;">
             <div class="overlay">
             <div class="text">
                 Curry Recipes
@@ -160,7 +160,7 @@
     <div class="col-lg-3">
         <a href="#">
         <div class="thumbnails">
-            <img src="img/pasta.jpg" alt="pasta" style="width:100%;">
+            <img src="<?php echo URLROOT; ?>/public/img/pasta.jpg" alt="pasta" style="width:100%;">
             <div class="overlay">
             <div class="text">
                 Pasta Recipes
@@ -172,7 +172,7 @@
     <div class="col-lg-3">
         <a href="#">
         <div class="thumbnails">
-            <img src="img/pizza.jpg" alt="pizza" style="width:100%;">
+            <img src="<?php echo URLROOT; ?>/public/img/pizza.jpg" alt="pizza" style="width:100%;">
             <div class="overlay">
             <div class="text">
                 Pizza Recipes
@@ -184,7 +184,7 @@
     <div class="col-lg-3">
         <a href="#">
         <div class="thumbnails">
-            <img src="img/taco.jpg" alt="taco" style="width:100%;">
+            <img src="<?php echo URLROOT; ?>/public/img/taco.jpg" alt="taco" style="width:100%;">
             <div class="overlay">
             <div class="text">
                 Taco Recipes
@@ -213,7 +213,7 @@
         <div class="carousel-item active">
             <div class="card-deck w-95 mx-auto">
             <div class="card">
-                <img class="card-img-top" src="img/salmon_custom.jpg" alt="Card image cap">
+                <img class="card-img-top" src="<?php echo URLROOT; ?>/public/img/salmon_custom.jpg" alt="Card image cap">
                 <div class="card-body">
 
                     <h5 class="card-title ml-auto">Card title <span class="featured1">
@@ -230,7 +230,7 @@
                 </div>
 
             <div class="card">
-                <img class="card-img-top" src="img/salmon_custom.jpg" alt="Card image cap">
+                <img class="card-img-top" src="<?php echo URLROOT; ?>/public/img/salmon_custom.jpg" alt="Card image cap">
                 <div class="card-body">
                     <h5>Card title
                     <span class="featured2">
@@ -245,7 +245,7 @@
                 </div>
             </div>
             <div class="card">
-                <img class="card-img-top" src="img/salmon_custom.jpg" alt="Card image cap">
+                <img class="card-img-top" src="<?php echo URLROOT; ?>/public/img/salmon_custom.jpg" alt="Card image cap">
                 <div class="card-body">
                     <h5>Card title
                     <span class="featured3">
@@ -263,7 +263,7 @@
         <div class="carousel-item">
             <div class="card-deck w-95 mx-auto">
             <div class="card">
-                <img class="card-img-top" src="img/salmon_custom.jpg" alt="Card image cap">
+                <img class="card-img-top" src="<?php echo URLROOT; ?>/public/img/salmon_custom.jpg" alt="Card image cap">
                 <div class="card-body">
                 <h5 class="card-title">Card title
                     <span class="featured4">
@@ -278,7 +278,7 @@
                 </div>
             </div>
             <div class="card">
-                <img class="card-img-top" src="img/salmon_custom.jpg" alt="Card image cap">
+                <img class="card-img-top" src="<?php echo URLROOT; ?>/public/img/salmon_custom.jpg" alt="Card image cap">
                 <div class="card-body">
                 <h5 class="card-title">Card title
                     <span class="featured5">
@@ -293,7 +293,7 @@
                 </div>
             </div>
             <div class="card">
-                <img class="card-img-top" src="img/salmon_custom.jpg" alt="Card image cap">
+                <img class="card-img-top" src="<?php echo URLROOT; ?>/public/img/salmon_custom.jpg" alt="Card image cap">
                 <div class="card-body">
                 <h5 class="card-title">Card title
                     <span class="featured6">
@@ -312,7 +312,7 @@
         <div class="carousel-item">
             <div class="card-deck w-95 mx-auto">
             <div class="card">
-                <img class="card-img-top" src="img/salmon_custom.jpg" alt="Card image cap">
+                <img class="card-img-top" src="<?php echo URLROOT; ?>/public/img/salmon_custom.jpg" alt="Card image cap">
                 <div class="card-body">
                 <h5 class="card-title">Lemongrass Salmon
                     <span class="featured7">
@@ -327,7 +327,7 @@
                 </div>
             </div>
             <div class="card">
-                <img class="card-img-top" src="img/salmon_custom.jpg" alt="Card image cap">
+                <img class="card-img-top" src="<?php echo URLROOT; ?>/public/img/salmon_custom.jpg" alt="Card image cap">
                 <div class="card-body">
                 <h5 class="card-title">Card title
                     <span class="featured8">
@@ -341,7 +341,7 @@
                 </div>
             </div>
             <div class="card">
-                <img class="card-img-top" src="img/salmon_custom.jpg" alt="Card image cap">
+                <img class="card-img-top" src="<?php echo URLROOT; ?>/public/img/salmon_custom.jpg" alt="Card image cap">
                 <div class="card-body">
                 <h5 class="card-title">Card title
                     <span class="featured9">
