@@ -1,12 +1,23 @@
 <?php
+    /**
+     * User controller which handles login and registration pages
+     */
 	class Users extends Controller{
 
+        /**
+         * Loads UserModel for retrieving users table from db
+         */
 		public function __construct(){
-			$this->userModel = $this->model('User');
+			$this->userModel = $this->model('UserModel');
 		}
 
         /**
-         * 
+         * Handles both loading registration form and submission of form.
+         * Loading form: loads form with name, email, username, password, and confirm password
+         *      and asssociated error messages
+         * Submission of form: validates input and hashes password, then inserts it into 
+         *      database via model queries. Redirects user to login page once complete with 
+         *      flash banner saying registration is successful
          */
 		public function registration(){
             // Check for POST submission
@@ -80,6 +91,8 @@
         
         /**
          * Handles loading new login view or handles login if login POST method is used
+         * POST method used: validates user email/username and password, if successful will
+         *      create new session and calls createUserSession() which will reroute to home page
          */
         public function login() {
             // Check for POST submission
@@ -136,7 +149,8 @@
         }
 
         /**
-         * 
+         * Creates user session with user_id, user_name, user_email, user_username variables
+         * then redirects to home page
          */
         public function createUserSession($user) {
             $_SESSION['user_id'] = $user->user_id;
@@ -147,7 +161,8 @@
         }
 
         /**
-         * 
+         * Unsets user_id, user_name, user_email, user_username variables then destroys session
+         * and return to home page
          */
         public function logout() {
             unset($_SESSION['user_id']);

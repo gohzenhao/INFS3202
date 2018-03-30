@@ -13,6 +13,10 @@ class Database {
     private $stmt;
     private $error;
 
+    /**
+     * Creates new PDO connection to database with ATTR_PERSISTENT on, ERRMODE_EXCEPTION, and
+     * FETCH_OBJ
+     */
     public function __construct(){
         // Set DSN
         $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname;
