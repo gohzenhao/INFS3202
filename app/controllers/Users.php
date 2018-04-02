@@ -12,12 +12,16 @@
 		}
 
         /**
+<<<<<<< HEAD
          * Handles both loading registration form and submission of form.
          * Loading form: loads form with name, email, username, password, and confirm password
          *      and asssociated error messages
          * Submission of form: validates input and hashes password, then inserts it into 
          *      database via model queries. Redirects user to login page once complete with 
          *      flash banner saying registration is successful
+=======
+         *
+>>>>>>> master
          */
 		public function registration(){
             // Check for POST submission
@@ -69,7 +73,7 @@
                     // Load view with errors
                     $this->view('users/registration', $data);
                 }
-                
+
             } else {
                 // Display new registration form
                 $data = [
@@ -84,11 +88,11 @@
                     'password_error' => '',
                     'confirm_password_error' => '',
                 ];
-    
+
                 $this->view('users/registration', $data);
             }
         }
-        
+
         /**
          * Handles loading new login view or handles login if login POST method is used
          * POST method used: validates user email/username and password, if successful will
@@ -143,14 +147,18 @@
                     'username_email_error' => '',
                     'password_error' => '',
                 ];
-    
+
                 $this->view('users/login', $data);
             }
         }
 
         /**
+<<<<<<< HEAD
          * Creates user session with user_id, user_name, user_email, user_username variables
          * then redirects to home page
+=======
+         *
+>>>>>>> master
          */
         public function createUserSession($user) {
             $_SESSION['user_id'] = $user->user_id;
@@ -161,8 +169,12 @@
         }
 
         /**
+<<<<<<< HEAD
          * Unsets user_id, user_name, user_email, user_username variables then destroys session
          * and return to home page
+=======
+         *
+>>>>>>> master
          */
         public function logout() {
             unset($_SESSION['user_id']);
@@ -186,7 +198,7 @@
         }
 
         /**
-         * Sanitizes POST input from form and returns associative array for each input field 
+         * Sanitizes POST input from form and returns associative array for each input field
          * and its associated error message
          */
         private function sanitizeInput() {

@@ -1,12 +1,19 @@
-body {
+/* body {
     background: rgb(230, 230, 230);
-}
+} */
 
 header.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 56px);
   background-image: url('../img/header2.jpg');
   background-position: center center;
+  /* background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("../img/header2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    color: #fff;
+    height: 450px;
+    padding-top: 50px; */
 }
 
 .overlay {
