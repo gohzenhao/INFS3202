@@ -1,5 +1,8 @@
 <?php
 
+    /**
+     * Handles all user registration and login
+     */
     class User {
         private $db;
 

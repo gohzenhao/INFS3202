@@ -4,6 +4,9 @@
 			$this->testModel = $this->model('ExampleModel');
 		}
 
+		/**
+		 * Loads data from model and renders view with model's data as input
+		 */
 		public function index(){
 			$users = $this->testModel->getUsers();
 
