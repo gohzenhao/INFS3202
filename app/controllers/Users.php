@@ -6,7 +6,7 @@
 		}
 
         /**
-         * 
+         *
          */
 		public function registration(){
             // Check for POST submission
@@ -58,7 +58,7 @@
                     // Load view with errors
                     $this->view('users/registration', $data);
                 }
-                
+
             } else {
                 // Display new registration form
                 $data = [
@@ -73,11 +73,11 @@
                     'password_error' => '',
                     'confirm_password_error' => '',
                 ];
-    
+
                 $this->view('users/registration', $data);
             }
         }
-        
+
         /**
          * Handles loading new login view or handles login if login POST method is used
          */
@@ -130,13 +130,13 @@
                     'username_email_error' => '',
                     'password_error' => '',
                 ];
-    
+
                 $this->view('users/login', $data);
             }
         }
 
         /**
-         * 
+         *
          */
         public function createUserSession($user) {
             $_SESSION['user_id'] = $user->user_id;
@@ -147,7 +147,7 @@
         }
 
         /**
-         * 
+         *
          */
         public function logout() {
             unset($_SESSION['user_id']);
@@ -171,7 +171,7 @@
         }
 
         /**
-         * Sanitizes POST input from form and returns associative array for each input field 
+         * Sanitizes POST input from form and returns associative array for each input field
          * and its associated error message
          */
         private function sanitizeInput() {

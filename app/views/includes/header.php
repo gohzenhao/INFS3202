@@ -16,8 +16,7 @@
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css">
   </head>
-  
+
   <body>
 
 <?php require APPROOT . '/views/includes/navbar.php'?>
-<div class="container">
