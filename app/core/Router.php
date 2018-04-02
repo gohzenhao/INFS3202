@@ -4,14 +4,13 @@
    * Creates URL & loads core controller
    * URL FORMAT - /controller/method/params
    */
-  class Core {
+  class Router {
     protected $currentController = 'Home';
     protected $currentMethod = 'index';
     protected $params = [];
 
     public function __construct(){
 		$url = $this->getUrl();
-		print_r($url);
 
 		// Look in controller for first index
 		if(file_exists('../app/controllers/' . ucwords($url[0]). '.php')){
@@ -31,7 +30,6 @@
 			}
 		}
 
-		print_r($url);
 		// Get params
 		$this->params = $url ? array_values($url) : [];
 

@@ -3,7 +3,7 @@
     /**
      * Handles all user registration and login
      */
-    class User {
+    class UserModel {
         private $db;
 
         public function __construct() {
