@@ -106,7 +106,7 @@
                     'username_email_error' => '',
                     'password_error' => ''
                 ];
-                // Validate email
+                // Validate email/username
                 if(empty($data['username_email'])) {
                     $data['username_email_error'] = 'Please enter your username/email';
                 }
@@ -128,6 +128,7 @@
                         // Create session
                         $this->createUserSession($loggedInUser);
                     } else {
+                        // Incorrect password
                         $data['password_error'] = 'Password incorrect';
                         $this->view('users/login', $data);
                     }

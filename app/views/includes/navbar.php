@@ -30,14 +30,14 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown">Sign In</a>
             <div class="dropdown-menu dropdown-menu-right" style="width: 400px;">
-              <form class="px-4 py-3">
+              <form class="px-4 py-3" action="<?php echo URLROOT; ?>/users/login" method="POST">
                 <div class="form-group">
-                  <label for="exampleDropdownFormEmail1">Email address</label>
-                  <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="E-mail">
+                  <label for="username_email">Email address</label>
+                  <input type="text" name="username_email" class="form-control" placeholder="E-mail">
                 </div>
                 <div class="form-group">
-                  <label for="exampleDropdownFormPassword1">Password</label>
-                  <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+                  <label for="password">Password</label>
+                  <input type="password" name="password" class="form-control" placeholder="Password">
                 </div>
                 <button type="submit" class="btn btn-primary">Sign in</button>
               </form>

@@ -36,7 +36,7 @@
             <span class="invalid-feedback"><?php echo $data['confirm_password_error'] ?></span>
           </div>
 
-          <div class="row">
+          <div class="row mt-4">
             <div class="col">
               <input type="submit" value="Register" class="btn btn-success btn-block">
             </div>
