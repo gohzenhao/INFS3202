@@ -8,7 +8,7 @@
      * To display in view use <?php echo flash($nameOfFlash); ?>
      * 
      * e.g. call flash('success', 'You did it'); in controller php code
-     * then in view call <?php wcho flash('success'); ?>
+     * then in view call <?php echo flash('success'); ?>
      */
     function flash($name = '', $message = '', $class = 'alert alert-success') {
         if(!empty($name)) {

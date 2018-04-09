@@ -171,6 +171,7 @@
             unset($_SESSION['user_email']);
             unset($_SESSION['user_username']);
             session_destroy();
+            session_start();
             flash('logout_success', 'You have successfully logged out');
             redirect('home');
         }
