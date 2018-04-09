@@ -32,3 +32,15 @@
             }
         }
     }
+
+    
+    /**
+     * Check if user is logged in
+     * return: true if logged in, false otherwise
+     */
+    function isLoggedIn() {
+        if(isset($_SESSION['user_id'])) {
+            return true;
+        }
+        return false;
+    }

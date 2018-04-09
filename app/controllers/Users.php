@@ -176,17 +176,6 @@
         }
 
         /**
-         * Check if user is logged in
-         * return: true if logged in, false otherwise
-         */
-        public function isLoggedIn() {
-            if(isset($_SESSION['user_id'])) {
-                return true;
-            }
-            return false;
-        }
-
-        /**
          * Sanitizes POST input from form and returns associative array for each input field 
          * and its associated error message
          */

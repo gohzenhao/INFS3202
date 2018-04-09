@@ -8,6 +8,7 @@
     <a class="btn btn-secondary" href="<?php echo URLROOT; ?>/home/about" role="button">Empty About</a>
     <a class="btn btn-primary" href="<?php echo URLROOT; ?>/users/registration" role="button">Register</a>
     <a class="btn btn-primary" href="<?php echo URLROOT; ?>/users/login" role="button">Login</a>
+    <a class="btn btn-warning" href="<?php echo URLROOT; ?>/account" role="button">Account</a>
 </div>
 
 
