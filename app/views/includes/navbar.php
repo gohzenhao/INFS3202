@@ -5,7 +5,7 @@
     <a class="navbar-brand" href="<?php echo URLROOT; ?>/home">TheRecipesProject</a>
 
     <!-- Hamburger button only becomes visible when screen size becomes smaller -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" 
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
         aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -13,8 +13,14 @@
     <?php if(isset($_SESSION['user_id'])) : ?>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <span class="navbar-text text-white">Welcome <?php echo $_SESSION['user_name'] ?></span>
+          <li class="nav-item dropdown">
+            <a class="navbar-text text-white nav-link dropdown-toggle" data-toggle="dropdown">Welcome <?php echo $_SESSION['user_name'] ?></a>
+            <div class="dropdown-menu dropdown-menu">
+              <a class="dropdown-item" href="<?php echo URLROOT; ?>/account/edit">Edit profile</a>
+              <a class="dropdown-item">Manage recipes</a>
+              <!-- <div class="dropdown-divider"></div>
+              <a class="dropdown-item">Logout</a> -->
+            </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout">Logout</a>
@@ -54,7 +60,7 @@
 
 
       <!-- Modal element for Sign up form -->
-    <!--       
+    <!--
     <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
