@@ -6,8 +6,14 @@
 
         /**
          * Loads UserModel for retrieving users table from db
+         * Redirects user to account page if already logged in
          */
 		public function __construct(){
+            // Check if logged in using session_helper function
+			if(isLoggedIn()) {
+				redirect('account');
+            }
+            
 			$this->userModel = $this->model('UserModel');
 		}
 
