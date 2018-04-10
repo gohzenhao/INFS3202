@@ -13,8 +13,8 @@
           <div class="col-lg-12">
             <div class="input-group">
               <input id="editName" type="text" class="form-control" value="<?php echo $data['user']->user_name?>" disabled/>
-              <a id="editNameEdit" href="#" onclick="editName()" class="mt-auto pl-1"><span>edit</span></a>
-              <a id="editNameSave" class="mt-auto pl-1" href="#" hidden><span>save</span></a>
+              <a class="editButton mt-auto pl-1">edit</a>
+              <a class="mt-auto pl-1" hidden>save</a>
             </div>
           </div>
         </div>
@@ -24,9 +24,9 @@
           <label class="control-label col-lg-4">Username</label>
           <div class="col-lg-12">
             <div class="input-group">
-              <input id="editName" type="text" class="form-control" value="<?php ?>" disabled/>
-              <a id="editNameEdit" href="#" onclick="editName()" class="mt-auto pl-1"><span>edit</span></a>
-              <a id="editNameSave" class="mt-auto pl-1" href="#" hidden><span>save</span></a>
+              <input id="editName" type="text" class="form-control" disabled/>
+              <a class="editButton mt-auto pl-1">edit</a>
+              <a class="mt-auto pl-1" hidden>save</a>
             </div>
           </div>
         </div>
@@ -38,8 +38,8 @@
           <div class="col-lg-12">
             <div class="input-group">
               <input id="editName" type="text" class="form-control" value="<?php ?>" disabled/>
-              <a id="editNameEdit" href="#" onclick="editName()" class="mt-auto pl-1"><span>edit</span></a>
-              <a id="editNameSave" class="mt-auto pl-1" href="#" hidden><span>save</span></a>
+              <a class="editButton mt-auto pl-1">edit</a>
+              <a class="mt-auto pl-1" hidden>save</a>
             </div>
           </div>
         </div>
@@ -50,8 +50,8 @@
           <div class="col-lg-12">
             <div class="input-group">
               <input id="editName" type="text" class="form-control" value="<?php ?>" disabled/>
-              <a id="editNameEdit" href="#" onclick="editName()" class="mt-auto pl-1"><span>edit</span></a>
-              <a id="editNameSave" class="mt-auto pl-1" href="#" hidden><span>save</span></a>
+              <a class="editButton mt-auto pl-1">edit</a>
+              <a class="mt-auto pl-1" hidden>save</a>
             </div>
           </div>
         </div>
@@ -70,7 +70,26 @@
   </div>
 </div>
 
+
+<?php require APPROOT . '/views/includes/footer.php'; ?>
+
 <script>
+  if (jQuery) {  
+      console.log('jQuery is loaded');
+  } else {
+    console.log('jQuery is NOT loaded');
+  }
+
+  // Is this what u wanted to do? just add editButton to class of each element
+  $(document).on("click", ".editButton", function (event) {
+    var inputField = $(event.target).prev();
+    console.log(inputField);
+    inputField.prop("disabled", false);
+    inputField.focus();
+    inputField.next().prop("hidden", true);
+    inputField.next().next().prop("hidden", false);
+  });
+
   function editName(){
     document.getElementById("editName").disabled = false;
     document.getElementById("editName").focus();
@@ -78,4 +97,3 @@
     document.getElementById("editNameSave").hidden = false;
   }
 </script>
-<?php require APPROOT . '/views/includes/footer.php'; ?>
