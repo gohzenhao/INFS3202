@@ -9,7 +9,7 @@
 				redirect('users/login');
 			}
 
-			$this->testModel = $this->model('AccountModel');
+			$this->accountModel = $this->model('AccountModel');
 		}
 
 		/**
@@ -21,5 +21,17 @@
 			];
 
 			$this->view('account/index', $data);
+		}
+
+		/**
+		 * 
+		 */
+		public function edit(){
+			$user = $this->accountModel->getCurrentUser();
+			
+			$data = [
+				'user' => $user
+			];
+			$this->view('account/edit',$data);
 		}
 	}

@@ -1,6 +1,7 @@
 <?php require APPROOT . '/views/includes/header.php'; ?>
 
 
+<div class="container">
 
 <div class="jumbotron text-center">
 <?php flash('logout_success'); ?>
@@ -370,9 +371,9 @@
         <span class="sr-only">Next</span> -->
         </a>
     </div>
+  </div>
 
 
-    </div>
     <!-- <div class="container">
     <div class="row">
 

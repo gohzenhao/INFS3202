@@ -69,7 +69,7 @@
                     // Load view with errors
                     $this->view('users/registration', $data);
                 }
-                
+
             } else {
                 // Display new registration form
                 $data = [
@@ -84,11 +84,11 @@
                     'password_error' => '',
                     'confirm_password_error' => '',
                 ];
-    
+
                 $this->view('users/registration', $data);
             }
         }
-        
+
         /**
          * Handles loading new login view or handles login if login POST method is used
          * POST method used: validates user email/username and password, if successful will
@@ -144,7 +144,7 @@
                     'username_email_error' => '',
                     'password_error' => '',
                 ];
-    
+
                 $this->view('users/login', $data);
             }
         }
