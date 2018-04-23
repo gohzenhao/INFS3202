@@ -68,6 +68,7 @@
                     if($this->userModel->registerUser($data)) {
                         flash('register_success', 'You are now registered and can login');
                         redirect('users/login');
+                        sendConfirmationEmail($data['email']);
                     } else {
                         die("Something went wrong with registration...");
                     }
@@ -203,5 +204,22 @@
                 'confirm_password_error' => ''
             ];
             return $data;
+        }
+
+        /**
+         * 
+         */
+        public function sendConfirmationEmail($email) {
+            $to = $email;
+			// $to      = 'yuliangzhou7@gmail.com';
+			$subject = 'Welcome to TheRecipesProject';
+			$message = 'Hello user, Welcome to  TheRecipesProject. This is a confirmation of your newly registered account';
+			$headers = 'From: TheRecipesProject <noreply@recipesproject.com>\n';
+			$headers .= "MIME-Version: 1.0\r\n";
+			$headers .= "Content-type: text/plain; charset=iso-8859-1\r\n";
+			$headers .= "X-Mailer: PHP". phpversion() ."\r\n";
+			
+			mail($to, $subject, $message, $headers);
+
         }
 	}
