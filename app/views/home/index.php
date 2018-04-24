@@ -13,11 +13,7 @@
     <a class="btn btn-warning" href="<?php echo URLROOT; ?>/recipes/create" role="button">Create Recipe</a>
 </div>
 
-
-
-<div class="container">
-
-    <div class="row">
+<div class="row">
     <div class="col-lg-12">
         <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="collapse navbar-collapse">
@@ -47,9 +43,8 @@
         </div>
         </nav>
     </div>
-    </div>
-
 </div>
+
 
 <!-- Page Content -->
 
@@ -200,8 +195,7 @@
 </div>
 
 <!-- featured custom recipes -->
-<div class="container">
-    <div class="row mt-3">
+<div class="row mt-3">
     <div class="col-lg-12 text-center">
         <h3> <u> Featured custom recipes </u> </h3>
     </div>
@@ -213,153 +207,153 @@
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner">
-        <div class="carousel-item active">
-            <div class="card-deck w-95 mx-auto">
-            <div class="card">
-                <img class="card-img-top" src="<?php echo URLROOT; ?>/img/salmon_custom.jpg" alt="Card image cap">
-                <div class="card-body">
+            <div class="carousel-item active">
+                <div class="card-deck w-95 mx-auto">
+                <div class="card">
+                    <img class="card-img-top" src="<?php echo URLROOT; ?>/img/salmon_custom.jpg" alt="Card image cap">
+                    <div class="card-body">
 
-                    <h5 class="card-title ml-auto">Card title <span class="featured1">
-                    <div class="stars-outer">
-                        <div class="stars-inner">
-                        </div>
-                    </div>
-                    </span></h5>
-
-
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-                </div>
-
-            <div class="card">
-                <img class="card-img-top" src="<?php echo URLROOT; ?>/img/salmon_custom.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5>Card title
-                    <span class="featured2">
-                    <div class="stars-outer">
-                        <div class="stars-inner">
-                        </div>
-                    </div>
-                    </span>
-                    </h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top" src="<?php echo URLROOT; ?>/img/salmon_custom.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5>Card title
-                    <span class="featured3">
+                        <h5 class="card-title ml-auto">Card title <span class="featured1">
                         <div class="stars-outer">
-                        <div class="stars-inner">
+                            <div class="stars-inner">
+                            </div>
                         </div>
-                        </div>
-                    </span></h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="card-deck w-95 mx-auto">
-            <div class="card">
-                <img class="card-img-top" src="<?php echo URLROOT; ?>/img/salmon_custom.jpg" alt="Card image cap">
-                <div class="card-body">
-                <h5 class="card-title">Card title
-                    <span class="featured4">
-                    <div class="stars-outer">
-                        <div class="stars-inner">
-                        </div>
+                        </span></h5>
+
+
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
-                    </span>
-                </h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top" src="<?php echo URLROOT; ?>/img/salmon_custom.jpg" alt="Card image cap">
-                <div class="card-body">
-                <h5 class="card-title">Card title
-                    <span class="featured5">
-                    <div class="stars-outer">
-                        <div class="stars-inner">
-                        </div>
                     </div>
-                    </span>
-                </h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top" src="<?php echo URLROOT; ?>/img/salmon_custom.jpg" alt="Card image cap">
-                <div class="card-body">
-                <h5 class="card-title">Card title
-                    <span class="featured6">
-                    <div class="stars-outer">
-                        <div class="stars-inner">
+
+                <div class="card">
+                    <img class="card-img-top" src="<?php echo URLROOT; ?>/img/salmon_custom.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5>Card title
+                        <span class="featured2">
+                        <div class="stars-outer">
+                            <div class="stars-inner">
+                            </div>
                         </div>
+                        </span>
+                        </h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
-                    </span>
-                </h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="<?php echo URLROOT; ?>/img/salmon_custom.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5>Card title
+                        <span class="featured3">
+                            <div class="stars-outer">
+                            <div class="stars-inner">
+                            </div>
+                            </div>
+                        </span></h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
                 </div>
             </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="card-deck w-95 mx-auto">
-            <div class="card">
-                <img class="card-img-top" src="<?php echo URLROOT; ?>/img/salmon_custom.jpg" alt="Card image cap">
-                <div class="card-body">
-                <h5 class="card-title">Lemongrass Salmon
-                    <span class="featured7">
-                    <div class="stars-outer">
-                        <div class="stars-inner">
+            <div class="carousel-item">
+                <div class="card-deck w-95 mx-auto">
+                <div class="card">
+                    <img class="card-img-top" src="<?php echo URLROOT; ?>/img/salmon_custom.jpg" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">Card title
+                        <span class="featured4">
+                        <div class="stars-outer">
+                            <div class="stars-inner">
+                            </div>
                         </div>
+                        </span>
+                    </h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
-                    </span>
-                </h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top" src="<?php echo URLROOT; ?>/img/salmon_custom.jpg" alt="Card image cap">
-                <div class="card-body">
-                <h5 class="card-title">Card title
-                    <span class="featured8">
-                    <div class="stars-outer">
-                        <div class="stars-inner">
+                <div class="card">
+                    <img class="card-img-top" src="<?php echo URLROOT; ?>/img/salmon_custom.jpg" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">Card title
+                        <span class="featured5">
+                        <div class="stars-outer">
+                            <div class="stars-inner">
+                            </div>
                         </div>
+                        </span>
+                    </h5>
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
-                    </span></h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top" src="<?php echo URLROOT; ?>/img/salmon_custom.jpg" alt="Card image cap">
-                <div class="card-body">
-                <h5 class="card-title">Card title
-                    <span class="featured9">
-                    <div class="stars-outer">
-                        <div class="stars-inner">
+                <div class="card">
+                    <img class="card-img-top" src="<?php echo URLROOT; ?>/img/salmon_custom.jpg" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">Card title
+                        <span class="featured6">
+                        <div class="stars-outer">
+                            <div class="stars-inner">
+                            </div>
                         </div>
+                        </span>
+                    </h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
-                    </span>
-                </h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
                 </div>
             </div>
+            <div class="carousel-item">
+                <div class="card-deck w-95 mx-auto">
+                <div class="card">
+                    <img class="card-img-top" src="<?php echo URLROOT; ?>/img/salmon_custom.jpg" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">Lemongrass Salmon
+                        <span class="featured7">
+                        <div class="stars-outer">
+                            <div class="stars-inner">
+                            </div>
+                        </div>
+                        </span>
+                    </h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="<?php echo URLROOT; ?>/img/salmon_custom.jpg" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">Card title
+                        <span class="featured8">
+                        <div class="stars-outer">
+                            <div class="stars-inner">
+                            </div>
+                        </div>
+                        </span></h5>
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="<?php echo URLROOT; ?>/img/salmon_custom.jpg" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">Card title
+                        <span class="featured9">
+                        <div class="stars-outer">
+                            <div class="stars-inner">
+                            </div>
+                        </div>
+                        </span>
+                    </h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+                </div>
             </div>
-        </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
         <i class="material-icons md-48">chevron_left</i>
@@ -372,37 +366,9 @@
         <span class="sr-only">Next</span> -->
         </a>
     </div>
-  </div>
+</div>
 
-
-    <!-- <div class="container">
-    <div class="row">
-
-        <div class="featured1">
-        <div class="stars-outer">
-            <div class="stars-inner">
-
-            </div>
-        </div>
-        </div>
-        <div class="featured2">
-        <div class="stars-outer">
-            <div class="stars-inner">
-
-            </div>
-        </div>
-        </div>
-        <div class="featured3">
-        <div class="stars-outer">
-            <div class="stars-inner">
-
-            </div>
-        </div>
-        </div>
-    </div>
-    </div> -->
-
-
+</div><!-- Close container -->
 
 <?php require APPROOT . '/views/includes/footer.php'; ?>
 

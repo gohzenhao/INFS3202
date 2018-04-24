@@ -8,7 +8,7 @@
 
         <div class="row">
             <form class="col" action="<?php echo URLROOT; ?>/recipes/saverecipe" method="GET">
-                <div class="row">
+                <div class="row mb-3">
                     <div class="col-5">
                         <img src="<?php echo URLROOT?>/img/beef.jpg" alt="Insert_Image">
 
@@ -22,6 +22,17 @@
                             <label for="desc">Description:</label>
                             <textarea class="form-control" name="desc" rows="4"></textarea>
                         </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col form-group form-inline">
+                        <label for="prepTime">Preparation Time: </label>
+                        <input class="form-control form-control-sm" name="prepTime" type="text" placeholder="Preparation Time">
+                    </div>
+                    <div class="col form-group form-inline">
+                        <label for="servingSize">Serving Size: </label>
+                        <input class="form-control form-control-sm" name="servingSize" type="text" placeholder="Serving Size">
                     </div>
                 </div>
 
