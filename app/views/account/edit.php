@@ -13,6 +13,7 @@
           <div class="col-lg-12">
             <div class="input-group">
               <input type="text" name="name" class="form-control" value="<?php echo $data['user']->user_name ?>"/>
+              <span class="invalid-feedback"><?php echo $data['error_name'] ?></span>
             </div>
           </div>
         </div>
@@ -23,6 +24,7 @@
           <div class="col-lg-12">
             <div class="input-group">
               <input type="text" name="username" class="form-control" value="<?php echo $data['user']->user_username ?>"/>
+              <span class="invalid-feedback"><?php echo $data['error_username'] ?></span>
             </div>
           </div>
         </div>
@@ -34,6 +36,7 @@
           <div class="col-lg-12">
             <div class="input-group">
               <input type="text" name="email" class="form-control" value="<?php echo $data['user']->user_email ?>"/>
+              <span class="invalid-feedback"><?php echo $data['error_email'] ?></span>
             </div>
           </div>
         </div>

@@ -16,7 +16,7 @@ class AccountModel {
 
 	public function updateProfile($data){
 
-		$this->db->query("UPDATE users SET user_name = :name, user_username = :username, user_email = :email WHERE user_id = :id");
+		$this->db->query('UPDATE users SET user_name = :name, user_username = :username, user_email = :email WHERE user_id = :id');
 		$this->db->bind(':name',$data['name']);
 		$this->db->bind(':username:',$data['username']);
 		$this->db->bind(':email',$data['email']);

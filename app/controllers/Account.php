@@ -33,19 +33,9 @@
 		public function edit(){
 			$user = $this->accountModel->getCurrentUser();
 
-			$data = [
-				'user' => $user
-			];
-			$this->view('account/edit',$data);
-		}
-
-		public function validateInput(){
-
-			if($_SERVER(REQUEST_METHOD) == 'POST'){
-
-				console.log("Hello");
-
+			if($_SERVER['REQUEST_METHOD'] == 'POST'){
 				$data = $this-> sanitizeInput();
+
 
 					if(empty($data['name'])){
 						$data['error_name'] = "Please enter name";
@@ -57,23 +47,28 @@
 
 					if(empty($data['email'])){
 						$data['error_email'] = "Please enter email";
-					}else if($this->accountModel->findUserByEmail($data['email'])){
-						$data['error_email'] = "Email is already taken";
 					}
+					// }else if($this->accountModel->findUserByEmail($data['email'])){
+					// 	$data['error_email'] = "Email is already taken";
+					// }
 
-					if(!empty($data['error_name']) && !empty($data['error_username']) && !empty($data['error_email'])){
+					if(empty($data['error_name']) && empty($data['error_username']) && empty($data['error_email'])){
+						print_r($data);
 						if($this->accountModel->updateProfile($data)){
+							echo "ayy";
 							flash('update_success',"Profile updated successfully!");
 							redirect("account/index");
 						}else{
 							die("Wot");
 						}
 					}else{
+						echo "huh";
 						$this->view('account/edit',$data);
 					}
 
 				}else{
 					$data = [
+						'user' => $user,
 						'name' => '',
 						'username' => '',
 						'email' => '',
@@ -85,5 +80,22 @@
 					$this->view('account/edit',$data);
 				}
 
+		}
+
+		private function sanitizeInput() {
+				$user = $this->accountModel->getCurrentUser();
+				// Santise POST data from form
+				$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+				// Retrieve data from forms
+				$data = [
+						'user' => $user,
+						'name' => trim($_POST['name']),
+						'username' => trim($_POST['username']),
+						'email' => trim($_POST['email']),
+						'error_name' => '',
+						'error_username' => '',
+						'error_email' => '',
+				];
+				return $data;
 		}
 	}
