@@ -12,30 +12,30 @@
           <label class="control-label col-lg-4">Name</label>
           <div class="col-lg-12">
             <div class="input-group">
-              <input type="text" name="name" class="form-control" value="<?php echo $data['user']->user_name ?>"/>
+              <input type="text" name="name" class="form-control <?php echo (!empty($data['error_name'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['name'] ?>"/>
               <span class="invalid-feedback"><?php echo $data['error_name'] ?></span>
             </div>
           </div>
         </div>
 
-        <!-- Email field -->
+        <!-- Username field -->
         <div class="form-group">
           <label class="control-label col-lg-4">Username</label>
           <div class="col-lg-12">
             <div class="input-group">
-              <input type="text" name="username" class="form-control" value="<?php echo $data['user']->user_username ?>"/>
+              <input type="text" name="username" class="form-control <?php echo (!empty($data['error_username'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['username'] ?>"/>
               <span class="invalid-feedback"><?php echo $data['error_username'] ?></span>
             </div>
           </div>
         </div>
 
 
-        <!-- Username field -->
+        <!-- Email field -->
         <div class="form-group">
           <label class="control-label col-lg-4">Email</label>
           <div class="col-lg-12">
             <div class="input-group">
-              <input type="text" name="email" class="form-control" value="<?php echo $data['user']->user_email ?>"/>
+              <input type="text" name="email" class="form-control <?php echo (!empty($data['error_email'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['email'] ?>"/>
               <span class="invalid-feedback"><?php echo $data['error_email'] ?></span>
             </div>
           </div>

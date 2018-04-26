@@ -15,12 +15,14 @@ class AccountModel {
 	}
 
 	public function updateProfile($data){
+		$this->db->query('UPDATE users SET user_name = :name, user_username = :username, 
+			user_email = :email WHERE user_id = :id');
 
-		$this->db->query('UPDATE users SET user_name = :name, user_username = :username, user_email = :email WHERE user_id = :id');
-		$this->db->bind(':name',$data['name']);
-		$this->db->bind(':username:',$data['username']);
-		$this->db->bind(':email',$data['email']);
-		$this->db->bind(':id',$_SESSION['user_id']);
+		$this->db->bind(':name', $data['name']);
+		$this->db->bind(':username', $data['username']);
+		$this->db->bind(':email', $data['email']);
+		$this->db->bind(':id', $data['id']);
+
 		if($this->db->execute()){
 			return true;
 		}else{

@@ -31,70 +31,64 @@
 		 *
 		 */
 		public function edit(){
-			$user = $this->accountModel->getCurrentUser();
-
 			if($_SERVER['REQUEST_METHOD'] == 'POST'){
-				$data = $this-> sanitizeInput();
+				$data = $this->sanitizeInput();
 
+				if(empty($data['name'])){
+					$data['error_name'] = "Please enter name";
+				}
 
-					if(empty($data['name'])){
-						$data['error_name'] = "Please enter name";
-					}
+				if(empty($data['username'])){
+					$data['error_username'] = "Please enter username";
+				}
 
-					if(empty($data['username'])){
-						$data['error_username'] = "Please enter username";
-					}
+				if(empty($data['email'])){
+					$data['error_email'] = "Please enter email";
+				} else if($this->accountModel->findUserByEmail($data['email'])) {
+					$data['error_email'] = "Email is already taken";
+				}
 
-					if(empty($data['email'])){
-						$data['error_email'] = "Please enter email";
-					}
-					// }else if($this->accountModel->findUserByEmail($data['email'])){
-					// 	$data['error_email'] = "Email is already taken";
-					// }
-
-					if(empty($data['error_name']) && empty($data['error_username']) && empty($data['error_email'])){
-						print_r($data);
-						if($this->accountModel->updateProfile($data)){
-							echo "ayy";
-							flash('update_success',"Profile updated successfully!");
-							redirect("account/index");
-						}else{
-							die("Wot");
-						}
+				if(empty($data['error_name']) && empty($data['error_username']) && empty($data['error_email'])){
+					if($this->accountModel->updateProfile($data)){
+						// TODO: create update session variable function
+						flash('update_success', "Profile updated successfully!");
+						redirect("account/index");
 					}else{
-						echo "huh";
-						$this->view('account/edit',$data);
+						die("Failed to update user profile");
 					}
-
 				}else{
-					$data = [
-						'user' => $user,
-						'name' => '',
-						'username' => '',
-						'email' => '',
-						'error_name' => '',
-						'error_username' => '',
-						'error_email' => '',
-					];
-
+					// Display errors
 					$this->view('account/edit',$data);
 				}
+
+			}else{
+				$data = [
+					'id' => $_SESSION['user_id'],
+					'name' => $_SESSION['user_name'],
+					'username' => $_SESSION['user_username'],
+					'email' => $_SESSION['user_email'],
+					'error_name' => '',
+					'error_username' => '',
+					'error_email' => '',
+				];
+
+				$this->view('account/edit',$data);
+			}
 
 		}
 
 		private function sanitizeInput() {
-				$user = $this->accountModel->getCurrentUser();
 				// Santise POST data from form
 				$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 				// Retrieve data from forms
 				$data = [
-						'user' => $user,
-						'name' => trim($_POST['name']),
-						'username' => trim($_POST['username']),
-						'email' => trim($_POST['email']),
-						'error_name' => '',
-						'error_username' => '',
-						'error_email' => '',
+					'id' => $_SESSION['user_id'],
+					'name' => trim($_POST['name']),
+					'username' => trim($_POST['username']),
+					'email' => trim($_POST['email']),
+					'error_name' => '',
+					'error_username' => '',
+					'error_email' => '',
 				];
 				return $data;
 		}
