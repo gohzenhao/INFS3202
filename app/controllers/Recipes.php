@@ -30,11 +30,18 @@
 		 * 
 		 */
 		public function saverecipe() {
-			if(isset($_GET['ingredients'])) {
-				echo "OKAYYYY";
-				print_r($_GET['ingredients']);
+			if(isset($_POST['ingredients'])) {
+				print_r($_POST['ingredients']);
 			} else {
 				echo "not okay";
 			}
+			if(isset($_POST['directions'])) {
+				print_r($_POST['directions']);
+			} else {
+				echo "not okay";
+			}
+			
+			$target_file = "uploads/" . basename($_FILES["profilePicture"]["name"]);
+			echo $target_file;
 		}
 	}
