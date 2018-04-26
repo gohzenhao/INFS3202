@@ -1,6 +1,6 @@
 <?php
 	/**
-	 * 
+	 *
 	 */
 	class Account extends Controller{
 
@@ -17,7 +17,7 @@
 		}
 
 		/**
-		 * 
+		 *
 		 */
 		public function index(){
 			$data = [
@@ -28,14 +28,70 @@
 		}
 
 		/**
-		 * 
+		 *
 		 */
 		public function edit(){
-			$user = $this->accountModel->getCurrentUser();
-			
-			$data = [
-				'user' => $user
-			];
-			$this->view('account/edit',$data);
+			if($_SERVER['REQUEST_METHOD'] == 'POST'){
+				$data = $this->sanitizeInput();
+
+				if(empty($data['name'])){
+					$data['error_name'] = "Please enter name";
+				}
+
+				if(empty($data['username'])){
+					$data['error_username'] = "Please enter username";
+				}
+
+				if(empty($data['email'])){
+					$data['error_email'] = "Please enter email";
+				} 
+				// else if($this->accountModel->findUserByEmail($data['email'])) {
+				// 	$data['error_email'] = "Email is already taken";
+				// }
+				// TODO: handle checking OTHER emails (ignore own email)
+
+				if(empty($data['error_name']) && empty($data['error_username']) && empty($data['error_email'])){
+					if($this->accountModel->updateProfile($data)){
+						// TODO: create update session variable function
+						flash('update_success', "Profile updated successfully!");
+						redirect("account/index");
+					}else{
+						die("Failed to update user profile");
+					}
+				}else{
+					// Display errors
+					$this->view('account/edit',$data);
+				}
+
+			}else{
+				$data = [
+					'id' => $_SESSION['user_id'],
+					'name' => $_SESSION['user_name'],
+					'username' => $_SESSION['user_username'],
+					'email' => $_SESSION['user_email'],
+					'error_name' => '',
+					'error_username' => '',
+					'error_email' => '',
+				];
+
+				$this->view('account/edit',$data);
+			}
+
+		}
+
+		private function sanitizeInput() {
+				// Santise POST data from form
+				$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+				// Retrieve data from forms
+				$data = [
+					'id' => $_SESSION['user_id'],
+					'name' => trim($_POST['name']),
+					'username' => trim($_POST['username']),
+					'email' => trim($_POST['email']),
+					'error_name' => '',
+					'error_username' => '',
+					'error_email' => '',
+				];
+				return $data;
 		}
 	}

@@ -13,7 +13,7 @@
 			if(isLoggedIn()) {
 				redirect('account');
             }
-            
+
 			$this->userModel = $this->model('UserModel');
 		}
 
@@ -21,8 +21,8 @@
          * Handles both loading registration form and submission of form.
          * Loading form: loads form with name, email, username, password, and confirm password
          *      and asssociated error messages
-         * Submission of form: validates input and hashes password, then inserts it into 
-         *      database via model queries. Redirects user to login page once complete with 
+         * Submission of form: validates input and hashes password, then inserts it into
+         *      database via model queries. Redirects user to login page once complete with
          *      flash banner saying registration is successful
          */
 		public function registration(){
@@ -104,6 +104,7 @@
         public function login() {
             // Check for POST submission
 			if($_SERVER['REQUEST_METHOD'] == 'POST') {
+								
                 // Submit form data
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 // Retrieve data from forms
@@ -184,7 +185,7 @@
         }
 
         /**
-         * Sanitizes POST input from form and returns associative array for each input field 
+         * Sanitizes POST input from form and returns associative array for each input field
          * and its associated error message
          */
         private function sanitizeInput() {
