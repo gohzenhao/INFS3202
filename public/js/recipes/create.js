@@ -4,10 +4,15 @@ console.log('jQuery is loaded');
     console.log('jQuery is NOT loaded');
 }
 
+$("button.remove-me").on("click", function(event) {
+    event.preventDefault();
+    $(this).parent().parent().parent().remove();
+});
+
 // Handle creating more ingredients forms
 $(".ingred-add-more").on("click", function(event) {
     event.preventDefault();
-    var listObj = $(event.target).prev();
+    var listObj = $(event.target).prev().prev();
     var newItem = '<li class="form-group ingredient">'
         + '<div class="input-group mb-3">'
         + '<div class="input-group-prepend drag-me"><span class="input-group-text fa fa-bars"></span></div>'
@@ -22,10 +27,13 @@ $(".ingred-add-more").on("click", function(event) {
     });
 });
 
+// Add 1 ingredient to list
+// $(".ingred-add-more").trigger("click");
+
 // Handle creating more directions form
 $('.direction-add-more').on("click", function(e){
     e.preventDefault();
-    var listObj = $(event.target).prev();
+    var listObj = $(event.target).prev().prev();
     var newItem = '<li class="form-group direction">'
         + '<div class="input-group mb-3">'
         + '<div class="input-group-prepend drag-me"><span class="input-group-text fa fa-bars"></span></div>'
@@ -39,6 +47,9 @@ $('.direction-add-more').on("click", function(e){
         $(this).parent().parent().parent().remove();
     });
 });
+
+// Add 1 direction step to list
+// $(".direction-add-more").trigger("click");
 
 // Handle drag and drop reordering of ingredients
 $("ul.ingredients,ol.directions").sortable({
