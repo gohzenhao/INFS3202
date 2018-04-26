@@ -22,7 +22,10 @@
 		 * 
 		 */
         public function create() {
-			// TODO: check if logged in, else redirect to login
+			// Check if logged in
+			if(!isLoggedIn()) {
+				redirect('users/login');
+			}
 			if($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$data = $this->sanitizeInput();
 				// Check for empty input
@@ -74,7 +77,7 @@
 					empty($data['prepTime_error']) && empty($data['servingSize_error']) && 
 					empty($data['ingredients_error']) && empty($data['directions_error'])){
 						// Can now upload to db TODO
-						
+
 				} else {
 					// Display form with errors
 					// TODO: handle reloading ingredients and directions lists
