@@ -44,15 +44,15 @@
 
 				if(empty($data['email'])){
 					$data['error_email'] = "Please enter email";
-				} 
-				// else if($this->accountModel->findUserByEmail($data['email'])) {
-				// 	$data['error_email'] = "Email is already taken";
-				// }
-				// TODO: handle checking OTHER emails (ignore own email)
+				}else if($this->accountModel->findUserByEmail($data['email'])) {
+					if($data['email']!=$_SESSION['user_email']){
+						$data['error_email'] = "Email is already taken";
+					}
+				}
 
 				if(empty($data['error_name']) && empty($data['error_username']) && empty($data['error_email'])){
 					if($this->accountModel->updateProfile($data)){
-						// TODO: create update session variable function
+						$this -> updateSession($data);
 						flash('update_success', "Profile updated successfully!");
 						redirect("account/index");
 					}else{
@@ -93,5 +93,12 @@
 					'error_email' => '',
 				];
 				return $data;
+		}
+
+		private function updateSession($data){
+
+			$_SESSION['user_name'] = $data['name'];
+			$_SESSION['user_username'] = $data['username'];
+			$_SESSION['user_email'] = $data['email'];
 		}
 	}
