@@ -1,2 +1,2 @@
-.htaccess
-config/config.php
+*.htaccess
+app/config/config.php
