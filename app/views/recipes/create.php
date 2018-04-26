@@ -27,11 +27,11 @@
                 
                 <div class="row">
                     <div class="col form-group form-inline">
-                        <label for="prepTime">Preparation Time: </label>
+                        <label for="prepTime" class="pr-2">Preparation Time: </label>
                         <input class="form-control form-control-sm" name="prepTime" type="text" placeholder="Preparation Time">
                     </div>
                     <div class="col form-group form-inline">
-                        <label for="servingSize">Serving Size: </label>
+                        <label for="servingSize" class="pr-2">Serving Size: </label>
                         <input class="form-control form-control-sm" name="servingSize" type="text" placeholder="Serving Size">
                     </div>
                 </div>

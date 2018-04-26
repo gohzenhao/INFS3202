@@ -15,7 +15,7 @@
 				'users' => $users
 			];
 
-			$this->view('recipes/view', $data);
+			$this->view('recipes/search', $data);
         }
 		
 		/**
