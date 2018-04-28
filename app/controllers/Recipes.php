@@ -8,11 +8,8 @@
 		 * Loads the view recipes page by default, displays a search results page
 		 */
 		public function index(){
-			$users = $this->recipesModel->getUsers();
-
 			$data = [
-				'title' => 'Welcome Peasants to the Example page!',
-				'users' => $users
+				'title' => 'Welcome Search Recipe Page!'
 			];
 
 			$this->view('recipes/search', $data);
@@ -45,7 +42,7 @@
 				// Check for at least 1 non empty ingredient, max 25 ingredients
 				$hasIngredients = false;
 				for($i = 0; $i < count($data['ingredients']); $i++ ) {
-					echo '</br>#'.$i.' = '. $data['ingredients'][$i].'#';
+					//echo '</br>#'.$i.' = '. $data['ingredients'][$i].'#';
 					if(!empty($data['ingredients'][$i])) {
 						$hasIngredients = true;
 					}
@@ -60,7 +57,7 @@
 				// Check for at least 1 non empty step, max 20 steps in directions
 				$hasDirections = false;
 				for($i = 0; $i < count($data['directions']); $i++ ) {
-					echo '</br>#'.$i.' = '. $data['directions'][$i].'#';
+					//echo '</br>#'.$i.' = '. $data['directions'][$i].'#';
 					if(!empty($data['directions'][$i])) {
 						$hasDirections = true;
 					}
@@ -77,7 +74,7 @@
 					empty($data['prepTime_error']) && empty($data['servingSize_error']) && 
 					empty($data['ingredients_error']) && empty($data['directions_error'])){
 						// Can now upload to db TODO
-
+						$this->recipesModel->createNewRecipe($data);
 				} else {
 					// Display form with errors
 					// TODO: handle reloading ingredients and directions lists

@@ -34,6 +34,7 @@
                 <div class="row">
                     <div class="col form-group form-inline">
                         <label for="prepTime" class="pr-2">Preparation Time: </label>
+                        <small class="form-text text-muted">Please enter units</small>
                         <input name="prepTime" type="text" class="form-control form-control-sm <?php echo (!empty($data['prepTime_error'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['prepTime']?>">
                         <span class="invalid-feedback"><?php echo $data['prepTime_error'] ?></span>
                     </div>
@@ -88,7 +89,7 @@
 
                 <!-- Submit -->
                 <div class="row">
-                    <button class="btn btn-success btn-lg ml-auto" type="submit">Save</button>
+                    <button class="btn btn-success btn-lg ml-auto mb-5" type="submit">Save</button>
                 </div>
             </form>
         </div>

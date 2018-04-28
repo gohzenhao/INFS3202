@@ -4,6 +4,7 @@ console.log('jQuery is loaded');
     console.log('jQuery is NOT loaded');
 }
 
+// Removes list item associated to remove button for both Ingredients and Directions lists
 $("button.remove-me").on("click", function(event) {
     event.preventDefault();
     $(this).parent().parent().parent().remove();
@@ -72,11 +73,11 @@ $('.anyName').uploadPreview({
     lang: 'en'
 });
 
-$('.imgContainer1').uploadPreview({
-    width: '150px',
-    height: '150px',
-    backgroundSize: 'cover',
-    fontSize: '16px',
-    border: '3px solid #dedede',
-    lang: 'en'
-});
+// $('.imgContainer1').uploadPreview({
+//     width: '150px',
+//     height: '150px',
+//     backgroundSize: 'cover',
+//     fontSize: '16px',
+//     border: '3px solid #dedede',
+//     lang: 'en'
+// });
