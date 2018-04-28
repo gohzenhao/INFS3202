@@ -68,17 +68,27 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Change password</h5></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-                ...
+                <div class="form-group">
+                  <label class="control-label col-lg-12">Enter current password to continue</label>
+                  <div class="col-lg-12">
+                    <div class="input-group">
+                      <input type="password" name="password" class="form-control"/>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <form action="<?php echo URLROOT; ?>/account/edit" method="POST">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" id="nextBtn" class="btn btn-primary">Next</button>
+
+                </form>
               </div>
             </div>
           </div>
@@ -117,11 +127,5 @@
     inputField.next().prop("hidden", true);
     inputField.next().next().prop("hidden", false);
   });
-
-  function editName(){
-    document.getElementById("editName").disabled = false;
-    document.getElementById("editName").focus();
-    document.getElementById("editNameEdit").hidden = true;
-    document.getElementById("editNameSave").hidden = false;
-  }
+    
 </script>

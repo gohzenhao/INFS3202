@@ -104,7 +104,7 @@
         public function login() {
             // Check for POST submission
 			if($_SERVER['REQUEST_METHOD'] == 'POST') {
-								
+
                 // Submit form data
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 // Retrieve data from forms
@@ -208,7 +208,7 @@
         }
 
         /**
-         * 
+         *
          */
         public function sendConfirmationEmail($email) {
             $to = $email;
@@ -219,7 +219,7 @@
 			$headers .= "MIME-Version: 1.0\r\n";
 			$headers .= "Content-type: text/plain; charset=iso-8859-1\r\n";
 			$headers .= "X-Mailer: PHP". phpversion() ."\r\n";
-			
+
 			mail($to, $subject, $message, $headers);
 
         }
