@@ -141,13 +141,24 @@
 				redirect('recipes');
 			}
 
-			$this->recipesModel->getRecipeData($recipeID);
+			// Get recipe data
+			$recipeData = $this->recipesModel->getRecipeData($recipeID);
 
-			// TODO: get recipe data from model
+			// If recipe does not exist redirect to search page
+			if($recipeData == null) {
+				redirect('recipes');
+			}
+
 			$data = [
-				'title' => 'Recipe Display Page'
+				'title' => $recipeData->title,
+                'description' => $recipeData->description,
+                'prepTime' => $recipeData->prepTime,
+				'servingSize' => $recipeData->servingSize,
+				'ingredients' => $recipeData->ingredients,
+				'directions' => $recipeData->directions,
 			];
 
+			// print_r($data);
 			$this->view('recipes/display', $data);
 		}
 

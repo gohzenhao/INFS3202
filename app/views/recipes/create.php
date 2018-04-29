@@ -11,7 +11,7 @@
                 <div class="row mb-3">
                     <div class="col-5">
                         <label for="profilePicture">Recipe Picture: </label>
-                        <div class="anyName m-auto">
+                        <div class="previewPic m-auto">
                             <input name="profilePicture" type="file" accept="image/jpeg, image/png">
                         </div>
                     </div>
@@ -65,7 +65,7 @@
 
                 <!-- Add Directions form -->
                 <div class="row mb-3">
-                    <label class="col-12" for="ingredients">Directions: </label>
+                    <label class="col-12" for="directions">Directions: </label>
                     <ol class="col-8 directions <?php echo (!empty($data['directions_error'])) ? 'form-control is-invalid' : ''; ?>">
                         <li class="form-group direction">
                             <div class="input-group mb-3">

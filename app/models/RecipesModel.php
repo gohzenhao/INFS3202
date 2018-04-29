@@ -127,7 +127,6 @@ class RecipesModel {
         
         // If recipe does not exist, return null
         if($recipeResult == null) {
-            echo 'no recipe found';
             return null;
         }
 
@@ -147,9 +146,6 @@ class RecipesModel {
         $this->db->execute();
         $directionsResult = $this->db->resultSet(true);
         $recipeResult['directions'] = $directionsResult;
-
-        echo '</br>';
-        print_r((object)$recipeResult);
 
         return (object)$recipeResult;
     }

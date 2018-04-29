@@ -72,7 +72,7 @@ $("ul.ingredients,ol.directions").sortable({
 /**
  * 
  */
-$('.anyName').uploadPreview({
+$('.previewPic').uploadPreview({
     width: '250px',
     height: '200px',
     backgroundSize: 'cover',
