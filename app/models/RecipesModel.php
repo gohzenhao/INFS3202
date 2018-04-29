@@ -10,10 +10,10 @@ class RecipesModel {
      * Insert a new recipe into database. Performs 3 insert operations on 'recipe', 'ingredients', and
      * 'directions' tables.
      * 
-     * TODO: combine into 1 query => must do a select rid first, then increment, then insert with new rid
+     * TODO: - select rid first, then increment, then insert with new rid???
      */
     public function createNewRecipe($data) {
-        // Prepare sql query
+        // Prepare sql query for new recipe entry
         $this->db->query('INSERT INTO recipes (title,description,prepTime,servingSize,imagePath) VALUES(:title,:description,:prepTime,:servingSize,:imagePath);');
         // Bind values for prepared statement
         $this->db->bind(':title', $data['title']);
@@ -21,14 +21,18 @@ class RecipesModel {
         $this->db->bind(':prepTime', $data['prepTime']);
         $this->db->bind(':servingSize', $data['servingSize']);
         $this->db->bind(':imagePath', "");
-        // Execute
-        // $this->db->execute();
+        // Execute query
+        try {
+            $this->db->execute();
+        } catch (PDOException $e) {
+            echo '</br>FAILED recipe: ' . $e->getMessage() . '</br>';
+            return false;
+        }
 
         // Get id of new recipe
         $this->db->query('SELECT rid FROM recipes WHERE rid=(SELECT MAX(rid) FROM recipes)');
         $this->db->execute();
         $row = $this->db->single();
-        echo '</br>%Your rid = ' . $row->rid . '</br>';
 
         // Insert ingredients
         $ingredQueryArray = $this->getIngredientsQueries($row->rid, $data['ingredients']);
@@ -44,13 +48,14 @@ class RecipesModel {
             $this->db->execute();
         } catch (PDOException $e) {
             echo '</br>FAILED ingredients: ' . $e->getMessage() . '</br>';
+            return false;
         }
 
         // Insert directions
         //TODO: imagePath once uploading images feature is added
         $direcQueryArray = $this->getDirectionsQueries($row->rid, $data['directions']);
         $direcQueryString = 'INSERT INTO directions (rid,stepNum,description) VALUES ' . implode(", ", $direcQueryArray) . ';';
-        echo $direcQueryString;
+        // echo $direcQueryString;
         $this->db->query($direcQueryString);
         // Bind all values in ingredients query
         for($i = 0; $i < count($direcQueryArray); $i++) {
@@ -61,8 +66,10 @@ class RecipesModel {
             $this->db->execute();
         } catch (PDOException $e) {
             echo '</br>FAILED directions: ' . $e->getMessage() . '</br>';
+            return false;
         }
 
+        return true;
     }
 
     /**
@@ -95,6 +102,56 @@ class RecipesModel {
             $result[$i - 1] = '(' . $rid . ', ' . $i . ', :value' . $i . ')';
         }
         return $result;
+    }
+
+    /**
+     * Retrieve recipe information from database.
+     * Recipe will return object containing:
+     * - title
+     * - description
+     * - preparation time
+     * - serving size
+     * - image path for preview image
+     * - list of ingredients 
+     * - list of directions
+     * 
+     * param: recipe id to fetch
+     * return: associative stdClass Object
+     */
+    public function getRecipeData($rid) {
+        // Query to select recipe
+        $this->db->query('SELECT * FROM recipes WHERE rid=:rid');
+        $this->db->bind(':rid', $rid);
+        $this->db->execute();
+        $recipeResult = $this->db->single();
+        
+        // If recipe does not exist, return null
+        if($recipeResult == null) {
+            echo 'no recipe found';
+            return null;
+        }
+
+        // Convert from object into array to append ingredients and directions
+        $recipeResult = (array)$recipeResult;
+
+        // Query to select recipe's ingredients list
+        $this->db->query('SELECT ingredientid, value FROM ingredients WHERE rid=:rid');
+        $this->db->bind(':rid', $rid);
+        $this->db->execute();
+        $ingredientsResult = $this->db->resultSet(true);
+        $recipeResult['ingredients'] = $ingredientsResult;
+
+        // Query to select recipe's directions list
+        $this->db->query('SELECT stepNum, description FROM directions WHERE rid=:rid');
+        $this->db->bind(':rid', $rid);
+        $this->db->execute();
+        $directionsResult = $this->db->resultSet(true);
+        $recipeResult['directions'] = $directionsResult;
+
+        echo '</br>';
+        print_r((object)$recipeResult);
+
+        return (object)$recipeResult;
     }
 
 }

@@ -16,6 +16,8 @@
         }
 		
 		/**
+		 * Handles both loading form page for users to create a new recipe as well
+		 * as submitting recipe form data via POST method.
 		 * 
 		 */
         public function create() {
@@ -69,12 +71,18 @@
 					$data['directions_error'] = 'Sorry no more than 20 steps allowed';
 				}
 
-				print_r($data);
+				// If no errors then upload
 				if(empty($data['title_error']) && empty($data['description_error']) && 
 					empty($data['prepTime_error']) && empty($data['servingSize_error']) && 
 					empty($data['ingredients_error']) && empty($data['directions_error'])){
-						// Can now upload to db TODO
-						$this->recipesModel->createNewRecipe($data);
+						// Upload recipe to database
+						if($this->recipesModel->createNewRecipe($data)) {
+							// TODO: show recipe? or return to account page?
+							redirect('recipes/index');
+						} else {
+							// PDOException was thrown
+							$this->view('recipes/create', $data);
+						}
 				} else {
 					// Display form with errors
 					// TODO: handle reloading ingredients and directions lists
@@ -101,7 +109,7 @@
 		}
 
 		/**
-		 * 
+		 * Security to avoid form injection in recipe creation page
 		 */
 		private function sanitizeInput() {
             // Santise POST data from form
@@ -122,6 +130,25 @@
 				'directions_error' => ''
             ];
             return $data;
-        }
+		}
+		
+		/**
+		 * Displays recipe based on recipe id, if none is provided, redirect to recipe/search page
+		 */
+		public function display($recipeID = null) {
+			// Redirect to recipe search page (default) if no recipe id is provided
+			if($recipeID == null) {
+				redirect('recipes');
+			}
+
+			$this->recipesModel->getRecipeData($recipeID);
+
+			// TODO: get recipe data from model
+			$data = [
+				'title' => 'Recipe Display Page'
+			];
+
+			$this->view('recipes/display', $data);
+		}
 
 	}

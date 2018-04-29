@@ -4,13 +4,14 @@
 <div class="container">
 
 <div class="jumbotron text-center">
-<?php flash('logout_success'); ?>
+    <?php flash('logout_success'); ?>
     <h1><?php echo $data['title']?></h1>
     <a class="btn btn-secondary" href="<?php echo URLROOT; ?>/home/about" role="button">Empty About</a>
     <a class="btn btn-primary" href="<?php echo URLROOT; ?>/users/registration" role="button">Register</a>
     <a class="btn btn-primary" href="<?php echo URLROOT; ?>/users/login" role="button">Login</a>
     <a class="btn btn-warning" href="<?php echo URLROOT; ?>/account" role="button">Account</a>
     <a class="btn btn-warning" href="<?php echo URLROOT; ?>/recipes/create" role="button">Create Recipe</a>
+    <a class="btn btn-warning" href="<?php echo URLROOT; ?>/recipes/display/1" role="button">Display Recipe</a>
 </div>
 
 <div class="row">

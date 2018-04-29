@@ -4,13 +4,24 @@ console.log('jQuery is loaded');
     console.log('jQuery is NOT loaded');
 }
 
-// Removes list item associated to remove button for both Ingredients and Directions lists
-$("button.remove-me").on("click", function(event) {
-    event.preventDefault();
-    $(this).parent().parent().parent().remove();
-});
+//TODO: prevent ENTER key from ingredient form focus to trigger remove-me, should trigger add-more
 
-// Handle creating more ingredients forms
+// Call for initial first element in ingredients and directions lists
+addRemoveMeHandler();
+
+/**
+ * Removes list item associated to remove button for both Ingredients and Directions lists
+ */
+function addRemoveMeHandler() {
+    $("button.remove-me").on("click", function(event) {
+        event.preventDefault();
+        $(this).parent().parent().parent().remove();
+    });
+}
+
+/**
+ * Handle creating more ingredients forms
+ */
 $(".ingred-add-more").on("click", function(event) {
     event.preventDefault();
     var listObj = $(event.target).prev().prev();
@@ -22,16 +33,12 @@ $(".ingred-add-more").on("click", function(event) {
     var newElement = $(newItem);
     listObj.append(newElement);
 
-    $("button.remove-me").on("click", function(event) {
-        event.preventDefault();
-        $(this).parent().parent().parent().remove();
-    });
+    addRemoveMeHandler();
 });
 
-// Add 1 ingredient to list
-// $(".ingred-add-more").trigger("click");
-
-// Handle creating more directions form
+/**
+ * Handle creating more directions form
+ */
 $('.direction-add-more').on("click", function(e){
     e.preventDefault();
     var listObj = $(event.target).prev().prev();
@@ -43,16 +50,14 @@ $('.direction-add-more').on("click", function(e){
     var newElement = $(newItem);
     listObj.append(newElement);
 
-    $("button.remove-me").on("click", function(event) {
-        event.preventDefault();
-        $(this).parent().parent().parent().remove();
-    });
+    addRemoveMeHandler();
 });
 
-// Add 1 direction step to list
-// $(".direction-add-more").trigger("click");
 
-// Handle drag and drop reordering of ingredients
+
+/**
+ * Handle drag and drop reordering of ingredients
+ */
 $("ul.ingredients,ol.directions").sortable({
     handle: 'div.drag-me',
     // set $item relative to cursor position
@@ -64,6 +69,9 @@ $("ul.ingredients,ol.directions").sortable({
     }
 });
 
+/**
+ * 
+ */
 $('.anyName').uploadPreview({
     width: '250px',
     height: '200px',

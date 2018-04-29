@@ -208,7 +208,7 @@
         }
 
         /**
-         *
+         * TODO: use PHPmailer library
          */
         public function sendConfirmationEmail($email) {
             $to = $email;

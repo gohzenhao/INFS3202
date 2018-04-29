@@ -29,7 +29,6 @@
       </div>
 
     <?php else : ?>
-      <!-- TODO: login from dropdown menu -->
       <!-- Hamburder collapsable menu -->
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">

@@ -75,21 +75,35 @@ class Database {
     }
 
     /**
-     * Returns a result set as array of objects.
-     * Will call execute automatically first
+     * Returns a result set as array of objects by default.
+     * Will call execute automatically first.
+     * 
+     * params: (optional) true to return associative array as result,
+     *          default false will return as object
      */
-    public function resultSet() {
+    public function resultSet($type = false) {
         $this->execute();
-        return $this->stmt->fetchAll();
+        if($type == true) {
+            return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            return $this->stmt->fetchAll();
+        }
     }
 
     /**
-     * Returns a single record
+     * Returns a single record as object by default
      * Calls execute method first then returns first value
+     * 
+     * params: (optional) true to return associative array as result,
+     *          default false will return as object
      */
-    public function single() {
+    public function single($type = false) {
         $this->execute();
-        return $this->stmt->fetch();
+        if($type == true) {
+            return $this->stmt->fetch(PDO::FETCH_ASSOC);
+        } else {
+            return $this->stmt->fetch();
+        }
     }
 
     /**

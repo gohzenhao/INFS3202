@@ -12,7 +12,7 @@
 		 * Loads front page of website
 		 */
 		public function index(){
-			$data = ['title' => 'Welcome User!'];
+			$data = ['title' => 'Links for development purposes only...'];
 			$this->view('home/index', $data);
 		}
 
