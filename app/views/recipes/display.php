@@ -19,7 +19,13 @@
 
                 <!-- Recipe details -->
                 <div class="col-7">
-                    <div class="row form-group">
+                    <!-- Author -->
+                    <div class="row">
+                        <h5 class="row">Author:</h5>
+                        <p class="w-100 mh-80"><?php echo $data['ownerid'];?></p>
+                    </div>
+                    <!-- Description -->
+                    <div class="row">
                         <h5 class="row">Description:</h5>
                         <p class="w-100 mh-80"><?php echo $data['description'];?></p>
                     </div>

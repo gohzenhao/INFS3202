@@ -153,6 +153,7 @@
 
 			$data = [
 				'title' => $recipeData->title,
+				'ownerid' => $recipeData->owner_username,
                 'description' => $recipeData->description,
                 'prepTime' => $recipeData->prepTime,
 				'servingSize' => $recipeData->servingSize,

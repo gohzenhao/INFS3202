@@ -137,8 +137,15 @@ class RecipesModel {
             return null;
         }
 
-        // Convert from object into array to append ingredients and directions
+        // Convert from object into array to append owner username, ingredients ,and directions
         $recipeResult = (array)$recipeResult;
+
+        // Retrieve owner username and append to result
+        $this->db->query('SELECT user_username FROM users WHERE user_id=:uid');
+        $this->db->bind(':uid', $recipeResult['ownerid']);
+        $this->db->execute();
+        $result = $this->db->single();
+        $recipeResult['owner_username'] = $result->user_username;
 
         // Query to select recipe's ingredients list
         $this->db->query('SELECT ingredientid, value FROM ingredients WHERE rid=:rid');
