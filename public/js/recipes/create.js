@@ -28,7 +28,7 @@ $(".ingred-add-more").on("click", function(event) {
     var newItem = '<li class="form-group ingredient">'
         + '<div class="input-group mb-3">'
         + '<div class="input-group-prepend drag-me"><span class="input-group-text fa fa-bars"></span></div>'
-        + '<input class="form-control" name="ingredients[]" type="text">'
+        + '<input class="form-control" name="ingredients[]" type="text" placeholder="Enter ingredient and amount">'
         + '<div class="input-group-append"><button class="input-group-text btn btn-danger remove-me">X</button></div>';
     var newElement = $(newItem);
     listObj.append(newElement);

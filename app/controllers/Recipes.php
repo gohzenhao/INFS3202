@@ -75,6 +75,8 @@
 				if(empty($data['title_error']) && empty($data['description_error']) && 
 					empty($data['prepTime_error']) && empty($data['servingSize_error']) && 
 					empty($data['ingredients_error']) && empty($data['directions_error'])){
+						// Append user id to upload data
+						$data['uid'] = $_SESSION['user_id'];
 						// Upload recipe to database
 						if($this->recipesModel->createNewRecipe($data)) {
 							// TODO: show recipe? or return to account page?

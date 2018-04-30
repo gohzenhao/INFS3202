@@ -7,15 +7,26 @@ class RecipesModel {
     }
 
     /**
-     * Insert a new recipe into database. Performs 3 insert operations on 'recipe', 'ingredients', and
+     * Insert a new recipe into database. 
+     * Performs 3 insert operations on 'recipe', 'ingredients', and
      * 'directions' tables.
      * 
      * TODO: - select rid first, then increment, then insert with new rid???
      */
     public function createNewRecipe($data) {
+        // Get id of new recipe
+        $this->db->query('SELECT rid FROM recipes WHERE rid=(SELECT MAX(rid) FROM recipes)');
+        $this->db->execute();
+        $row = $this->db->single();
+        // Increment recipe id
+        $newRecipeID = $row->rid + 1;
+        echo $newRecipeID;
+
         // Prepare sql query for new recipe entry
-        $this->db->query('INSERT INTO recipes (title,description,prepTime,servingSize,imagePath) VALUES(:title,:description,:prepTime,:servingSize,:imagePath);');
+        $this->db->query('INSERT INTO recipes (rid,title,ownerid,description,prepTime,servingSize,imagePath) VALUES(:rid,:title,:uid,:description,:prepTime,:servingSize,:imagePath);');
         // Bind values for prepared statement
+        $this->db->bind(':rid', $newRecipeID);
+        $this->db->bind(':uid', $data['uid']);
         $this->db->bind(':title', $data['title']);
         $this->db->bind(':description', $data['description']);
         $this->db->bind(':prepTime', $data['prepTime']);
@@ -29,13 +40,9 @@ class RecipesModel {
             return false;
         }
 
-        // Get id of new recipe
-        $this->db->query('SELECT rid FROM recipes WHERE rid=(SELECT MAX(rid) FROM recipes)');
-        $this->db->execute();
-        $row = $this->db->single();
 
         // Insert ingredients
-        $ingredQueryArray = $this->getIngredientsQueries($row->rid, $data['ingredients']);
+        $ingredQueryArray = $this->getIngredientsQueries($newRecipeID, $data['ingredients']);
         $ingredQueryString = 'INSERT INTO ingredients (rid,ingredientid,value) VALUES ' . implode(", ", $ingredQueryArray) . ';';
         // echo $ingredQueryString;
         $this->db->query($ingredQueryString);
@@ -53,7 +60,7 @@ class RecipesModel {
 
         // Insert directions
         //TODO: imagePath once uploading images feature is added
-        $direcQueryArray = $this->getDirectionsQueries($row->rid, $data['directions']);
+        $direcQueryArray = $this->getDirectionsQueries($newRecipeID, $data['directions']);
         $direcQueryString = 'INSERT INTO directions (rid,stepNum,description) VALUES ' . implode(", ", $direcQueryArray) . ';';
         // echo $direcQueryString;
         $this->db->query($direcQueryString);

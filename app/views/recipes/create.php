@@ -34,13 +34,12 @@
                 <div class="row">
                     <div class="col form-group form-inline">
                         <label for="prepTime" class="pr-2">Preparation Time: </label>
-                        <small class="form-text text-muted">Please enter units</small>
-                        <input name="prepTime" type="text" class="form-control form-control-sm <?php echo (!empty($data['prepTime_error'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['prepTime']?>">
+                        <input name="prepTime" type="text" placeholder="Please enter time and units" class="w-50 form-control form-control-sm <?php echo (!empty($data['prepTime_error'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['prepTime']?>">
                         <span class="invalid-feedback"><?php echo $data['prepTime_error'] ?></span>
                     </div>
                     <div class="col form-group form-inline">
                         <label for="servingSize" class="pr-2">Serving Size: </label>
-                        <input name="servingSize" type="text" class="form-control form-control-sm <?php echo (!empty($data['servingSize_error'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['servingSize']?>">
+                        <input name="servingSize" type="text" class="w-50 form-control form-control-sm <?php echo (!empty($data['servingSize_error'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['servingSize']?>">
                         <span class="invalid-feedback"><?php echo $data['servingSize_error'] ?></span>
                     </div>
                 </div>
@@ -53,7 +52,7 @@
                         <li class="form-group ingredient">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend drag-me"><span class="input-group-text fa fa-bars"></span></div>
-                                <input class="form-control" name="ingredients[]" type="text">
+                                <input class="form-control" name="ingredients[]" type="text" placeholder="Enter ingredient and amount">
                                 <div class="input-group-append"><button class="input-group-text btn btn-danger remove-me">X</button></div>
                             </div>
                         </li>
