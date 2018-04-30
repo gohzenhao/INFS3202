@@ -10,8 +10,11 @@
     <a class="btn btn-primary" href="<?php echo URLROOT; ?>/users/registration" role="button">Register</a>
     <a class="btn btn-primary" href="<?php echo URLROOT; ?>/users/login" role="button">Login</a>
     <a class="btn btn-warning" href="<?php echo URLROOT; ?>/account" role="button">Account</a>
-    <a class="btn btn-warning" href="<?php echo URLROOT; ?>/recipes/create" role="button">Create Recipe</a>
-    <a class="btn btn-warning" href="<?php echo URLROOT; ?>/recipes/display/1" role="button">Display Recipe</a>
+    <div class="w-100 mt-1">
+        <a class="btn btn-primary" href="<?php echo URLROOT; ?>/recipes" role="button">Search Recipe</a>
+        <a class="btn btn-warning" href="<?php echo URLROOT; ?>/recipes/create" role="button">Create Recipe</a>
+        <a class="btn btn-warning" href="<?php echo URLROOT; ?>/recipes/display/1" role="button">Display Recipe</a>
+    </div>
 </div>
 
 <div class="row">

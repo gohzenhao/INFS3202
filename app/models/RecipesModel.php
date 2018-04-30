@@ -11,7 +11,7 @@ class RecipesModel {
      * Performs 3 insert operations on 'recipe', 'ingredients', and
      * 'directions' tables.
      * 
-     * TODO: - select rid first, then increment, then insert with new rid???
+     * return: true if recipe successfully added, false otherwise
      */
     public function createNewRecipe($data) {
         // Get id of new recipe
@@ -162,6 +162,17 @@ class RecipesModel {
         $recipeResult['directions'] = $directionsResult;
 
         return (object)$recipeResult;
+    }
+
+    /**
+     * Returns all recipes
+     * 
+     * return: associative object
+     */
+    public function getAllRecipes() {
+        $this->db->query('SELECT * FROM recipes');
+        $this->db->execute();
+        return $this->db->resultSet();
     }
 
 }

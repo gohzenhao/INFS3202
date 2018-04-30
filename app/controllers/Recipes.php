@@ -8,8 +8,13 @@
 		 * Loads the view recipes page by default, displays a search results page
 		 */
 		public function index(){
+			$recipes = $this->recipesModel->getAllRecipes();
+
+			var_dump($recipes);
+
 			$data = [
-				'title' => 'Welcome Search Recipe Page!'
+				'title' => 'Welcome Search Recipe Page!',
+				'recipes' => $recipes
 			];
 
 			$this->view('recipes/search', $data);
