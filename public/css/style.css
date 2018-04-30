@@ -1,6 +1,13 @@
 /* body {
     background: rgb(230, 230, 230);
 } */
+html,body{
+  height: 100%;
+}
+
+#container{
+  min-height: 100%;
+}
 
 header.masthead {
   padding-top: 10rem;

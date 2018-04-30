@@ -1,7 +1,7 @@
 
     </div>
 
-    <footer class="page-footer container-fluid py-3 bg-dark">
+    <footer class="footer container-fluid py-3 bg-dark">
         <div class="container text-center">
             <div class="row w-80">
                 <h5 class="w-100 font-weight-bold text-white">Useful Links</h5>
