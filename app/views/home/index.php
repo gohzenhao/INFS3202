@@ -15,6 +15,9 @@
         <a class="btn btn-warning" href="<?php echo URLROOT; ?>/recipes/create" role="button">Create Recipe</a>
         <a class="btn btn-warning" href="<?php echo URLROOT; ?>/recipes/display/1" role="button">Display Recipe</a>
     </div>
+    <div class="w-100 mt-1">
+        <a class="btn btn-primary" href="<?php echo URLROOT; ?>/chat" role="button">Chat Room</a>
+    </div>
 </div>
 
 <div class="row">
