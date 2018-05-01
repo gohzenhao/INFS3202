@@ -1,22 +1,20 @@
 <?php require APPROOT . '/views/includes/header.php'; ?>
 
 <div class="container">
-    <h1 class="text-center">Chatroom</h1>
+    <h1 class="text-center">Live Chatroom</h1>
 
-    <!-- TODO: fix styling/layout. Need scrollable chat_output -->
-    <div id="chat_output"></div>
-    <textarea id="chat_input" cols="100" rows="5"></textarea>
+    <div class="row my-3">
+        <div id="chat_output" class="col-8 mx-auto border border-primary"></div>
+        <textarea id="chat_input" class="col-8 mx-auto mt-3" cols="100" rows="5"></textarea>
+    </div>
 
 </div>
 
 
 <?php require APPROOT . '/views/includes/footer.php'; ?>
 
-<style type="text/css">
-	* {margin:0;padding:0;box-sizing:border-box;font-family:arial,sans-serif;resize:none;}
-	#chat_output {position:absolute;top:50px;left:0;padding:20px;width:100%;height:calc(100% - 100px);}
-	#chat_input {position:absolute;bottom:0;left:0;padding:10px;width:100%;height:100px;border:1px solid #ccc;}
-</style>
+
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/chat/chat.css">
 
 <?php 
     $myrandid = mt_rand(1,999); 
