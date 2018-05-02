@@ -35,6 +35,8 @@
             switch(json.type) {
                 case 'message':
                     $('#chat_output').append(json.msg);
+                    // Move scroll to bottom
+                    $('#chat_output').scrollTop($('#chat_output').prop('scrollHeight'));
                     break;
             }
         };
