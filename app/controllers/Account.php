@@ -20,8 +20,12 @@
 		 *
 		 */
 		public function index(){
+
+			$result = $this->accountModel->getRecipes();
+			$result = (array)$result;
 			$data = [
-				'name' => $_SESSION['user_name']
+				'name' => $_SESSION['user_name'],
+				'recipes' => $result
 			];
 
 			$this->view('account/index', $data);
@@ -80,7 +84,7 @@
 		}
 
 		/**
-		 * 
+		 *
 		 */
 		private function sanitizeInput() {
 				// Santise POST data from form
@@ -99,7 +103,7 @@
 		}
 
 		/**
-		 * 
+		 *
 		 */
 		private function updateSession($data){
 			$_SESSION['user_name'] = $data['name'];

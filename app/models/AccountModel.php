@@ -15,7 +15,7 @@ class AccountModel {
 	}
 
 	public function updateProfile($data){
-		$this->db->query('UPDATE users SET user_name = :name, user_username = :username, 
+		$this->db->query('UPDATE users SET user_name = :name, user_username = :username,
 			user_email = :email WHERE user_id = :id');
 
 		$this->db->bind(':name', $data['name']);
@@ -40,6 +40,13 @@ class AccountModel {
 		}else{
 			return false;
 		}
+	}
+
+	public function getRecipes(){
+		$this->db->query("SELECT * FROM recipes WHERE ownerid = :id");
+		$this->db->bind(":id",$_SESSION['user_id']);
+		$row = $this->db->resultSet(true);
+		return $row;
 	}
 
 

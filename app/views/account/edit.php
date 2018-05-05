@@ -66,6 +66,7 @@
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
+            <form action="<?php echo URLROOT; ?>/account/edit" method="POST">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Change password</h5></h5>
@@ -84,15 +85,18 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <form action="<?php echo URLROOT; ?>/account/edit" method="POST">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   <button type="button" id="nextBtn" class="btn btn-primary">Next</button>
 
-                </form>
               </div>
             </div>
           </div>
+          </form>
         </div>
+
+        <?php
+        ?>
+
 
         <!-- <div class="row">
           <div class="col">
@@ -127,5 +131,5 @@
     inputField.next().prop("hidden", true);
     inputField.next().next().prop("hidden", false);
   });
-    
+
 </script>
