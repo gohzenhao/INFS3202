@@ -31,10 +31,10 @@
                     <h5 class="card-title">' . $recipe['title'] . '</h5>
                     <p class="card-text">' . $recipe['description'] . '</p>
                   </div>
-                  <div class="card-body">
-                    <a href="#" class="card-link">edit recipe</a>
-                    <a href="#" class="card-link">delete recipe</a>
-                  </div>
+                    <div class="card-body">
+                      <a href="#" class="card-link">edit recipe</a>
+                      <a href="#" class="card-link">delete recipe</a>
+                    </div>
                 </div>
               </div>
             ';

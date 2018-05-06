@@ -19,11 +19,11 @@
 
 			$this->view('recipes/search', $data);
         }
-		
+
 		/**
 		 * Handles both loading form page for users to create a new recipe as well
 		 * as submitting recipe form data via POST method.
-		 * 
+		 *
 		 */
         public function create() {
 			// Check if logged in
@@ -77,8 +77,8 @@
 				}
 
 				// If no errors then upload
-				if(empty($data['title_error']) && empty($data['description_error']) && 
-					empty($data['prepTime_error']) && empty($data['servingSize_error']) && 
+				if(empty($data['title_error']) && empty($data['description_error']) &&
+					empty($data['prepTime_error']) && empty($data['servingSize_error']) &&
 					empty($data['ingredients_error']) && empty($data['directions_error'])){
 						// Append user id to upload data
 						$data['uid'] = $_SESSION['user_id'];
@@ -103,7 +103,7 @@
 					'servingSize' => '',
 					'ingredients' => '',
 					'directions' => '',
-					
+
 					'title_error' => '',
 					'description_error' => '',
 					'prepTime_error' => '',
@@ -138,7 +138,7 @@
             ];
             return $data;
 		}
-		
+
 		/**
 		 * Displays recipe based on recipe id, if none is provided, redirect to recipe/search page
 		 */
@@ -156,18 +156,83 @@
 				redirect('recipes');
 			}
 
-			$data = [
-				'title' => $recipeData->title,
-				'ownerid' => $recipeData->owner_username,
-                'description' => $recipeData->description,
-                'prepTime' => $recipeData->prepTime,
-				'servingSize' => $recipeData->servingSize,
-				'ingredients' => $recipeData->ingredients,
-				'directions' => $recipeData->directions,
-			];
+			if($_SERVER['REQUEST_METHOD'] == 'POST'){
+				$data2 = $this->sanitizeInput2();
 
-			// print_r($data);
-			$this->view('recipes/display', $data);
+				$data = [
+					'title' => $recipeData->title,
+					'ownerid' => $recipeData->owner_username,
+	                'description' => $recipeData->description,
+	                'prepTime' => $recipeData->prepTime,
+					'servingSize' => $recipeData->servingSize,
+					'ingredients' => $recipeData->ingredients,
+					'directions' => $recipeData->directions,
+					'recipeid' => $recipeID,
+					'comment' => $data2['comment'],
+					'rating' => (int) $data2['rating'],
+					'error_comment' => '',
+					'error_rating' => ''
+				];
+
+
+				if(empty($data['comment'])){
+					$data['error_comment'] = "Please enter comment";
+				}
+
+				if(empty($data['rating'])){
+					$data['error_rating'] = "Please enter rating";
+				}
+
+				if(!empty($data['comment']) && !empty($data['rating'])){
+					echo 'wow';
+					if($this->recipesModel->addNewComment($data)){
+						flash('comment_success', "Comment added successfully!");
+						redirect("recipes/display/2");
+					}
+					else{
+						die("Failed to update user profile");
+					}
+				}
+				else{
+					$this->view('recipes/display',$data);
+					// var_dump($data);
+					// echo 'wtf';
+				}
+
+
+			}else{
+				$data = [
+					'title' => $recipeData->title,
+					'ownerid' => $recipeData->owner_username,
+	                'description' => $recipeData->description,
+	                'prepTime' => $recipeData->prepTime,
+					'servingSize' => $recipeData->servingSize,
+					'ingredients' => $recipeData->ingredients,
+					'directions' => $recipeData->directions,
+					'recipeid' => $recipeID,
+					'comment' => '',
+					'rating' => '',
+					'error_comment' => '',
+					'error_rating' => ''
+				];
+
+				// print_r($data);
+				$this->view('recipes/display', $data);
+			}
+
+		}
+
+		private function sanitizeInput2() {
+				// Santise POST data from form
+				$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+				// Retrieve data from forms
+				$data = [
+					'comment' => trim($_POST['comment']),
+					'rating' => trim($_POST['rating']),
+					'error_comment' => '',
+					'error_rating' => ''
+				];
+				return $data;
 		}
 
 	}

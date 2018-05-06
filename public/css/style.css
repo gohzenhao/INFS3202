@@ -117,6 +117,39 @@ header.masthead {
   font-size:0.75em;
 }
 
+.stars-outer-comment{
+    position:relative;
+    display:inline-block;
+}
+
+.stars-inner-comment{
+  position:absolute;
+  top:0;
+  left:0;
+  white-space:nowrap;
+  overflow:hidden;
+  width:0;
+}
+
+.stars-outer-comment::before{
+  content: "\f005";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color:#ccc;
+  font-size:1.5em;
+}
+
+.stars-inner-comment::before{
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color:#f8ce0b;
+  font-size:0.75em;
+}
+
+
+
+
 .card-body span{
   float:right
 }

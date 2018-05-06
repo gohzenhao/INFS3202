@@ -7,10 +7,10 @@ class RecipesModel {
     }
 
     /**
-     * Insert a new recipe into database. 
+     * Insert a new recipe into database.
      * Performs 3 insert operations on 'recipe', 'ingredients', and
      * 'directions' tables.
-     * 
+     *
      * return: true if recipe successfully added, false otherwise
      */
     public function createNewRecipe($data) {
@@ -83,9 +83,9 @@ class RecipesModel {
      * Convert ingredients array to sql value template.
      * Each element follows format: '(rid, x, :valuex)'
      * where x increments from 1 to number of ingredients
-     * 
+     *
      * params: rid and non-associative array of ingredients
-     * returns: array containing query values template 
+     * returns: array containing query values template
      */
     private function getIngredientsQueries($rid, $ingredients) {
         $result = [];
@@ -99,9 +99,9 @@ class RecipesModel {
      * Convert directions array to sql value template.
      * Each element follows format: '(rid, x, :valuex)'
      * where x increments from 1 to number of directions
-     * 
+     *
      * params: rid and non-associative array of directions
-     * returns: array containing query values template 
+     * returns: array containing query values template
      */
     private function getDirectionsQueries($rid, $directions) {
         $result = [];
@@ -119,9 +119,9 @@ class RecipesModel {
      * - preparation time
      * - serving size
      * - image path for preview image
-     * - list of ingredients 
+     * - list of ingredients
      * - list of directions
-     * 
+     *
      * param: recipe id to fetch
      * return: associative stdClass Object
      */
@@ -131,7 +131,7 @@ class RecipesModel {
         $this->db->bind(':rid', $rid);
         $this->db->execute();
         $recipeResult = $this->db->single();
-        
+
         // If recipe does not exist, return null
         if($recipeResult == null) {
             return null;
@@ -166,13 +166,32 @@ class RecipesModel {
 
     /**
      * Returns all recipes
-     * 
+     *
      * return: associative object
      */
     public function getAllRecipes() {
         $this->db->query('SELECT * FROM recipes');
         $this->db->execute();
         return $this->db->resultSet();
+    }
+
+    public function addNewComment($data2){
+
+      $this->db->query("INSERT INTO comments (comment_description, rating, recipe_id, ownerid, date) VALUES (:description, :rating, :recipeid, :ownerid, :datenow)");
+      $this->db->bind(':description', $data2['comment']);
+      $this->db->bind(':rating', $data2['rating']);
+      $this->db->bind(':recipeid',$data2['recipeid']);
+      $this->db->bind(':ownerid',$_SESSION['user_id']);
+      $this->db->bind(':datenow',time());
+      try {
+          $this->db->execute();
+      } catch (PDOException $e) {
+          echo '</br>FAILED directions: ' . $e->getMessage() . '</br>';
+          return false;
+      }
+
+      return true;
+
     }
 
 }

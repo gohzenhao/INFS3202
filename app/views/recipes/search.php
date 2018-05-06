@@ -28,7 +28,7 @@
         </div><!-- /input-group -->
 
         <div class="list-group">
-            <?php 
+            <?php
                 foreach($data['recipes'] as $item) {
                     echo '<a class="list-group-item list-group-item-action flex-column mb-3" href="'.URLROOT.'/recipes/display/'. $item->rid .'">
                     <div class="row">
@@ -45,7 +45,7 @@
                 }
             ?>
         </div>
-        
+
 
 
     </div>

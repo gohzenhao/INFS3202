@@ -75,7 +75,7 @@
                                         <input name="dImg1" type="file" accept="image/jpeg, image/png">
                                     </div>
                                 </div> -->
-                                
+
                                 <textarea class="form-control" name="directions[]" rows="4"></textarea>
                                 <div class="input-group-append"><button class="input-group-text btn btn-danger remove-me">X</button></div>
                             </div>
