@@ -74,60 +74,47 @@
     </div><!-- End of Recipe Information container -->
 
     <div class="container">
-      <form action="<?php echo URLROOT; ?>/recipes/display/<?php $data['recipeid']?>" method="POST">
-      <div class="row">
-        <div class="col-lg-12">
-          <h2 class="text-center">Comments</h2>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-12">
-          <h3>Leave a comment :</h3>
-          <textarea name="comment" type="text" class="form-control"> </textarea>
-          <span class="invalid-feedback"><?php echo $data['error_comment']?></span>
-          <div class="row">
-            <div class="col-lg-12">
-              <h3> Rating : </h3>
-            </div>
-
-            <!-- <div class="col-lg-3">
-              <input type="text" disabled id="inputRating" name="rating" />
-            </div> -->
-            <div class="col-lg-12">
-                <label class="radio-inline">
-                  <input type="radio" value="1" name="rating">1
-                </label>
-                <label class="radio-inline">
-                  <input type="radio" value"2" name="rating">2
-                </label>
-                <label class="radio-inline">
-                  <input type="radio" value="3" name="rating">3
-                </label>
-                <label class="radio-inline">
-                  <input type="radio" value="4" name="rating">4
-                </label>
-                <label class="radio-inline">
-                  <input type="radio" value"5" name="rating">5
-                </label>
-                <span class="invalid-feedback"><?php echo $data['error_rating']?></span>
-            </div>
-          </div>
-
-            <!-- <div class="rating-group">
-              <a href="javascript:;" name="rating" class="stars-outer-comment" onclick="setRating1()"></a>
-              <a href="#" name="rating" class="stars-outer-comment"></a>
-              <a href="#" name="rating" class="stars-outer-comment"></a>
-              <a href="#" name="rating" class="stars-outer-comment"></a>
-              <a href="#" name="rating" class="stars-outer-comment"></a>
-                <div class="stars-inner">
+        <!-- Comments submission form -->
+        <form class="mb-3" action="<?php echo URLROOT; ?>/recipes/display/<?php echo $data['rid']; ?>" method="POST">
+            <div class="row">
+                <div class="col-lg-12">
+                <h2 class="text-center">Comments</h2>
                 </div>
-            </div> -->
-        </div>
-      </div>
-      <input type="submit" value="submit" class="btn btn-success btn-block">
-    </form>
+            </div>
+            <div class="row">
+                <label for="comment">Leave a comment :</label>
+                <textarea name="comment" type="text" class="form-control <?php echo (!empty($data['error_comment'])) ? 'is-invalid' : ''; ?>"><?php echo $data['comment']?></textarea>
+                <span class="invalid-feedback"><?php echo $data['error_comment']?></span>
+
+                <!-- TODO: better way of doing rating, and handle error rating -->
+                <label for="rating">Rating:</label>
+                <div class="col-lg-12 form-check form-control <?php echo (!empty($data['error_rating'])) ? 'is-invalid' : ''; ?>">
+                    <label class="radio-inline">
+                        <input type="radio" value="1" name="rating">1
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" value"2" name="rating">2
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" value="3" name="rating">3
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" value="4" name="rating">4
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" value"5" name="rating">5
+                    </label>
+                </div>
+                <span class="invalid-feedback"><?php echo $data['error_rating']?></span>
+
+            </div>
+            <input type="submit" value="submit" class="btn btn-success btn-block">
+        </form>
+
+        <!-- Display Comments below -->
+
     </div>
 
-
-
 <?php require APPROOT . '/views/includes/footer.php'; ?>
+
+<!-- <script src="<?php //echo URLROOT; ?>/js/home/rating.js"></script> -->

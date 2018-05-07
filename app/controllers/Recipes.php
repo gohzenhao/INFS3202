@@ -3,23 +3,18 @@
 		public function __construct(){
 			$this->recipesModel = $this->model('RecipesModel');
 		}
-
 		/**
 		 * Loads the view recipes page by default, displays a search results page
 		 */
 		public function index(){
 			$recipes = $this->recipesModel->getAllRecipes();
-
 			var_dump($recipes);
-
 			$data = [
 				'title' => 'Welcome Search Recipe Page!',
 				'recipes' => $recipes
 			];
-
 			$this->view('recipes/search', $data);
         }
-
 		/**
 		 * Handles both loading form page for users to create a new recipe as well
 		 * as submitting recipe form data via POST method.
@@ -45,7 +40,6 @@
 				if(empty($data['servingSize'])) {
                     $data['servingSize_error'] = 'Please enter the serving size';
 				}
-
 				// Check for at least 1 non empty ingredient, max 25 ingredients
 				$hasIngredients = false;
 				for($i = 0; $i < count($data['ingredients']); $i++ ) {
@@ -60,7 +54,6 @@
 				if(count($data['ingredients']) > 25) {
 					$data['ingredients_error'] = 'Sorry no more than 25 ingredients allowed';
 				}
-
 				// Check for at least 1 non empty step, max 20 steps in directions
 				$hasDirections = false;
 				for($i = 0; $i < count($data['directions']); $i++ ) {
@@ -75,7 +68,6 @@
 				if(count($data['directions']) > 20) {
 					$data['directions_error'] = 'Sorry no more than 20 steps allowed';
 				}
-
 				// If no errors then upload
 				if(empty($data['title_error']) && empty($data['description_error']) &&
 					empty($data['prepTime_error']) && empty($data['servingSize_error']) &&
@@ -103,7 +95,6 @@
 					'servingSize' => '',
 					'ingredients' => '',
 					'directions' => '',
-
 					'title_error' => '',
 					'description_error' => '',
 					'prepTime_error' => '',
@@ -114,7 +105,6 @@
 				$this->view('recipes/create', $data);
 			}
 		}
-
 		/**
 		 * Security to avoid form injection in recipe creation page
 		 */
@@ -138,7 +128,6 @@
             ];
             return $data;
 		}
-
 		/**
 		 * Displays recipe based on recipe id, if none is provided, redirect to recipe/search page
 		 */
@@ -147,92 +136,29 @@
 			if($recipeID == null) {
 				redirect('recipes');
 			}
-
 			// Get recipe data
 			$recipeData = $this->recipesModel->getRecipeData($recipeID);
-
 			// If recipe does not exist redirect to search page
 			if($recipeData == null) {
 				redirect('recipes');
 			}
-
-			if($_SERVER['REQUEST_METHOD'] == 'POST'){
-				$data2 = $this->sanitizeInput2();
-
-				$data = [
-					'title' => $recipeData->title,
-					'ownerid' => $recipeData->owner_username,
-	                'description' => $recipeData->description,
-	                'prepTime' => $recipeData->prepTime,
-					'servingSize' => $recipeData->servingSize,
-					'ingredients' => $recipeData->ingredients,
-					'directions' => $recipeData->directions,
-					'recipeid' => $recipeID,
-					'comment' => $data2['comment'],
-					'rating' => (int) $data2['rating'],
-					'error_comment' => '',
-					'error_rating' => ''
-				];
-
-
-				if(empty($data['comment'])){
-					$data['error_comment'] = "Please enter comment";
-				}
-
-				if(empty($data['rating'])){
-					$data['error_rating'] = "Please enter rating";
-				}
-
-				if(empty($data['error_comment']) && empty($data['error_rating'])){
-					if($this->recipesModel->addNewComment($data)){
-						flash('comment_success', "Comment added successfully!");
-						redirect("recipes/display/$recipeID");
-					}
-					else{
-						die("Failed to update user profile");
-					}
-				}
-				else{
-					$this->view("recipes/display/$recipeID",$data);
-					// var_dump($data);
-					// echo 'wtf';
-				}
-
-
-			}else{
-				$data = [
-					'title' => $recipeData->title,
-					'ownerid' => $recipeData->owner_username,
-	                'description' => $recipeData->description,
-	                'prepTime' => $recipeData->prepTime,
-					'servingSize' => $recipeData->servingSize,
-					'ingredients' => $recipeData->ingredients,
-					'directions' => $recipeData->directions,
-					'recipeid' => $recipeID,
-					'comment' => '',
-					'rating' => '',
-					'error_comment' => '',
-					'error_rating' => ''
-				];
-
-				// print_r($data);
-				$this->view('recipes/display', $data);
-
-			}
+			// Display recipe by recipe id
+			$data = [
+				'rid' => $recipeID,
+				'title' => $recipeData->title,
+				'ownerid' => $recipeData->owner_username,
+				'description' => $recipeData->description,
+				'prepTime' => $recipeData->prepTime,
+				'servingSize' => $recipeData->servingSize,
+				'ingredients' => $recipeData->ingredients,
+				'directions' => $recipeData->directions,
+				'comment' => '',
+				'rating' => '',
+				'error_comment' => '',
+				'error_rating' => ''
+			];
+			// print_r($data);
+			$this->view('recipes/display', $data);
 
 		}
-
-		private function sanitizeInput2() {
-				// Santise POST data from form
-				$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-				// Retrieve data from forms
-				$data = [
-					'comment' => trim($_POST['comment']),
-					'rating' => trim($_POST['rating']),
-					'error_comment' => '',
-					'error_rating' => ''
-				];
-				return $data;
-		}
-
 	}
