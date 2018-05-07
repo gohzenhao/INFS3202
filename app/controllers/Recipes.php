@@ -183,18 +183,17 @@
 					$data['error_rating'] = "Please enter rating";
 				}
 
-				if(!empty($data['comment']) && !empty($data['rating'])){
-					echo 'wow';
+				if(empty($data['error_comment']) && empty($data['error_rating'])){
 					if($this->recipesModel->addNewComment($data)){
 						flash('comment_success', "Comment added successfully!");
-						redirect("recipes/display/2");
+						redirect("recipes/display/$recipeID");
 					}
 					else{
 						die("Failed to update user profile");
 					}
 				}
 				else{
-					$this->view('recipes/display',$data);
+					$this->view("recipes/display/$recipeID",$data);
 					// var_dump($data);
 					// echo 'wtf';
 				}
@@ -218,6 +217,7 @@
 
 				// print_r($data);
 				$this->view('recipes/display', $data);
+
 			}
 
 		}

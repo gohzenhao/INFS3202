@@ -74,8 +74,7 @@
     </div><!-- End of Recipe Information container -->
 
     <div class="container">
-
-      <form action="<?php echo URLROOT; ?>/recipes/display/2" method="POST">
+      <form action="<?php echo URLROOT; ?>/recipes/display/<?php $data['recipeid']?>" method="POST">
       <div class="row">
         <div class="col-lg-12">
           <h2 class="text-center">Comments</h2>
@@ -85,6 +84,7 @@
         <div class="col-lg-12">
           <h3>Leave a comment :</h3>
           <textarea name="comment" type="text" class="form-control"> </textarea>
+          <span class="invalid-feedback"><?php echo $data['error_comment']?></span>
           <div class="row">
             <div class="col-lg-12">
               <h3> Rating : </h3>
@@ -109,7 +109,7 @@
                 <label class="radio-inline">
                   <input type="radio" value"5" name="rating">5
                 </label>
-                <span class="invalid-feedback"><?php echo $data['rating_error']?></span>
+                <span class="invalid-feedback"><?php echo $data['error_rating']?></span>
             </div>
           </div>
 
@@ -131,5 +131,3 @@
 
 
 <?php require APPROOT . '/views/includes/footer.php'; ?>
-
-<script src="<?php echo URLROOT; ?>/js/home/rating.js"></script>

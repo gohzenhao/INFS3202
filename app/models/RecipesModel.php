@@ -1,4 +1,4 @@
-<?php
+ <?php
 class RecipesModel {
     private $db;
 
