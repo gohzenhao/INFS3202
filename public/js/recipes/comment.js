@@ -37,12 +37,12 @@ var saveComment = function(rid){
                 rating.checked = false;
 
                 // Handle result
-                console.log("ajax success: " + result);
+                console.log(result);
                 var json = JSON.parse(result);
                 if(json.success == false) {
                     // TODO: handle error
                 } else {
-                    $("#commentsArea").append(json.commentElement);
+                    $("#commentsArea").prepend(json.commentElement);
                 }
             },
             error: function() {

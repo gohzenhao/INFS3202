@@ -176,6 +176,17 @@ class RecipesModel {
     }
 
     /**
+     * Returns all comments on recipe given by recipe id
+     * 
+     * return: associative object
+     */
+    public function getAllComments($rid) {
+        $this->db->query('SELECT * FROM comments WHERE recipe_id = :rid ORDER BY date DESC');
+        $this->db->bind(':rid', $rid);
+        return $this->db->resultSet();
+    }
+
+    /**
      * Adds new comment to comments table
      * 
      * param: rid, comment, rating in an associative array
@@ -185,7 +196,7 @@ class RecipesModel {
         $this->db->query("INSERT INTO comments (comment_description, rating, recipe_id, ownerid) VALUES (:description, :rating, :recipeid, :ownerid)");
         $this->db->bind(':description', $data['comment']);
         $this->db->bind(':rating', $data['rating']);
-        $this->db->bind(':recipeid',$data['rid']);
+        $this->db->bind(':recipeid', $data['rid']);
         $this->db->bind(':ownerid',$_SESSION['user_id']);
         try {
             $this->db->execute();

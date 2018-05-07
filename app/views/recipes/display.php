@@ -78,7 +78,7 @@
         <h2 class="mx-auto text-center">Comments</h2>
 
         <!-- Comments submission form -->
-        <div class="mb-3">
+        <div class="mb-3 col-8 mx-auto">
             <div class="row mb-2">
                 <label for="comment">Leave a comment :</label>
                 <textarea id="commentText" class="w-100 form-control" name="comment" rows="3" type="text"></textarea>
@@ -110,8 +110,32 @@
         </div>
 
         <!-- Display Comments below -->
-        <div id="commentsArea">
+        <div id="commentsArea" class="col-8 mx-auto">
+
+            <!-- Template -->
+            <!-- <div class="card mb-3">
+                <div class="card-body">
+                    <div class="stars-outer"><div class="stars-inner" style="width: 50%;"></div></div>
+                    <p class="card-text">Comment: </p>
+                    <h6 class="card-title">Author: username </h6>
+                    <small class="card-subtitle text-muted">Date: </small>
+                </div>
+            </div> -->
         
+            <?php 
+                foreach($data['comments'] as $comment) {
+                    echo '<div class="card mb-3">
+                            <div class="card-body">
+                                <div class="stars-outer"><div class="stars-inner" style="width: '.($comment->rating*20).'%;"></div></div>
+                                <p class="card-text">'.$comment->comment_description.'</p>
+                                <h6 class="card-title">Author: '.$comment->ownerid.'</h6>
+                                <small class="card-subtitle text-muted">Date: '.$comment->date.'</small>
+                            </div>
+                        </div>';
+                }
+                
+                
+            ?>
         
         </div>
 

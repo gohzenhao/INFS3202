@@ -156,6 +156,9 @@
 				redirect('recipes');
 			}
 
+			// TODO: get all comments 
+			$comments = $this->recipesModel->getAllComments($recipeID);
+
 			// Display recipe by recipe id
 			$data = [
 				'rid' => $recipeID,
@@ -166,10 +169,7 @@
 				'servingSize' => $recipeData->servingSize,
 				'ingredients' => $recipeData->ingredients,
 				'directions' => $recipeData->directions,
-				'comment' => '',
-				'rating' => '',
-				'error_comment' => '',
-				'error_rating' => ''
+				'comments' => $comments
 			];
 
 			// print_r($data);

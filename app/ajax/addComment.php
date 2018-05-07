@@ -21,11 +21,20 @@
     }
 
     // Construct json output
-    $element = '<div>
-                    <label>Author: '.$result->ownerid.'</label></br>
-                    <label>date: '.$result->date.'</label></br>
-                    <label>Comment: '.$result->comment_description.'</label></br>
-                    <label>Rating: '.$result->rating.'</label></br>
+    // $element = '<div>
+    //                 <label>Author: '.$result->ownerid.'</label></br>
+    //                 <label>date: '.$result->date.'</label></br>
+    //                 <label>Comment: '.$result->comment_description.'</label></br>
+    //                 <label>Rating: '.$result->rating.'</label></br>
+    //             </div>';
+
+    $element = '<div class="card mb-3">
+                    <div class="card-body">
+                        <div class="stars-outer"><div class="stars-inner" style="width: '.($result->rating * 20).'%;"></div></div>
+                        <p class="card-text">'.$result->comment_description.'</p>
+                        <h6 class="card-title">Author: '.$result->ownerid.'</h6>
+                        <small class="card-subtitle text-muted">Date: '.$result->date.'</small>
+                    </div>
                 </div>';
 
     $jsonOutput = array(
