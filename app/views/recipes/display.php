@@ -86,8 +86,9 @@
                 <textarea name="comment" type="text" class="form-control <?php echo (!empty($data['error_comment'])) ? 'is-invalid' : ''; ?>"><?php echo $data['comment']?></textarea>
                 <span class="invalid-feedback"><?php echo $data['error_comment']?></span>
 
+                <!-- TODO: better way of doing rating, and handle error rating -->
                 <label for="rating">Rating:</label>
-                <div class="col-lg-12 form-control form-check">
+                <div class="col-lg-12 form-check form-control <?php echo (!empty($data['error_rating'])) ? 'is-invalid' : ''; ?>">
                     <label class="radio-inline">
                         <input type="radio" value="1" name="rating">1
                     </label>

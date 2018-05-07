@@ -227,10 +227,14 @@
 				// Retrieve data from forms
 				$data = [
 					'comment' => trim($_POST['comment']),
-					'rating' => trim($_POST['rating']), //Handle not found error
+					'rating' => '',
 					'error_comment' => '',
 					'error_rating' => ''
 				];
+				// Check if set
+				if(isset($_POST['rating'])) {
+					$data['rating'] = trim($_POST['rating']);
+				}
 				return $data;
 		}
 
