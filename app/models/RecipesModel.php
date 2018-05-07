@@ -175,6 +175,9 @@ class RecipesModel {
         return $this->db->resultSet();
     }
 
+    /**
+     * 
+     */
     public function addNewComment($data2){
 
       $this->db->query("INSERT INTO comments (comment_description, rating, recipe_id, ownerid, date) VALUES (:description, :rating, :recipeid, :ownerid, :datenow)");

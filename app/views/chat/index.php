@@ -17,7 +17,13 @@
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/chat/chat.css">
 
 <?php 
-    $myrandid = mt_rand(1,999); 
+    if(isset($_SESSION['user_name'])) {
+        $myId = $_SESSION['user_id'];
+        $userName = $_SESSION['user_name'];
+    } else {
+        $myId = mt_rand(1,999);
+        $userName = "Guest" . $myId;
+    }
 ?>
 
 <script type="text/javascript">
@@ -27,7 +33,7 @@
         var websocketServer = new WebSocket("ws://localhost:8080/");
         // Setup connection to websocket server
         websocketServer.onopen = function(event) {
-            websocketServer.send(JSON.stringify({'type':'socket','user_id':<?php echo $myrandid; ?>}));
+            websocketServer.send(JSON.stringify({'type':'socket','user_id':<?php echo $myId; ?>}));
         };
         // Handle incoming message
         websocketServer.onmessage = function(event) {
@@ -50,7 +56,7 @@
          * Message format:
          *      {
          *          'type': 'message',
-         *          'user_id': someNumber, TODO: use session user_id
+         *          'user_id': username or guest
          *          'chatMessage': 'message entered by user'
          *      }
          */
@@ -62,7 +68,7 @@
                 websocketServer.send(
                     JSON.stringify({
                         'type':'message',
-                        'user_id':<?php echo $myrandid; ?>,
+                        'user_id':"<?php echo $userName; ?>",
                         'chatMessage':chat_msg
                     })
                 );
