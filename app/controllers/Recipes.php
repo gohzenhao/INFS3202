@@ -156,86 +156,26 @@
 				redirect('recipes');
 			}
 
-			if($_SERVER['REQUEST_METHOD'] == 'POST'){
-				$commentData = $this->sanitizeCommentInput();
-				$data = [
-					'rid' => $recipeID,
-					'title' => $recipeData->title,
-					'ownerid' => $recipeData->owner_username,
-	                'description' => $recipeData->description,
-	                'prepTime' => $recipeData->prepTime,
-					'servingSize' => $recipeData->servingSize,
-					'ingredients' => $recipeData->ingredients,
-					'directions' => $recipeData->directions,
-					'comment' => $commentData['comment'],
-					'rating' => (int) $commentData['rating'],
-					'error_comment' => '',
-					'error_rating' => ''
-				];
+			// Display recipe by recipe id
+			$data = [
+				'rid' => $recipeID,
+				'title' => $recipeData->title,
+				'ownerid' => $recipeData->owner_username,
+				'description' => $recipeData->description,
+				'prepTime' => $recipeData->prepTime,
+				'servingSize' => $recipeData->servingSize,
+				'ingredients' => $recipeData->ingredients,
+				'directions' => $recipeData->directions,
+				'comment' => '',
+				'rating' => '',
+				'error_comment' => '',
+				'error_rating' => ''
+			];
 
-
-				if(empty($data['comment'])){
-					$data['error_comment'] = "Please enter comment";
-				}
-
-				if(empty($data['rating'])){
-					$data['error_rating'] = "Please enter rating";
-				}
-
-				if(!empty($data['comment']) && !empty($data['rating'])){
-					if($this->recipesModel->addNewComment($data)){
-						flash('comment_success', "Comment added successfully!");
-						redirect("recipes/display/".$recipeID);
-					} else {
-						die("Failed to update user profile");
-					}
-				} else {
-					// Re-display comments
-					$this->view('recipes/display',$data);
-				}
-
-
-			}else{
-				// Display recipe by recipe id
-				$data = [
-					'rid' => $recipeID,
-					'title' => $recipeData->title,
-					'ownerid' => $recipeData->owner_username,
-	                'description' => $recipeData->description,
-	                'prepTime' => $recipeData->prepTime,
-					'servingSize' => $recipeData->servingSize,
-					'ingredients' => $recipeData->ingredients,
-					'directions' => $recipeData->directions,
-					'comment' => '',
-					'rating' => '',
-					'error_comment' => '',
-					'error_rating' => ''
-				];
-
-				// print_r($data);
-				$this->view('recipes/display', $data);
-			}
-
+			// print_r($data);
+			$this->view('recipes/display', $data);
+		
 		}
 
-		/**
-		 * 
-		 */
-		private function sanitizeCommentInput() {
-				// Santise POST data from form
-				$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-				// Retrieve data from forms
-				$data = [
-					'comment' => trim($_POST['comment']),
-					'rating' => '',
-					'error_comment' => '',
-					'error_rating' => ''
-				];
-				// Check if set
-				if(isset($_POST['rating'])) {
-					$data['rating'] = trim($_POST['rating']);
-				}
-				return $data;
-		}
 
 	}

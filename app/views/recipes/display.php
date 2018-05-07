@@ -74,47 +74,51 @@
     </div><!-- End of Recipe Information container -->
 
     <div class="container">
+
+        <h2 class="mx-auto text-center">Comments</h2>
+
         <!-- Comments submission form -->
-        <form class="mb-3" action="<?php echo URLROOT; ?>/recipes/display/<?php echo $data['rid']; ?>" method="POST">
-            <div class="row">
-                <div class="col-lg-12">
-                <h2 class="text-center">Comments</h2>
-                </div>
-            </div>
-            <div class="row">
+        <div class="mb-3">
+            <div class="row mb-2">
                 <label for="comment">Leave a comment :</label>
-                <textarea name="comment" type="text" class="form-control <?php echo (!empty($data['error_comment'])) ? 'is-invalid' : ''; ?>"><?php echo $data['comment']?></textarea>
-                <span class="invalid-feedback"><?php echo $data['error_comment']?></span>
-
-                <!-- TODO: better way of doing rating, and handle error rating -->
-                <label for="rating">Rating:</label>
-                <div class="col-lg-12 form-check form-control <?php echo (!empty($data['error_rating'])) ? 'is-invalid' : ''; ?>">
+                <textarea id="commentText" class="w-100 form-control" name="comment" rows="3" type="text"></textarea>
+                <div class="invalid-feedback">Please enter a comment</div>
+            </div>
+            
+            <div class="row mb-2">
+                <label>Rating:</label>
+                <div id="ratingRadios" class="col-lg-12 form-check form-control">
                     <label class="radio-inline">
-                        <input type="radio" value="1" name="rating">1
+                        <input id="rating1" type="radio" value="1" name="rating">1
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" value"2" name="rating">2
+                        <input id="rating2" type="radio" value="2" name="rating">2
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" value="3" name="rating">3
+                        <input id="rating3" type="radio" value="3" name="rating">3
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" value="4" name="rating">4
+                        <input id="rating4" type="radio" value="4" name="rating">4
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" value"5" name="rating">5
+                        <input id="rating5" type="radio" value="5" name="rating">5
                     </label>
                 </div>
-                <span class="invalid-feedback"><?php echo $data['error_rating']?></span>
-
+                <span class="invalid-feedback">Please enter a rating</span>
             </div>
-            <input type="submit" value="submit" class="btn btn-success btn-block">
-        </form>
+            <button id="submitComment" type="submit" class="btn btn-success btn-block" onclick="saveComment(<?php echo $data['rid'] ?>)">Submit</button>
+        </div>
 
         <!-- Display Comments below -->
+        <div id="commentsArea">
+        
+        
+        </div>
 
     </div>
 
 <?php require APPROOT . '/views/includes/footer.php'; ?>
 
-<!-- <script src="<?php //echo URLROOT; ?>/js/home/rating.js"></script> -->
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/recipes/display.css">
+
+<script src="<?php echo URLROOT; ?>/js/recipes/comment.js"></script>

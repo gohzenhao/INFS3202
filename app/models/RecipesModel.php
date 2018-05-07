@@ -176,24 +176,26 @@ class RecipesModel {
     }
 
     /**
+     * Adds new comment to comments table
      * 
+     * param: rid, comment, rating in an associative array
+     * return: false on PDOException, comment as result
      */
     public function addNewComment($data){
-      $this->db->query("INSERT INTO comments (comment_description, rating, recipe_id, ownerid) VALUES (:description, :rating, :recipeid, :ownerid)");
-      $this->db->bind(':description', $data['comment']);
-      $this->db->bind(':rating', $data['rating']);
-      $this->db->bind(':recipeid',$data['rid']);
-      $this->db->bind(':ownerid',$_SESSION['user_id']);
-    //   $this->db->bind(':datenow',time());
-      try {
-          $this->db->execute();
-      } catch (PDOException $e) {
-          echo '</br>FAILED directions: ' . $e->getMessage() . '</br>';
-          return false;
-      }
+        $this->db->query("INSERT INTO comments (comment_description, rating, recipe_id, ownerid) VALUES (:description, :rating, :recipeid, :ownerid)");
+        $this->db->bind(':description', $data['comment']);
+        $this->db->bind(':rating', $data['rating']);
+        $this->db->bind(':recipeid',$data['rid']);
+        $this->db->bind(':ownerid',$_SESSION['user_id']);
+        try {
+            $this->db->execute();
+        } catch (PDOException $e) {
+            return false;
+        }
 
-      return true;
-
+        // Return the comment added from the INSERT operation above
+        $this->db->query('SELECT * FROM comments WHERE comment_id = (SELECT MAX(comment_id) FROM comments)');
+        return $this->db->single();
     }
 
 }
