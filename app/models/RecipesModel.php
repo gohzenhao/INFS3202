@@ -178,14 +178,13 @@ class RecipesModel {
     /**
      * 
      */
-    public function addNewComment($data2){
-
-      $this->db->query("INSERT INTO comments (comment_description, rating, recipe_id, ownerid, date) VALUES (:description, :rating, :recipeid, :ownerid, :datenow)");
-      $this->db->bind(':description', $data2['comment']);
-      $this->db->bind(':rating', $data2['rating']);
-      $this->db->bind(':recipeid',$data2['recipeid']);
+    public function addNewComment($data){
+      $this->db->query("INSERT INTO comments (comment_description, rating, recipe_id, ownerid) VALUES (:description, :rating, :recipeid, :ownerid)");
+      $this->db->bind(':description', $data['comment']);
+      $this->db->bind(':rating', $data['rating']);
+      $this->db->bind(':recipeid',$data['rid']);
       $this->db->bind(':ownerid',$_SESSION['user_id']);
-      $this->db->bind(':datenow',time());
+    //   $this->db->bind(':datenow',time());
       try {
           $this->db->execute();
       } catch (PDOException $e) {

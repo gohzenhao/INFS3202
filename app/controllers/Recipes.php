@@ -157,9 +157,9 @@
 			}
 
 			if($_SERVER['REQUEST_METHOD'] == 'POST'){
-				$data2 = $this->sanitizeInput2();
-
+				$commentData = $this->sanitizeCommentInput();
 				$data = [
+					'rid' => $recipeID,
 					'title' => $recipeData->title,
 					'ownerid' => $recipeData->owner_username,
 	                'description' => $recipeData->description,
@@ -167,9 +167,8 @@
 					'servingSize' => $recipeData->servingSize,
 					'ingredients' => $recipeData->ingredients,
 					'directions' => $recipeData->directions,
-					'recipeid' => $recipeID,
-					'comment' => $data2['comment'],
-					'rating' => (int) $data2['rating'],
+					'comment' => $commentData['comment'],
+					'rating' => (int) $commentData['rating'],
 					'error_comment' => '',
 					'error_rating' => ''
 				];
@@ -184,24 +183,22 @@
 				}
 
 				if(!empty($data['comment']) && !empty($data['rating'])){
-					echo 'wow';
 					if($this->recipesModel->addNewComment($data)){
 						flash('comment_success', "Comment added successfully!");
-						redirect("recipes/display/2");
-					}
-					else{
+						redirect("recipes/display/".$recipeID);
+					} else {
 						die("Failed to update user profile");
 					}
-				}
-				else{
+				} else {
+					// Re-display comments
 					$this->view('recipes/display',$data);
-					// var_dump($data);
-					// echo 'wtf';
 				}
 
 
 			}else{
+				// Display recipe by recipe id
 				$data = [
+					'rid' => $recipeID,
 					'title' => $recipeData->title,
 					'ownerid' => $recipeData->owner_username,
 	                'description' => $recipeData->description,
@@ -209,7 +206,6 @@
 					'servingSize' => $recipeData->servingSize,
 					'ingredients' => $recipeData->ingredients,
 					'directions' => $recipeData->directions,
-					'recipeid' => $recipeID,
 					'comment' => '',
 					'rating' => '',
 					'error_comment' => '',
@@ -222,13 +218,16 @@
 
 		}
 
-		private function sanitizeInput2() {
+		/**
+		 * 
+		 */
+		private function sanitizeCommentInput() {
 				// Santise POST data from form
 				$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 				// Retrieve data from forms
 				$data = [
 					'comment' => trim($_POST['comment']),
-					'rating' => trim($_POST['rating']),
+					'rating' => trim($_POST['rating']), //Handle not found error
 					'error_comment' => '',
 					'error_rating' => ''
 				];
