@@ -42,7 +42,9 @@ var saveComment = function(rid){
                 if(json.success == false) {
                     // TODO: handle error
                 } else {
-                    $("#commentsArea").prepend(json.commentElement);
+                    commentHTML = $($.parseHTML(json.content));
+                    $("#commentsArea").prepend(commentHTML.hide());
+                    commentHTML.slideDown('slow');
                 }
             },
             error: function() {

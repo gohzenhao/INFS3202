@@ -39,7 +39,7 @@
 
     $jsonOutput = array(
         'success'=> true,
-        'commentElement'=> $element
+        'content'=> $element
     );
 
     echo json_encode($jsonOutput);
