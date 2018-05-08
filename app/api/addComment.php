@@ -4,6 +4,9 @@
 
     $dbModel = new RecipesModel();
 
+    // Sanitize GET input 
+    $_GET = filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
+
     // Get comment data
     $input = [
         'rid' => $_GET['rid'],
