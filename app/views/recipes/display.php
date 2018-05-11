@@ -59,7 +59,6 @@
             <hr/>
 
             <!-- Directions -->
-            <!-- TODO: dont use cards -->
             <div class="row mb-3">
                 <h5 class="w-100">Directions: </h5>
                 <ol class="col-8 directions">

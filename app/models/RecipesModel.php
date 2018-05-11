@@ -22,6 +22,7 @@ class RecipesModel {
         $newRecipeID = $row->rid + 1;
         echo $newRecipeID;
 
+        //TODO: imagePath once uploading images feature is added
         // Prepare sql query for new recipe entry
         $this->db->query('INSERT INTO recipes (rid,title,ownerid,description,prepTime,servingSize,imagePath) VALUES(:rid,:title,:uid,:description,:prepTime,:servingSize,:imagePath);');
         // Bind values for prepared statement
@@ -39,7 +40,6 @@ class RecipesModel {
             echo '</br>FAILED recipe: ' . $e->getMessage() . '</br>';
             return false;
         }
-
 
         // Insert ingredients
         $ingredQueryArray = $this->getIngredientsQueries($newRecipeID, $data['ingredients']);
@@ -59,7 +59,6 @@ class RecipesModel {
         }
 
         // Insert directions
-        //TODO: imagePath once uploading images feature is added
         $direcQueryArray = $this->getDirectionsQueries($newRecipeID, $data['directions']);
         $direcQueryString = 'INSERT INTO directions (rid,stepNum,description) VALUES ' . implode(", ", $direcQueryArray) . ';';
         // echo $direcQueryString;

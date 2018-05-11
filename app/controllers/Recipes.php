@@ -158,7 +158,6 @@
 				redirect('recipes');
 			}
 
-			// TODO: get all comments 
 			$comments = $this->recipesModel->getAllComments($recipeID);
 
 			// Display recipe by recipe id
