@@ -96,7 +96,7 @@ $('ul.ingredients,ol.directions').sortable({
 });
 
 /**
- * 
+ * Create upload image preview area
  */
 $('.previewPic').uploadPreview({
     width: '250px',
