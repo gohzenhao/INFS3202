@@ -59,12 +59,13 @@
             <hr/>
 
             <!-- Directions -->
+            <!-- TODO: dont use cards -->
             <div class="row mb-3">
                 <h5 class="w-100">Directions: </h5>
-                <ol class="col-8 directions list-group">
+                <ol class="col-8 directions">
                     <?php
                         foreach($data['directions'] as $item) {
-                            echo '<li><p class="w-100 list-group-item my-1">' . $item['description'] . '</p></li>';
+                            echo '<li><p class="w-100 my-1">' . $item['description'] . '</p></li>';
                         }
                     ?>
                 </ol>
@@ -77,37 +78,41 @@
 
         <h2 class="mx-auto text-center">Comments</h2>
 
-        <!-- Comments submission form -->
-        <div class="mb-3 col-8 mx-auto">
-            <div class="row mb-2">
-                <label for="comment">Leave a comment :</label>
-                <textarea id="commentText" class="w-100 form-control" name="comment" rows="3" type="text"></textarea>
-                <div class="invalid-feedback">Please enter a comment</div>
-            </div>
-            
-            <div class="row mb-2">
-                <label>Rating:</label>
-                <div id="ratingRadios" class="col-lg-12 form-check form-control">
-                    <label class="radio-inline">
-                        <input id="rating1" type="radio" value="1" name="rating">1
-                    </label>
-                    <label class="radio-inline">
-                        <input id="rating2" type="radio" value="2" name="rating">2
-                    </label>
-                    <label class="radio-inline">
-                        <input id="rating3" type="radio" value="3" name="rating">3
-                    </label>
-                    <label class="radio-inline">
-                        <input id="rating4" type="radio" value="4" name="rating">4
-                    </label>
-                    <label class="radio-inline">
-                        <input id="rating5" type="radio" value="5" name="rating">5
-                    </label>
+        <?php  if(isset($_SESSION['user_id'])) : ?>
+
+            <!-- Comments submission form -->
+            <div class="mb-3 col-8 mx-auto">
+                <div class="row mb-2">
+                    <label for="comment">Leave a comment :</label>
+                    <textarea id="commentText" class="w-100 form-control" name="comment" rows="3" type="text"></textarea>
+                    <div class="invalid-feedback">Please enter a comment</div>
                 </div>
-                <span class="invalid-feedback">Please enter a rating</span>
+                
+                <div class="row mb-2">
+                    <label>Rating:</label>
+                    <div id="ratingRadios" class="col-lg-12 form-check form-control">
+                        <label class="radio-inline">
+                            <input id="rating1" type="radio" value="1" name="rating">1
+                        </label>
+                        <label class="radio-inline">
+                            <input id="rating2" type="radio" value="2" name="rating">2
+                        </label>
+                        <label class="radio-inline">
+                            <input id="rating3" type="radio" value="3" name="rating">3
+                        </label>
+                        <label class="radio-inline">
+                            <input id="rating4" type="radio" value="4" name="rating">4
+                        </label>
+                        <label class="radio-inline">
+                            <input id="rating5" type="radio" value="5" name="rating">5
+                        </label>
+                    </div>
+                    <span class="invalid-feedback">Please enter a rating</span>
+                </div>
+                <button id="submitComment" type="submit" class="btn btn-success btn-block" onclick="saveComment(<?php echo $data['rid'] ?>)">Submit</button>
             </div>
-            <button id="submitComment" type="submit" class="btn btn-success btn-block" onclick="saveComment(<?php echo $data['rid'] ?>)">Submit</button>
-        </div>
+
+        <?php  endif; ?>
 
         <!-- Display Comments below -->
         <div id="commentsArea" class="col-8 mx-auto">

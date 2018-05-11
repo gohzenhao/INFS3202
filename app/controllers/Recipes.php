@@ -141,6 +141,8 @@
 
 		/**
 		 * Displays recipe based on recipe id, if none is provided, redirect to recipe/search page
+		 * 
+		 * If user is not logged in do not display comments section
 		 */
 		public function display($recipeID = null) {
 			// Redirect to recipe search page (default) if no recipe id is provided
