@@ -23,4 +23,6 @@
 			$data = ['title' => 'Welcome to the About page!'];
 			$this->view('home/about', $data);
 		}
+
+		
 	}

@@ -23,8 +23,11 @@ function addRemoveMeHandler() {
 /**
  * Prevent ENTER key from ingredient input field to trigger remove-me
  * Will trigger add-more instead
+ * 
+ * TODO: BUG ingredients list doubles!!!!! since element gets assigned multiple handlers (same with direction)
  */
 function addIngredientEnterKeyHandler() {
+
     $('input.ingredient-input').on("keypress", function(event) {
         if(event.keyCode == 13) {
             event.preventDefault();
@@ -50,8 +53,8 @@ function addDirectionEnterKeyHandler() {
  */
 $('.ingred-add-more').on("click", function(event) {
     event.preventDefault();
-    var listObj = $(event.target).prev().prev();
-    var newItem = '<li class="form-group ingredient">'
+    var listObj = $('.ingredients');
+    var newItem = '<li class="form-group">'
         + '<div class="input-group mb-3">'
         + '<div class="input-group-prepend drag-me"><span class="input-group-text fa fa-bars"></span></div>'
         + '<input class="ingredient-input form-control" name="ingredients[]" type="text" placeholder="Enter ingredient and amount">'
@@ -68,8 +71,8 @@ $('.ingred-add-more').on("click", function(event) {
  */
 $('.direction-add-more').on("click", function(event){
     event.preventDefault();
-    var listObj = $(event.target).prev().prev();
-    var newItem = '<li class="form-group direction">'
+    var listObj = $('.directions');
+    var newItem = '<li class="form-group">'
         + '<div class="input-group mb-3">'
         + '<div class="input-group-prepend drag-me"><span class="input-group-text fa fa-bars"></span></div>'
         + '<textarea class="direction-input form-control" name="directions[]" rows="4"></textarea>'
