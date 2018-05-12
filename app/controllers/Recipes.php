@@ -10,8 +10,6 @@
 		public function index(){
 			$recipes = $this->recipesModel->getAllRecipes();
 
-			var_dump($recipes);
-
 			$data = [
 				'title' => 'Welcome Search Recipe Page!',
 				'recipes' => $recipes
@@ -31,6 +29,7 @@
 				redirect('users/login');
 			}
 			if($_SERVER['REQUEST_METHOD'] == 'POST') {
+				//TODO: refactor to validate input function
 				$data = $this->sanitizeInput();
 				// Check for empty input
 				if(empty($data['title'])) {
@@ -76,20 +75,26 @@
 					$data['directions_error'] = 'Sorry no more than 20 steps allowed';
 				}
 
+				// Check image upload
+				$data['img_error'] = $this->checkImageUpload($_FILES['imgPreview']);
+
 				// If no errors then upload
 				if(empty($data['title_error']) && empty($data['description_error']) &&
-					empty($data['prepTime_error']) && empty($data['servingSize_error']) &&
-					empty($data['ingredients_error']) && empty($data['directions_error'])){
-						// Append user id to upload data
-						$data['uid'] = $_SESSION['user_id'];
-						// Upload recipe to database
-						if($this->recipesModel->createNewRecipe($data)) {
-							// TODO: show recipe? or return to account page?
-							redirect('recipes/index');
-						} else {
-							// PDOException was thrown
-							$this->view('recipes/create', $data);
-						}
+						empty($data['prepTime_error']) && empty($data['servingSize_error']) &&
+						empty($data['ingredients_error']) && empty($data['directions_error']) &&
+						empty($data['img_error']) ){
+					// Upload image
+					$data['img'] = $_FILES['imgPreview'];
+					// Append user id to upload data
+					$data['uid'] = $_SESSION['user_id'];
+					// Upload recipe to database
+					if($this->recipesModel->createNewRecipe($data)) {
+						// TODO: show recipe? or return to account page?
+						redirect('recipes/index');
+					} else {
+						// PDOException was thrown
+						$this->view('recipes/create', $data);
+					}
 				} else {
 					// Display form with errors
 					// TODO: handle reloading ingredients and directions lists
@@ -109,7 +114,8 @@
 					'prepTime_error' => '',
 					'servingSize_error' => '',
 					'ingredients_error' => '',
-					'directions_error' => ''
+					'directions_error' => '',
+					'img_error' => ''
 				];
 				$this->view('recipes/create', $data);
 			}
@@ -134,9 +140,28 @@
                 'prepTime_error' => '',
 				'servingSize_error' => '',
 				'ingredients_error' => '',
-				'directions_error' => ''
+				'directions_error' => '',
+				'img_error' => ''
             ];
             return $data;
+		}
+
+		/**
+		 * Checks image for:
+		 * 	- size < 2MB
+		 *  - 
+		 * @param: $_FILES['imageName']
+		 * @return: empty string on valid image OR
+		 * 			string error message 
+		 */
+		private function checkImageUpload($imgTemp) {
+			if($imgTemp['size'] > 2097152) {
+				return 'Please select an image less than 2MB';
+			}
+			if($imgTemp['error'] > 0 && $imgTemp['error'] != 4) {
+				return 'File has an error (Error: '.$imgTemp['error'].')';
+			}
+			return '';
 		}
 
 		/**
@@ -173,9 +198,7 @@
 				'comments' => $comments
 			];
 
-			// print_r($data);
 			$this->view('recipes/display', $data);
-		
 		}
 
 

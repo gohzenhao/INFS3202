@@ -10,8 +10,10 @@ class RecipesModel {
      * Insert a new recipe into database.
      * Performs 3 insert operations on 'recipe', 'ingredients', and
      * 'directions' tables.
+     * 
+     * @param: $data associate array containing all recipe information to upload
      *
-     * return: true if recipe successfully added, false otherwise
+     * @return: true if recipe successfully added, false otherwise
      */
     public function createNewRecipe($data) {
         // Get id of new recipe
@@ -20,9 +22,10 @@ class RecipesModel {
         $row = $this->db->single();
         // Increment recipe id
         $newRecipeID = $row->rid + 1;
-        echo $newRecipeID;
 
-        //TODO: imagePath once uploading images feature is added
+        // Upload image and return path
+        $imgPath = $this->uploadImage($newRecipeID, $data['uid'], $data['img']);
+
         // Prepare sql query for new recipe entry
         $this->db->query('INSERT INTO recipes (rid,title,ownerid,description,prepTime,servingSize,imagePath) VALUES(:rid,:title,:uid,:description,:prepTime,:servingSize,:imagePath);');
         // Bind values for prepared statement
@@ -32,7 +35,7 @@ class RecipesModel {
         $this->db->bind(':description', $data['description']);
         $this->db->bind(':prepTime', $data['prepTime']);
         $this->db->bind(':servingSize', $data['servingSize']);
-        $this->db->bind(':imagePath', "");
+        $this->db->bind(':imagePath', $imgPath);
         // Execute query
         try {
             $this->db->execute();
@@ -76,6 +79,33 @@ class RecipesModel {
         }
 
         return true;
+    }
+
+    /**
+     * Moves image from temporary location into public/img/upload/ directory
+     * Image upload names given format 'r{rid}_u{uid}_preview'
+     * If no image is provided (size is 0) then return placeholder img path: /img/beef.jpg
+     * 
+     * @param: recipe id of new recipe
+     * @param: user id of creator
+     * @param: $_FILES['imageName']
+     * 
+     * @return: String path to image upload location
+     *          empty string on error
+     */
+    private function uploadImage($rid, $uid, $imgTemp) {
+        if($imgTemp['size'] > 0) {
+            $orginalNameExplode = explode('.', $imgTemp['name']);
+            $extension = end($orginalNameExplode);
+            $uploadName = 'r'.$rid.'_u'.$uid.'_preview.'.$extension;
+            $uploadPath = '/img/upload/'.$uploadName;
+            if(!file_exists($uploadPath)) {
+                move_uploaded_file($imgTemp['tmp_name'], $_SERVER['DOCUMENT_ROOT'].'/infs3202project/public'.$uploadPath);
+                return $uploadPath;
+            }
+        }
+        // Default placeholder image path
+        return '/img/beef.jpg';;
     }
 
     /**

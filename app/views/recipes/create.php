@@ -10,10 +10,11 @@
             <form class="col" action="<?php echo URLROOT; ?>/recipes/create" method="POST" enctype="multipart/form-data">
                 <div class="row mb-3">
                     <div class="col-5">
-                        <label for="profilePicture">Recipe Picture: </label>
+                        <label for="imgPreview">Recipe Picture: </label>
                         <div class="previewPic m-auto">
-                            <input name="profilePicture" type="file" accept="image/jpeg, image/png">
+                            <input name="imgPreview" type="file" accept="image/jpeg, image/png">
                         </div>
+                        <small class="" style="color: #dc3545;"><?php echo $data['img_error'] ?></small>
                     </div>
                     <div class="col-7">
                         <div class="row form-group">

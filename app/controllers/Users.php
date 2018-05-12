@@ -28,6 +28,7 @@
 		public function registration(){
             // Check for POST submission
 			if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                //TODO: refactor to validate input funciton
                 // Submit form data
                 $data = $this->sanitizeInput();
                 // Validate name
@@ -61,7 +62,9 @@
                     }
                 }
                 // If no errors then successful registration
-                if(empty($data['name_error']) && empty($data['email_error']) && empty($data['username_error']) &&  empty($data['password_error']) && empty($data['confirm_password_error']) ) {
+                if(empty($data['name_error']) && empty($data['email_error']) && 
+                        empty($data['username_error']) &&  empty($data['password_error']) && 
+                        empty($data['confirm_password_error']) ) {
                     // Hash password
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
@@ -124,7 +127,8 @@
                 }
 
                 // Check for existing user with username or email
-                if(!($this->userModel->findUserByEmail($data['username_email']) || $this->userModel->findUserByUsername($data['username_email']))) {
+                if(!($this->userModel->findUserByEmail($data['username_email']) || 
+                        $this->userModel->findUserByUsername($data['username_email']))) {
                     $data['username_email_error'] = 'No user found';
                 }
 
