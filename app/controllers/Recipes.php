@@ -29,54 +29,9 @@
 				redirect('users/login');
 			}
 			if($_SERVER['REQUEST_METHOD'] == 'POST') {
-				//TODO: refactor to validate input function
-				$data = $this->sanitizeInput();
-				// Check for empty input
-				if(empty($data['title'])) {
-                    $data['title_error'] = 'Please enter the name of your recipe';
-				}
-				if(empty($data['description'])) {
-                    $data['description_error'] = 'Please enter a description of your recipe';
-				}
-				if(empty($data['prepTime'])) {
-                    $data['prepTime_error'] = 'Please enter the time taken to prepare';
-				}
-				if(empty($data['servingSize'])) {
-                    $data['servingSize_error'] = 'Please enter the serving size';
-				}
 
-				// Check for at least 1 non empty ingredient, max 25 ingredients
-				$hasIngredients = false;
-				for($i = 0; $i < count($data['ingredients']); $i++ ) {
-					//echo '</br>#'.$i.' = '. $data['ingredients'][$i].'#';
-					if(!empty($data['ingredients'][$i])) {
-						$hasIngredients = true;
-					}
-				}
-				if(!$hasIngredients) {
-					$data['ingredients_error'] = 'Please enter at least 1 ingredient';
-				}
-				if(count($data['ingredients']) > 25) {
-					$data['ingredients_error'] = 'Sorry no more than 25 ingredients allowed';
-				}
-
-				// Check for at least 1 non empty step, max 20 steps in directions
-				$hasDirections = false;
-				for($i = 0; $i < count($data['directions']); $i++ ) {
-					//echo '</br>#'.$i.' = '. $data['directions'][$i].'#';
-					if(!empty($data['directions'][$i])) {
-						$hasDirections = true;
-					}
-				}
-				if(!$hasDirections) {
-					$data['directions_error'] = 'Please enter at least 1 step in directions';
-				}
-				if(count($data['directions']) > 20) {
-					$data['directions_error'] = 'Sorry no more than 20 steps allowed';
-				}
-
-				// Check image upload
-				$data['img_error'] = $this->checkImageUpload($_FILES['imgPreview']);
+				// Validate input function
+				$data = $this->validateCreateRecipe();
 
 				// If no errors then upload
 				if(empty($data['title_error']) && empty($data['description_error']) &&
@@ -122,7 +77,9 @@
 		}
 
 		/**
-		 * Security to avoid form injection in recipe creation page
+		 * Sanitizes to avoid form injection in recipe creation page
+		 * 
+		 * @return: $data
 		 */
 		private function sanitizeInput() {
             // Santise POST data from form
@@ -144,6 +101,64 @@
 				'img_error' => ''
             ];
             return $data;
+		}
+
+		/**
+		 * Verifies input data from recipes create form and assigns error message if any required
+		 * 
+		 * @return: $data for form data with error messages
+		 */
+		private function validateCreateRecipe() {
+			// Check input for injections
+			$data = $this->sanitizeInput();
+			// Check for empty input
+			if(empty($data['title'])) {
+				$data['title_error'] = 'Please enter the name of your recipe';
+			}
+			if(empty($data['description'])) {
+				$data['description_error'] = 'Please enter a description of your recipe';
+			}
+			if(empty($data['prepTime'])) {
+				$data['prepTime_error'] = 'Please enter the time taken to prepare';
+			}
+			if(empty($data['servingSize'])) {
+				$data['servingSize_error'] = 'Please enter the serving size';
+			}
+
+			// Check for at least 1 non empty ingredient, max 25 ingredients
+			$hasIngredients = false;
+			for($i = 0; $i < count($data['ingredients']); $i++ ) {
+				//echo '</br>#'.$i.' = '. $data['ingredients'][$i].'#';
+				if(!empty($data['ingredients'][$i])) {
+					$hasIngredients = true;
+				}
+			}
+			if(!$hasIngredients) {
+				$data['ingredients_error'] = 'Please enter at least 1 ingredient';
+			}
+			if(count($data['ingredients']) > 25) {
+				$data['ingredients_error'] = 'Sorry no more than 25 ingredients allowed';
+			}
+
+			// Check for at least 1 non empty step, max 20 steps in directions
+			$hasDirections = false;
+			for($i = 0; $i < count($data['directions']); $i++ ) {
+				//echo '</br>#'.$i.' = '. $data['directions'][$i].'#';
+				if(!empty($data['directions'][$i])) {
+					$hasDirections = true;
+				}
+			}
+			if(!$hasDirections) {
+				$data['directions_error'] = 'Please enter at least 1 step in directions';
+			}
+			if(count($data['directions']) > 20) {
+				$data['directions_error'] = 'Sorry no more than 20 steps allowed';
+			}
+
+			// Check image upload
+			$data['img_error'] = $this->checkImageUpload($_FILES['imgPreview']);
+
+			return $data;
 		}
 
 		/**

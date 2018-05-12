@@ -113,8 +113,10 @@ class RecipesModel {
      * Each element follows format: '(rid, x, :valuex)'
      * where x increments from 1 to number of ingredients
      *
-     * params: rid and non-associative array of ingredients
-     * returns: array containing query values template
+     * @param: rid
+     * @param: non-associative array of ingredients
+     * 
+     * @return: array containing query values template
      */
     private function getIngredientsQueries($rid, $ingredients) {
         $result = [];
@@ -129,8 +131,10 @@ class RecipesModel {
      * Each element follows format: '(rid, x, :valuex)'
      * where x increments from 1 to number of directions
      *
-     * params: rid and non-associative array of directions
-     * returns: array containing query values template
+     * @param: rid 
+     * @param: non-associative array of directions
+     * 
+     * @return: array containing query values template
      */
     private function getDirectionsQueries($rid, $directions) {
         $result = [];
@@ -151,8 +155,8 @@ class RecipesModel {
      * - list of ingredients
      * - list of directions
      *
-     * param: recipe id to fetch
-     * return: associative stdClass Object
+     * @param: recipe id to fetch
+     * @return: all data of recipe as associative stdClass Object
      */
     public function getRecipeData($rid) {
         // Query to select recipe
@@ -196,7 +200,7 @@ class RecipesModel {
     /**
      * Returns all recipes
      *
-     * return: associative object
+     * @return: associative object
      */
     public function getAllRecipes() {
         $this->db->query('SELECT * FROM recipes');
@@ -207,7 +211,7 @@ class RecipesModel {
     /**
      * Returns all comments on recipe given by recipe id
      * 
-     * return: associative object
+     * @return: associative object
      */
     public function getAllComments($rid) {
         $this->db->query('SELECT * FROM comments WHERE recipe_id = :rid ORDER BY date DESC');
@@ -218,8 +222,9 @@ class RecipesModel {
     /**
      * Adds new comment to comments table
      * 
-     * param: rid, comment, rating in an associative array
-     * return: false on PDOException, comment as result
+     * @param: $data containing rid, comment, rating in an associative array
+     * 
+     * @return: false on PDOException, comment as result
      */
     public function addNewComment($data){
         $this->db->query("INSERT INTO comments (comment_description, rating, recipe_id, ownerid) VALUES (:description, :rating, :recipeid, :ownerid)");
