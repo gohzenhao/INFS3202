@@ -193,6 +193,7 @@
 				'description' => $recipeData->description,
 				'prepTime' => $recipeData->prepTime,
 				'servingSize' => $recipeData->servingSize,
+				'imagePath' => $recipeData->imagePath,
 				'ingredients' => $recipeData->ingredients,
 				'directions' => $recipeData->directions,
 				'comments' => $comments
