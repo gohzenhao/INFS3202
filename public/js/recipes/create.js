@@ -26,8 +26,10 @@ function addRemoveMeHandler() {
  */
 function addIngredientEnterKeyHandler() {
     $('input.ingredient-input').on("keypress", function(event) {
-        event.preventDefault();
-        $('.ingred-add-more').trigger("click");
+        if(event.keyCode == 13) {
+            event.preventDefault();
+            $('.ingred-add-more').trigger("click");
+        }
     });
 }
 
