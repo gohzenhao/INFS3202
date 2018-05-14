@@ -4,53 +4,81 @@ console.log('jQuery is loaded');
     console.log('jQuery is NOT loaded');
 }
 
-//TODO: prevent ENTER key from ingredient form focus to trigger remove-me, should trigger add-more
-
-// Call for initial first element in ingredients and directions lists
+// Add handlers for initial elements
 addRemoveMeHandler();
+addIngredientEnterKeyHandler();
+addDirectionEnterKeyHandler();
 
 /**
- * Removes list item associated to remove button for both Ingredients and Directions lists
+ * For both Ingredients and Directions lists:
+ * Removes list item associated to remove button
  */
 function addRemoveMeHandler() {
-    $("button.remove-me").on("click", function(event) {
+    $('button.remove-me').on("click", function(event) {
         event.preventDefault();
         $(this).parent().parent().parent().remove();
     });
 }
 
 /**
+ * Prevent ENTER key from ingredient input field to trigger remove-me
+ * Will trigger add-more instead
+ */
+function addIngredientEnterKeyHandler() {
+    $('input.ingredient-input').on("keypress", function(event) {
+        if(event.keyCode == 13) {
+            event.preventDefault();
+            $('.ingred-add-more').trigger("click");
+        }
+    });
+}
+
+/**
+ * When SHIFT + ENTER is pressed add new direction step
+ */
+function addDirectionEnterKeyHandler() {
+    $('textarea.direction-input').on("keydown", function(event) {
+        if(event.keyCode == 13 && event.shiftKey) {
+            event.preventDefault();
+            $('.direction-add-more').trigger("click");
+        }
+    });
+}
+
+/**
  * Handle creating more ingredients forms
  */
-$(".ingred-add-more").on("click", function(event) {
+$('.ingred-add-more').on("click", function(event) {
     event.preventDefault();
     var listObj = $(event.target).prev().prev();
     var newItem = '<li class="form-group ingredient">'
         + '<div class="input-group mb-3">'
         + '<div class="input-group-prepend drag-me"><span class="input-group-text fa fa-bars"></span></div>'
-        + '<input class="form-control" name="ingredients[]" type="text" placeholder="Enter ingredient and amount">'
+        + '<input class="ingredient-input form-control" name="ingredients[]" type="text" placeholder="Enter ingredient and amount">'
         + '<div class="input-group-append"><button class="input-group-text btn btn-danger remove-me">X</button></div>';
     var newElement = $(newItem);
     listObj.append(newElement);
 
     addRemoveMeHandler();
+    addIngredientEnterKeyHandler();
 });
 
 /**
  * Handle creating more directions form
  */
-$('.direction-add-more').on("click", function(e){
-    e.preventDefault();
+$('.direction-add-more').on("click", function(event){
+    event.preventDefault();
     var listObj = $(event.target).prev().prev();
     var newItem = '<li class="form-group direction">'
         + '<div class="input-group mb-3">'
         + '<div class="input-group-prepend drag-me"><span class="input-group-text fa fa-bars"></span></div>'
-        + '<textarea class="form-control" name="directions[]" rows="4"></textarea>'
+        + '<textarea class="direction-input form-control" name="directions[]" rows="4"></textarea>'
         + '<div class="input-group-append"><button class="input-group-text btn btn-danger remove-me">X</button></div></div></li>';
     var newElement = $(newItem);
     listObj.append(newElement);
 
     addRemoveMeHandler();
+    addDirectionEnterKeyHandler();
 });
 
 
@@ -58,7 +86,7 @@ $('.direction-add-more').on("click", function(e){
 /**
  * Handle drag and drop reordering of ingredients
  */
-$("ul.ingredients,ol.directions").sortable({
+$('ul.ingredients,ol.directions').sortable({
     handle: 'div.drag-me',
     // set $item relative to cursor position
     onDragStart: function ($item, container, _super) {
@@ -70,7 +98,7 @@ $("ul.ingredients,ol.directions").sortable({
 });
 
 /**
- * 
+ * Create upload image preview area
  */
 $('.previewPic').uploadPreview({
     width: '250px',

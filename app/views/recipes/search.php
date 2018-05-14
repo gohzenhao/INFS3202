@@ -33,7 +33,7 @@
                     echo '<a class="list-group-item list-group-item-action flex-column mb-3" href="'.URLROOT.'/recipes/display/'. $item->rid .'">
                     <div class="row">
                         <div class="">
-                            <img class="preview-img mw-40" src="'.URLROOT.'/img/beef.jpg" alt="Preview: '. $item->imagePath .'">
+                            <img class="preview-img img-thumbnail" src="'.URLROOT.$item->imagePath.'" alt="Preview: '. $item->imagePath .'">
                         </div>
                         <div class="col">
                             <div class="d-flex w-100 justify-content-between">

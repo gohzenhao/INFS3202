@@ -10,8 +10,10 @@ class RecipesModel {
      * Insert a new recipe into database.
      * Performs 3 insert operations on 'recipe', 'ingredients', and
      * 'directions' tables.
+     * 
+     * @param: $data associate array containing all recipe information to upload
      *
-     * return: true if recipe successfully added, false otherwise
+     * @return: true if recipe successfully added, false otherwise
      */
     public function createNewRecipe($data) {
         // Get id of new recipe
@@ -20,7 +22,9 @@ class RecipesModel {
         $row = $this->db->single();
         // Increment recipe id
         $newRecipeID = $row->rid + 1;
-        echo $newRecipeID;
+
+        // Upload image and return path
+        $imgPath = $this->uploadImage($newRecipeID, $data['uid'], $data['img']);
 
         // Prepare sql query for new recipe entry
         $this->db->query('INSERT INTO recipes (rid,title,ownerid,description,prepTime,servingSize,imagePath) VALUES(:rid,:title,:uid,:description,:prepTime,:servingSize,:imagePath);');
@@ -31,7 +35,7 @@ class RecipesModel {
         $this->db->bind(':description', $data['description']);
         $this->db->bind(':prepTime', $data['prepTime']);
         $this->db->bind(':servingSize', $data['servingSize']);
-        $this->db->bind(':imagePath', "");
+        $this->db->bind(':imagePath', $imgPath);
         // Execute query
         try {
             $this->db->execute();
@@ -39,7 +43,6 @@ class RecipesModel {
             echo '</br>FAILED recipe: ' . $e->getMessage() . '</br>';
             return false;
         }
-
 
         // Insert ingredients
         $ingredQueryArray = $this->getIngredientsQueries($newRecipeID, $data['ingredients']);
@@ -59,7 +62,6 @@ class RecipesModel {
         }
 
         // Insert directions
-        //TODO: imagePath once uploading images feature is added
         $direcQueryArray = $this->getDirectionsQueries($newRecipeID, $data['directions']);
         $direcQueryString = 'INSERT INTO directions (rid,stepNum,description) VALUES ' . implode(", ", $direcQueryArray) . ';';
         // echo $direcQueryString;
@@ -80,12 +82,41 @@ class RecipesModel {
     }
 
     /**
+     * Moves image from temporary location into public/img/upload/ directory
+     * Image upload names given format 'r{rid}_u{uid}_preview'
+     * If no image is provided (size is 0) then return placeholder img path: /img/beef.jpg
+     * 
+     * @param: recipe id of new recipe
+     * @param: user id of creator
+     * @param: $_FILES['imageName']
+     * 
+     * @return: String path to image upload location
+     *          empty string on error
+     */
+    private function uploadImage($rid, $uid, $imgTemp) {
+        if($imgTemp['size'] > 0) {
+            $orginalNameExplode = explode('.', $imgTemp['name']);
+            $extension = end($orginalNameExplode);
+            $uploadName = 'r'.$rid.'_u'.$uid.'_preview.'.$extension;
+            $uploadPath = '/img/upload/'.$uploadName;
+            if(!file_exists($uploadPath)) {
+                move_uploaded_file($imgTemp['tmp_name'], $_SERVER['DOCUMENT_ROOT'].'/infs3202project/public'.$uploadPath);
+                return $uploadPath;
+            }
+        }
+        // Default placeholder image path
+        return '/img/beef.jpg';;
+    }
+
+    /**
      * Convert ingredients array to sql value template.
      * Each element follows format: '(rid, x, :valuex)'
      * where x increments from 1 to number of ingredients
      *
-     * params: rid and non-associative array of ingredients
-     * returns: array containing query values template
+     * @param: rid
+     * @param: non-associative array of ingredients
+     * 
+     * @return: array containing query values template
      */
     private function getIngredientsQueries($rid, $ingredients) {
         $result = [];
@@ -100,8 +131,10 @@ class RecipesModel {
      * Each element follows format: '(rid, x, :valuex)'
      * where x increments from 1 to number of directions
      *
-     * params: rid and non-associative array of directions
-     * returns: array containing query values template
+     * @param: rid 
+     * @param: non-associative array of directions
+     * 
+     * @return: array containing query values template
      */
     private function getDirectionsQueries($rid, $directions) {
         $result = [];
@@ -122,8 +155,8 @@ class RecipesModel {
      * - list of ingredients
      * - list of directions
      *
-     * param: recipe id to fetch
-     * return: associative stdClass Object
+     * @param: recipe id to fetch
+     * @return: all data of recipe as associative stdClass Object
      */
     public function getRecipeData($rid) {
         // Query to select recipe
@@ -167,7 +200,7 @@ class RecipesModel {
     /**
      * Returns all recipes
      *
-     * return: associative object
+     * @return: associative object
      */
     public function getAllRecipes() {
         $this->db->query('SELECT * FROM recipes');
@@ -176,16 +209,28 @@ class RecipesModel {
     }
 
     /**
+     * Returns all comments on recipe given by recipe id
+     * 
+     * @return: associative object
+     */
+    public function getAllComments($rid) {
+        $this->db->query('SELECT * FROM comments WHERE recipe_id = :rid ORDER BY date DESC');
+        $this->db->bind(':rid', $rid);
+        return $this->db->resultSet();
+    }
+
+    /**
      * Adds new comment to comments table
      * 
-     * param: rid, comment, rating in an associative array
-     * return: false on PDOException, comment as result
+     * @param: $data containing rid, comment, rating in an associative array
+     * 
+     * @return: false on PDOException, comment as result
      */
     public function addNewComment($data){
         $this->db->query("INSERT INTO comments (comment_description, rating, recipe_id, ownerid) VALUES (:description, :rating, :recipeid, :ownerid)");
         $this->db->bind(':description', $data['comment']);
         $this->db->bind(':rating', $data['rating']);
-        $this->db->bind(':recipeid',$data['rid']);
+        $this->db->bind(':recipeid', $data['rid']);
         $this->db->bind(':ownerid',$_SESSION['user_id']);
         try {
             $this->db->execute();

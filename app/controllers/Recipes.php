@@ -130,6 +130,8 @@
 		}
 		/**
 		 * Displays recipe based on recipe id, if none is provided, redirect to recipe/search page
+		 *
+		 * If user is not logged in do not display comments section
 		 */
 		public function display($recipeID = null) {
 			// Redirect to recipe search page (default) if no recipe id is provided
@@ -142,6 +144,7 @@
 			if($recipeData == null) {
 				redirect('recipes');
 			}
+			$comments = $this->recipesModel->getAllComments($recipeID);
 			// Display recipe by recipe id
 			$data = [
 				'rid' => $recipeID,
@@ -152,10 +155,7 @@
 				'servingSize' => $recipeData->servingSize,
 				'ingredients' => $recipeData->ingredients,
 				'directions' => $recipeData->directions,
-				'comment' => '',
-				'rating' => '',
-				'error_comment' => '',
-				'error_rating' => ''
+				'comments' => $comments
 			];
 			// print_r($data);
 			$this->view('recipes/display', $data);

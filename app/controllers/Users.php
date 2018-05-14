@@ -28,40 +28,14 @@
 		public function registration(){
             // Check for POST submission
 			if($_SERVER['REQUEST_METHOD'] == 'POST') {
-                // Submit form data
-                $data = $this->sanitizeInput();
-                // Validate name
-                if(empty($data['name'])) {
-                    $data['name_error'] = 'Please enter your name';
-                }
-                // Validate email
-                if(empty($data['email'])) {
-                    $data['email_error'] = 'Please enter your email';
-                } else {
-                    if($this->userModel->findUserByEmail($data['email'])) {
-                        $data['email_error'] = 'Email is already taken';
-                    }
-                }
-                // Validate username
-                if(empty($data['username'])) {
-                    $data['username_error'] = 'Please enter a username';
-                }
-                // Validate password
-                if(empty($data['password'])) {
-                    $data['password_error'] = 'Please enter a password';
-                } elseif (strlen($data['password']) < 6) {
-                    $data['password_error'] = 'Password must be at least 6 characters in length';
-                }
-                // Validate confirm password
-                if(empty($data['confirm_password'])) {
-                    $data['confirm_password_error'] = 'Please confirm your password';
-                } else {
-                    if($data['password'] != $data['confirm_password']) {
-                        $data['confirm_password_error'] = 'Passwords do not match';
-                    }
-                }
+                // Validate input data from registration form
+                $data = $this->validateRegisterForm();
+
                 // If no errors then successful registration
-                if(empty($data['name_error']) && empty($data['email_error']) && empty($data['username_error']) &&  empty($data['password_error']) && empty($data['confirm_password_error']) ) {
+                if(empty($data['name_error']) && empty($data['email_error']) && 
+                        empty($data['username_error']) &&  empty($data['password_error']) && 
+                        empty($data['confirm_password_error']) ) {
+
                     // Hash password
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
@@ -105,28 +79,8 @@
             // Check for POST submission
 			if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-                // Submit form data
-                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-                // Retrieve data from forms
-                $data = [
-                    'username_email' => trim($_POST['username_email']),
-                    'password' => trim($_POST['password']),
-                    'username_email_error' => '',
-                    'password_error' => ''
-                ];
-                // Validate email/username
-                if(empty($data['username_email'])) {
-                    $data['username_email_error'] = 'Please enter your username/email';
-                }
-                // Validate password
-                if(empty($data['password'])) {
-                    $data['password_error'] = 'Please enter your password';
-                }
-
-                // Check for existing user with username or email
-                if(!($this->userModel->findUserByEmail($data['username_email']) || $this->userModel->findUserByUsername($data['username_email']))) {
-                    $data['username_email_error'] = 'No user found';
-                }
+                // Validate user login form
+                $data = $this->validateLoginForm();
 
                 // Make sure errors are empty
                 if(empty($data['username_email_error']) && empty($data['password_error'])) {
@@ -185,10 +139,12 @@
         }
 
         /**
-         * Sanitizes POST input from form and returns associative array for each input field
-         * and its associated error message
+         * Sanitizes POST input from form and checks for errors
+         * Error messages contained in associative array return value
+         * 
+         * @return: $data associative array of input and error messages
          */
-        private function sanitizeInput() {
+        private function validateRegisterForm() {
             // Santise POST data from form
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             // Retrieve data from forms
@@ -204,6 +160,70 @@
                 'password_error' => '',
                 'confirm_password_error' => ''
             ];
+            // Validate name
+            if(empty($data['name'])) {
+                $data['name_error'] = 'Please enter your name';
+            }
+            // Validate email
+            if(empty($data['email'])) {
+                $data['email_error'] = 'Please enter your email';
+            } else {
+                if($this->userModel->findUserByEmail($data['email'])) {
+                    $data['email_error'] = 'Email is already taken';
+                }
+            }
+            // Validate username
+            if(empty($data['username'])) {
+                $data['username_error'] = 'Please enter a username';
+            }
+            // Validate password
+            if(empty($data['password'])) {
+                $data['password_error'] = 'Please enter a password';
+            } elseif (strlen($data['password']) < 6) {
+                $data['password_error'] = 'Password must be at least 6 characters in length';
+            }
+            // Validate confirm password
+            if(empty($data['confirm_password'])) {
+                $data['confirm_password_error'] = 'Please confirm your password';
+            } else {
+                if($data['password'] != $data['confirm_password']) {
+                    $data['confirm_password_error'] = 'Passwords do not match';
+                }
+            }
+
+            return $data;
+        }
+
+        /**
+         * Sanitizes POST input from form and checks for erros
+         * Error messages conatined in associative array return value
+         * 
+         * @return: $data associative array of input and error messages
+         */
+        private function validateLoginForm() {
+            // Submit form data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            // Retrieve data from forms
+            $data = [
+                'username_email' => trim($_POST['username_email']),
+                'password' => trim($_POST['password']),
+                'username_email_error' => '',
+                'password_error' => ''
+            ];
+            // Validate email/username
+            if(empty($data['username_email'])) {
+                $data['username_email_error'] = 'Please enter your username/email';
+            }
+            // Validate password
+            if(empty($data['password'])) {
+                $data['password_error'] = 'Please enter your password';
+            }
+
+            // Check for existing user with username or email
+            if(!($this->userModel->findUserByEmail($data['username_email']) || 
+                    $this->userModel->findUserByUsername($data['username_email']))) {
+                $data['username_email_error'] = 'No user found';
+            }
             return $data;
         }
 

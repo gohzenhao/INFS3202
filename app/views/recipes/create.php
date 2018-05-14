@@ -10,10 +10,11 @@
             <form class="col" action="<?php echo URLROOT; ?>/recipes/create" method="POST" enctype="multipart/form-data">
                 <div class="row mb-3">
                     <div class="col-5">
-                        <label for="profilePicture">Recipe Picture: </label>
+                        <label for="imgPreview">Recipe Picture: </label>
                         <div class="previewPic m-auto">
-                            <input name="profilePicture" type="file" accept="image/jpeg, image/png">
+                            <input name="imgPreview" type="file" accept="image/jpeg, image/png">
                         </div>
+                        <small class="" style="color: #dc3545;"><?php echo $data['img_error'] ?></small>
                     </div>
                     <div class="col-7">
                         <div class="row form-group">
@@ -52,7 +53,7 @@
                         <li class="form-group ingredient">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend drag-me"><span class="input-group-text fa fa-bars"></span></div>
-                                <input class="form-control" name="ingredients[]" type="text" placeholder="Enter ingredient and amount">
+                                <input class="ingredient-input form-control" name="ingredients[]" type="text" placeholder="Enter ingredient and amount">
                                 <div class="input-group-append"><button class="input-group-text btn btn-danger remove-me">X</button></div>
                             </div>
                         </li>
@@ -76,7 +77,7 @@
                                     </div>
                                 </div> -->
 
-                                <textarea class="form-control" name="directions[]" rows="4"></textarea>
+                                <textarea class="direction-input form-control" name="directions[]" rows="4"></textarea>
                                 <div class="input-group-append"><button class="input-group-text btn btn-danger remove-me">X</button></div>
                             </div>
                         </li>

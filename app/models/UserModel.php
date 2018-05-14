@@ -12,7 +12,8 @@
 
         /**
          * Inserts a new user into the database
-         * return: true on success, false on fail
+         * 
+         * @return: true on success, false on fail
          */
         public function registerUser($data) {
             // Prepare sql query
@@ -32,7 +33,8 @@
 
         /**
          * Login in a user via username or email
-         * return: user data row from sql on success, false on fail
+         * 
+         * @return: user data row from sql on success, false on fail
          */
         public function login($username, $password) {
             $this->db->query('SELECT * FROM users WHERE user_email = :email OR user_username = :username');
@@ -51,7 +53,8 @@
 
         /**
          * Find user by email
-         * return: boolean
+         * 
+         * @return: boolean
          */
         public function findUserByEmail($email) {
             $this->db->query('SELECT * FROM users WHERE user_email = :email');
@@ -68,7 +71,8 @@
 
         /**
          * Find user by username
-         * return: boolean
+         * 
+         * @return: boolean
          */
         public function findUserByUsername($username) {
             $this->db->query('SELECT * FROM users WHERE user_username = :username');
