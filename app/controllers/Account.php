@@ -21,14 +21,40 @@
 		 */
 		public function index(){
 
-			$result = $this->accountModel->getRecipes();
-			$result = (array)$result;
-			$data = [
-				'name' => $_SESSION['user_name'],
-				'recipes' => $result
-			];
 
-			$this->view('account/index', $data);
+			$uri = $_SERVER['REQUEST_URI'];
+			$category = substr($uri,strpos($uri,'?')+1);
+
+
+
+			if(strpos($category,'delete')!==false){
+				$recipeID =(int) substr($category,strpos($category,'=')+1);
+				$result = $this->accountModel->deleteRecipe($recipeID);
+				if($result){
+					flash('delete_success', "Recipe deleted!");
+					redirect("account/index");
+				}
+				else{
+					echo 'boo';
+				}
+			}
+			else{
+				$result = $this->accountModel->getRecipes();
+				$result = (array)$result;
+				
+				$data = [
+					'name' => $_SESSION['user_name'],
+					'recipes' => $result,
+					'uri' => $uri,
+					'category' => $category,
+					// 'truth' =>$truth,
+					// 'number' =>$number
+				];
+
+				$this->view('account/index', $data);
+
+			}
+
 		}
 
 		/**
