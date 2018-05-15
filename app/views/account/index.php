@@ -5,6 +5,7 @@
 
       <h1>Welcome <?php echo $data['name']?> to your Account page</h1>
       <?php flash('update_success'); ?>
+      <?php flash('delete_success'); ?>
       <a class="btn btn-warning" href="<?php echo URLROOT; ?>/account/edit" role="button">Edit Account</a>
 
       <a class="btn btn-light" href="<?php echo URLROOT; ?>/recipes/create" role="button">Create new recipe</a>
@@ -33,7 +34,7 @@
                   </div>
                     <div class="card-body">
                       <a href="#" class="card-link">edit recipe</a>
-                      <a href="#" class="card-link">delete recipe</a>
+                      <a href="'.URLROOT.'/account/index?delete='. $recipe['rid'] .'" class="card-link">delete recipe</a>
                     </div>
                 </div>
               </div>
@@ -42,6 +43,12 @@
           ?>
 
 
+      </div>
+      <div>
+        <p>
+          <?php echo $data['uri']; ?>
+          <?php echo $data['category']; ?>
+        </p>
       </div>
     </div>
   </div>

@@ -49,6 +49,18 @@ class AccountModel {
 		return $row;
 	}
 
+	public function deleteRecipe($rid){
+		$this->db->query("DELETE FROM recipes WHERE rid= :rid");
+		$this->db->bind(":rid",$rid);
+
+		if($this->db->execute()){
+			return true;
+		}else{
+			return false;
+		}
+		}
+
+
 
 
 
