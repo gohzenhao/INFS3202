@@ -154,6 +154,8 @@ class RecipesModel {
      * - image path for preview image
      * - list of ingredients
      * - list of directions
+     * 
+     * TODO: fetch ownerid's username
      *
      * @param: recipe id to fetch
      * @return: all data of recipe as associative stdClass Object
