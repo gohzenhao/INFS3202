@@ -82,12 +82,16 @@
                 <hr/>
                 <div class="row mb-3">
                   <div class="col form-group form-inline">
-                    <h2>Have a Youtube video to share?</h2>
+                    <h3 class="col-12">Have a video on how to follow your recipe?</h3>
                       <label for="youtubeLink" class="pr-2"> Youtube link : </label>
-                      <input name="youtubeLink" type="text" placeholder="Paste URL here" class="w-50 form-control form-control-sm">
+                      <input id="youtubeLink" name="youtubeLink" type="text" placeholder="Paste URL here" class="w-50 form-control form-control-sm">
                       <span class="invalid-feedback"><?php echo $data['link_error'] ?></span>
                   </div>
+
                 </div>
+                <!-- <div>
+                  <iframe id="videoObject" type="text/html" width="500" height="265" frameborder="0" allowfullscreen></iframe>
+                </div> -->
 
                 <!-- Submit -->
                 <div class="row">
@@ -103,3 +107,20 @@
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/recipes/create.css">
 
 <script src="<?php echo URLROOT; ?>/js/recipes/create.js"></script>
+<!-- <script>
+function validateYouTubeUrl() {
+    var url = $('#youtubeLink').val();
+    if (url != undefined || url != '') {
+        var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
+        var match = url.match(regExp);
+        if (match && match[2].length == 11) {
+            // Do anything for being valid
+            // if need to change the url to embed url then use below line
+            $('#videoObject').attr('src', 'https://www.youtube.com/embed/' + match[2] + '?autoplay=1&enablejsapi=1');
+        } else {
+            alert('not valid');
+            // Do anything for not being valid
+        }
+    }
+}
+</script> -->

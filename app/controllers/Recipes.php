@@ -185,18 +185,6 @@
 			}
 			return '';
 		}
-		// private function validateYouTubeUrl($link) {
-		//
-		// 	if (!eq($url, $undefined) || !eq($url, "")) {
-	  //   $regExp = new RegExp("^.*(youtu.be/|v/|u/\\w/|embed/|watch\\?v=|\\&v=|\\?v=)([^#\\&\\?]*).*", "");
-	  //   $match = call_method($url, "match", $regExp);
-	  //   if (is($match) && eq(get(get($match, 2.0), "length"), 11.0)) {
-	  //     call_method(call($«24», "#videoObject"), "attr", "src", _concat("https://www.youtube.com/embed/", get($match, 2.0), "?autoplay=1&enablejsapi=1"));
-	  //   } else {
-	  //     call($alert, "not valid");
-	  //   }
-		//
-	  // }
 
 
 		/**
