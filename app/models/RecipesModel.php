@@ -10,7 +10,7 @@ class RecipesModel {
      * Insert a new recipe into database.
      * Performs 3 insert operations on 'recipe', 'ingredients', and
      * 'directions' tables.
-     * 
+     *
      * @param: $data associate array containing all recipe information to upload
      *
      * @return: true if recipe successfully added, false otherwise
@@ -85,11 +85,11 @@ class RecipesModel {
      * Moves image from temporary location into public/img/upload/ directory
      * Image upload names given format 'r{rid}_u{uid}_preview'
      * If no image is provided (size is 0) then return placeholder img path: /img/beef.jpg
-     * 
+     *
      * @param: recipe id of new recipe
      * @param: user id of creator
      * @param: $_FILES['imageName']
-     * 
+     *
      * @return: String path to image upload location
      *          empty string on error
      */
@@ -100,7 +100,7 @@ class RecipesModel {
             $uploadName = 'r'.$rid.'_u'.$uid.'_preview.'.$extension;
             $uploadPath = '/img/upload/'.$uploadName;
             if(!file_exists($uploadPath)) {
-                move_uploaded_file($imgTemp['tmp_name'], $_SERVER['DOCUMENT_ROOT'].'/infs3202project/public'.$uploadPath);
+                move_uploaded_file($imgTemp['tmp_name'], $_SERVER['DOCUMENT_ROOT'].'/TheRecipesProject/public'.$uploadPath);
                 return $uploadPath;
             }
         }
@@ -115,7 +115,7 @@ class RecipesModel {
      *
      * @param: rid
      * @param: non-associative array of ingredients
-     * 
+     *
      * @return: array containing query values template
      */
     private function getIngredientsQueries($rid, $ingredients) {
@@ -131,9 +131,9 @@ class RecipesModel {
      * Each element follows format: '(rid, x, :valuex)'
      * where x increments from 1 to number of directions
      *
-     * @param: rid 
+     * @param: rid
      * @param: non-associative array of directions
-     * 
+     *
      * @return: array containing query values template
      */
     private function getDirectionsQueries($rid, $directions) {
@@ -210,7 +210,7 @@ class RecipesModel {
 
     /**
      * Returns all comments on recipe given by recipe id
-     * 
+     *
      * @return: associative object
      */
     public function getAllComments($rid) {
@@ -221,9 +221,9 @@ class RecipesModel {
 
     /**
      * Adds new comment to comments table
-     * 
+     *
      * @param: $data containing rid, comment, rating in an associative array
-     * 
+     *
      * @return: false on PDOException, comment as result
      */
     public function addNewComment($data){
