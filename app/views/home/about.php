@@ -9,6 +9,20 @@
     <a class="btn btn-primary" href="<?php echo URLROOT; ?>/users/login" role="button">Login</a>
 </div>
 
+<div class="row">
+	<form action="<?php echo URLROOT; ?>/home/about" method="POST">
+		<div class="form-group">
+			<label>Subject</label>
+			<input type="text" name="subject" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>Body</label>
+			<input type="text" name="body" class="form-control">
+		</div>
+		<input type="submit" value="Send" class="btn btn-success btn-block">
+	</form>
+</div>
+
 
 
 <?php require APPROOT . '/views/includes/footer.php'; ?>
