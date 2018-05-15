@@ -2,7 +2,9 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require_once $_SERVER['DOCUMENT_ROOT'].'/infs3202project/public/vendor/autoload.php';
+//require_once $_SERVER['DOCUMENT_ROOT'].'/infs3202project/public/vendor/autoload.php';
+require_once dirname(APPROOT).'/public/vendor/autoload.php';
+
 	/**
 	 * Default and main page controller.
 	 * Views are located in /views/home/ folder
