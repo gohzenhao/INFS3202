@@ -163,7 +163,18 @@
 			$data['img_error'] = $this->checkImageUpload($_FILES['imgPreview']);
 
 			//Check youtube link
-			// $data['link_error'] = $this->validateYouTubeUrl($data['link']);
+			$pattern = '/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/';
+			$url = $data['link'];
+			if(!empty($data['link'])){
+				if(preg_match($pattern,$url,$matches)){
+
+					$data['link'] = $matches[2];
+
+				}
+				else{
+					$data['link_error'] = 'Please enter a valid Youtube link';
+				}
+			}
 
 			return $data;
 		}
