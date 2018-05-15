@@ -80,6 +80,14 @@
                     <button class="direction-add-more btn btn-primary col-12">Add another step</button>
                 </div>
                 <hr/>
+                <div class="row mb-3">
+                  <div class="col form-group form-inline">
+                    <h2>Have a Youtube video to share?</h2>
+                      <label for="youtubeLink" class="pr-2"> Youtube link : </label>
+                      <input name="youtubeLink" type="text" placeholder="Paste URL here" class="w-50 form-control form-control-sm">
+                      <span class="invalid-feedback"><?php echo $data['link_error'] ?></span>
+                  </div>
+                </div>
 
                 <!-- Submit -->
                 <div class="row">

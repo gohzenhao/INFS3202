@@ -27,7 +27,7 @@ class RecipesModel {
         $imgPath = $this->uploadImage($newRecipeID, $data['uid'], $data['img']);
 
         // Prepare sql query for new recipe entry
-        $this->db->query('INSERT INTO recipes (rid,title,ownerid,description,prepTime,servingSize,imagePath) VALUES(:rid,:title,:uid,:description,:prepTime,:servingSize,:imagePath);');
+        $this->db->query('INSERT INTO recipes (rid,title,ownerid,description,prepTime,servingSize,imagePath,link) VALUES(:rid,:title,:uid,:description,:prepTime,:servingSize,:imagePath,:link);');
         // Bind values for prepared statement
         $this->db->bind(':rid', $newRecipeID);
         $this->db->bind(':uid', $data['uid']);
@@ -36,6 +36,7 @@ class RecipesModel {
         $this->db->bind(':prepTime', $data['prepTime']);
         $this->db->bind(':servingSize', $data['servingSize']);
         $this->db->bind(':imagePath', $imgPath);
+        $this->db->bind(':link',$data['link']);
         // Execute query
         try {
             $this->db->execute();

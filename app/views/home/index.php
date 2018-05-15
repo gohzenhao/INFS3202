@@ -375,7 +375,6 @@
     </div>
 </div>
 
-
 </div><!-- Close container -->
 
 <?php require APPROOT . '/views/includes/footer.php'; ?>

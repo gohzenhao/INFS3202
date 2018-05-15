@@ -37,7 +37,7 @@
 				if(empty($data['title_error']) && empty($data['description_error']) &&
 						empty($data['prepTime_error']) && empty($data['servingSize_error']) &&
 						empty($data['ingredients_error']) && empty($data['directions_error']) &&
-						empty($data['img_error']) ){
+						empty($data['img_error']) && empty($data['link_error']) ){
 					// Upload image
 					$data['img'] = $_FILES['imgPreview'];
 					// Append user id to upload data
@@ -63,6 +63,7 @@
 					'servingSize' => '',
 					'ingredients' => '',
 					'directions' => '',
+					'link' => '',
 
 					'title_error' => '',
 					'description_error' => '',
@@ -70,7 +71,8 @@
 					'servingSize_error' => '',
 					'ingredients_error' => '',
 					'directions_error' => '',
-					'img_error' => ''
+					'img_error' => '',
+					'link_error' => ''
 				];
 				$this->view('recipes/create', $data);
 			}
@@ -78,7 +80,7 @@
 
 		/**
 		 * Sanitizes to avoid form injection in recipe creation page
-		 * 
+		 *
 		 * @return: $data
 		 */
 		private function sanitizeInput() {
@@ -92,20 +94,22 @@
 				'servingSize' => trim($_POST['servingSize']),
 				'ingredients' => $_POST['ingredients'],
 				'directions' => $_POST['directions'],
+				'link' => $_POST['youtubeLink'],
                 'title_error' => '',
                 'description_error' => '',
                 'prepTime_error' => '',
 				'servingSize_error' => '',
 				'ingredients_error' => '',
 				'directions_error' => '',
-				'img_error' => ''
+				'img_error' => '',
+				'link_error' => ''
             ];
             return $data;
 		}
 
 		/**
 		 * Verifies input data from recipes create form and assigns error message if any required
-		 * 
+		 *
 		 * @return: $data for form data with error messages
 		 */
 		private function validateCreateRecipe() {
@@ -158,16 +162,19 @@
 			// Check image upload
 			$data['img_error'] = $this->checkImageUpload($_FILES['imgPreview']);
 
+			//Check youtube link
+			// $data['link_error'] = $this->validateYouTubeUrl($data['link']);
+
 			return $data;
 		}
 
 		/**
 		 * Checks image for:
 		 * 	- size < 2MB
-		 *  - 
+		 *  -
 		 * @param: $_FILES['imageName']
 		 * @return: empty string on valid image OR
-		 * 			string error message 
+		 * 			string error message
 		 */
 		private function checkImageUpload($imgTemp) {
 			if($imgTemp['size'] > 2097152) {
@@ -178,10 +185,23 @@
 			}
 			return '';
 		}
+		// private function validateYouTubeUrl($link) {
+		//
+		// 	if (!eq($url, $undefined) || !eq($url, "")) {
+	  //   $regExp = new RegExp("^.*(youtu.be/|v/|u/\\w/|embed/|watch\\?v=|\\&v=|\\?v=)([^#\\&\\?]*).*", "");
+	  //   $match = call_method($url, "match", $regExp);
+	  //   if (is($match) && eq(get(get($match, 2.0), "length"), 11.0)) {
+	  //     call_method(call($«24», "#videoObject"), "attr", "src", _concat("https://www.youtube.com/embed/", get($match, 2.0), "?autoplay=1&enablejsapi=1"));
+	  //   } else {
+	  //     call($alert, "not valid");
+	  //   }
+		//
+	  // }
+
 
 		/**
 		 * Displays recipe based on recipe id, if none is provided, redirect to recipe/search page
-		 * 
+		 *
 		 * If user is not logged in do not display comments section
 		 */
 		public function display($recipeID = null) {
@@ -211,7 +231,8 @@
 				'imagePath' => $recipeData->imagePath,
 				'ingredients' => $recipeData->ingredients,
 				'directions' => $recipeData->directions,
-				'comments' => $comments
+				'comments' => $comments,
+				'link' => $recipeData->link
 			];
 
 			$this->view('recipes/display', $data);
