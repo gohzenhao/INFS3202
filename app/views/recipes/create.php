@@ -50,7 +50,7 @@
                 <div class="row mb-3">
                     <label class="col-12" for="ingredients">Ingredients: </label>
                     <ul class="col-5 ingredients <?php echo (!empty($data['ingredients_error'])) ? 'form-control is-invalid' : ''; ?>">
-                        <li class="form-group ingredient">
+                        <li class="form-group">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend drag-me"><span class="input-group-text fa fa-bars"></span></div>
                                 <input class="ingredient-input form-control" name="ingredients[]" type="text" placeholder="Enter ingredient and amount">
@@ -67,16 +67,10 @@
                 <div class="row mb-3">
                     <label class="col-12" for="directions">Directions: </label>
                     <ol class="col-8 directions <?php echo (!empty($data['directions_error'])) ? 'form-control is-invalid' : ''; ?>">
-                        <li class="form-group direction">
+                        <li class="form-group">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend drag-me center"><span class="input-group-text fa fa-bars"></span></div>
-                                <!-- TODO: insert upload image -->
-                                <!-- <div class="border border-primary col-6">
-                                    <div class="imgContainer1 m-auto">
-                                        <input name="dImg1" type="file" accept="image/jpeg, image/png">
-                                    </div>
-                                </div> -->
-
+                                <!-- TODO: add upload image option -->
                                 <textarea class="direction-input form-control" name="directions[]" rows="4"></textarea>
                                 <div class="input-group-append"><button class="input-group-text btn btn-danger remove-me">X</button></div>
                             </div>

@@ -13,8 +13,9 @@
                 <!-- Recipe Preview Image -->
                 <div class="col-5">
                     <h5 class="row">Recipe Picture: </h5>
-                    <div class="m-auto">
-                        <img src="<?php echo URLROOT?>/img/beef.jpg" alt="Recipe Preview Image Here">
+                    <div class="m-auto" >
+                    <img src="<?php echo URLROOT.$data['imagePath']?>" class="px-3 img-fluid" style="object-fit:cover;height: 200px; max-width: 90%;" alt="Recipe Preview Image Here">
+                    <!-- <img src="<?php //echo URLROOT.$data['imagePath']?>" style="object-fit:cover;height: 200px; max-width: 90%;" alt="Recipe Preview Image Here"> -->
                     </div>
                 </div>
 
@@ -86,7 +87,7 @@
                     <textarea id="commentText" class="w-100 form-control" name="comment" rows="3" type="text"></textarea>
                     <div class="invalid-feedback">Please enter a comment</div>
                 </div>
-
+                
                 <div class="row mb-2">
                     <label>Rating:</label>
                     <div id="ratingRadios" class="col-lg-12 form-check form-control">
@@ -125,8 +126,8 @@
                     <small class="card-subtitle text-muted">Date: </small>
                 </div>
             </div> -->
-
-            <?php
+        
+            <?php 
                 foreach($data['comments'] as $comment) {
                     echo '<div class="card mb-3">
                             <div class="card-body">
@@ -137,10 +138,10 @@
                             </div>
                         </div>';
                 }
-
-
+                
+                
             ?>
-
+        
         </div>
 
     </div>
