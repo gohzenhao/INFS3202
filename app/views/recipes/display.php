@@ -71,6 +71,19 @@
                 </ol>
             </div>
 
+            <!-- Youtube Video -->
+            <?php
+            if(!empty($data['link'])){
+            echo '
+            <div class="row mb-3">
+                <h5 class="w-100">Video for reference </h5>
+                <ol class="col-8 directions">
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/' . $data['link'] .'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </ol>
+            </div>';
+          }
+            ?>
+
         </div>
     </div><!-- End of Recipe Information container -->
 
@@ -87,7 +100,7 @@
                     <textarea id="commentText" class="w-100 form-control" name="comment" rows="3" type="text"></textarea>
                     <div class="invalid-feedback">Please enter a comment</div>
                 </div>
-                
+
                 <div class="row mb-2">
                     <label>Rating:</label>
                     <div id="ratingRadios" class="col-lg-12 form-check form-control">
@@ -126,8 +139,8 @@
                     <small class="card-subtitle text-muted">Date: </small>
                 </div>
             </div> -->
-        
-            <?php 
+
+            <?php
                 foreach($data['comments'] as $comment) {
                     echo '<div class="card mb-3">
                             <div class="card-body">
@@ -138,10 +151,10 @@
                             </div>
                         </div>';
                 }
-                
-                
+
+
             ?>
-        
+
         </div>
 
     </div>
