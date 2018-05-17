@@ -38,9 +38,8 @@
 						empty($data['prepTime_error']) && empty($data['servingSize_error']) &&
 						empty($data['ingredients_error']) && empty($data['directions_error']) &&
 						empty($data['img_error']) && empty($data['link_error']) ){
-					// Upload image
+					// Append user id to upload data and Upload image
 					$data['img'] = $_FILES['imgPreview'];
-					// Append user id to upload data
 					$data['uid'] = $_SESSION['user_id'];
 					// Upload recipe to database
 					if($this->recipesModel->createNewRecipe($data)) {

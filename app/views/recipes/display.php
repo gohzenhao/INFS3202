@@ -72,17 +72,14 @@
             </div>
 
             <!-- Youtube Video -->
-            <?php
-            if(!empty($data['link'])){
-            echo '
-            <div class="row mb-3">
-                <h5 class="w-100">Video for reference </h5>
-                <ol class="col-8 directions">
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/' . $data['link'] .'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                </ol>
-            </div>';
-          }
-            ?>
+            <?php if(!empty($data['link'])) : ?>
+                <div class="row mb-3">
+                    <h5 class="w-100">Video for reference </h5>
+                    <ol class="col-8 directions">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $data['link']; ?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </ol>
+                </div>
+            <?php endif; ?>
 
         </div>
     </div><!-- End of Recipe Information container -->

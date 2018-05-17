@@ -36,7 +36,7 @@ class RecipesModel {
         $this->db->bind(':prepTime', $data['prepTime']);
         $this->db->bind(':servingSize', $data['servingSize']);
         $this->db->bind(':imagePath', $imgPath);
-        $this->db->bind(':link',$data['link']);
+        $this->db->bind(':link', $data['link']);
         // Execute query
         try {
             $this->db->execute();
