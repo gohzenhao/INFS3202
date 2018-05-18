@@ -4,24 +4,14 @@
 			$this->recipesModel = $this->model('RecipesModel');
 		}
 
-		/**
-		 * Loads the view recipes page by default, displays a search results page
-		 */
-		public function index(){
-			$recipes = $this->recipesModel->getAllRecipes();
-
-			$data = [
-				'title' => 'Welcome Search Recipe Page!',
-				'recipes' => $recipes
-			];
-
-			$this->view('recipes/search', $data);
-        }
+		public function index() {
+			redirect('recipes/create');
+		}
 
 		/**
+		 * Create new recipe recipe page
 		 * Handles both loading form page for users to create a new recipe as well
 		 * as submitting recipe form data via POST method.
-		 *
 		 */
         public function create() {
 			// Check if logged in
@@ -43,8 +33,8 @@
 					$data['uid'] = $_SESSION['user_id'];
 					// Upload recipe to database
 					if($this->recipesModel->createNewRecipe($data)) {
-						// TODO: show recipe? or return to account page?
-						redirect('recipes/index');
+						// Return to account page
+						redirect('account');
 					} else {
 						// PDOException was thrown
 						$this->view('recipes/create', $data);

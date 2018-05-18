@@ -7,7 +7,7 @@
         </div>
 
         <div class="row">
-            <form class="col" action="<?php echo URLROOT; ?>/recipes/create" method="POST" enctype="multipart/form-data">
+            <form class="col" action="<?php echo URLROOT; ?>/recipes/index" method="POST" enctype="multipart/form-data">
                 <div class="row mb-3">
                     <div class="col-5">
                         <label for="imgPreview">Recipe Picture: </label>

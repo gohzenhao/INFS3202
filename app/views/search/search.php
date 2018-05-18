@@ -1,31 +1,34 @@
 <?php require APPROOT . '/views/includes/header.php'; ?>
 
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/recipes/search.css">
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/search/search.css">
 
     <div class="container">
         <h1><?php echo $data['title']?></h1>
         <h3>Display search results of recipes here</h3>
 
         <!-- Search bar -->
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search for...">
-            <span class="input-group-btn">
-                <button class="btn btn-primary" type="button">
-                    <div class="row">
-                        <div class="col-lg-1">
+        <form action="<?php echo URLROOT; ?>/search" method="GET" >
+            <div class="input-group mb-3">
+                <input name="query" type="text" class="form-control" placeholder="Search for..." value="<?php echo $data['query'] ?>">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit">
+                        <div class="row">
+                            <div class="col-lg-1">
+                            </div>
+                            <div class="col-lg-2">
+                                <i class="material-icons">search</i>
+                            </div>
+                            <div class="col-lg-1">
+                                Search
+                            </div>
+                            <div class="col-lg-1">
+                            </div>
                         </div>
-                        <div class="col-lg-2">
-                            <i class="material-icons">search</i>
-                        </div>
-                        <div class="col-lg-1">
-                            Search
-                        </div>
-                        <div class="col-lg-1">
-                        </div>
-                    </div>
-                </button>
-            </span>
-        </div><!-- /input-group -->
+                    </button>
+                </span>
+            </div>
+        </form>
+        
 
         <div class="list-group">
             <?php

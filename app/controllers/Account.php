@@ -1,6 +1,6 @@
 <?php
 	/**
-	 *
+	 * TODO
 	 */
 	class Account extends Controller{
 
@@ -17,15 +17,11 @@
 		}
 
 		/**
-		 *
+		 * TODO: documentaion and comments
 		 */
 		public function index(){
-
-
 			$uri = $_SERVER['REQUEST_URI'];
 			$category = substr($uri,strpos($uri,'?')+1);
-
-
 
 			if(strpos($category,'delete')!==false){
 				$recipeID =(int) substr($category,strpos($category,'=')+1);
@@ -58,7 +54,7 @@
 		}
 
 		/**
-		 *
+		 * TODO: docs and comments
 		 */
 		public function edit(){
 			if($_SERVER['REQUEST_METHOD'] == 'POST'){

@@ -212,6 +212,20 @@ class RecipesModel {
     }
 
     /**
+     * Returns recipes containing keywords specified by query string
+     * 
+     * @param: query string keyword(s)
+     * @return: associative object
+     */
+    public function searchRecipes($query) {
+        $query = '%'.$query.'%';
+        $this->db->query('SELECT * FROM recipes WHERE ( title LIKE ? OR description LIKE ? )');
+        $this->db->bind(1, $query);
+        $this->db->bind(2, $query);
+        return $this->db->resultSet();
+    }
+
+    /**
      * Returns all comments on recipe given by recipe id
      *
      * @return: associative object
