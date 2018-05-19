@@ -67,7 +67,8 @@ class AccountModel {
 		$this->db->bind(":rid", $rid);
 
 		if($this->db->execute()){
-			unlink($_SERVER['DOCUMENT_ROOT'].'/infs3202project/public'.$target->imagePath);
+			// unlink($_SERVER['DOCUMENT_ROOT'].'/infs3202project/public'.$target->imagePath);
+			unlink(dirname(APPROOT) . '/public' . $target->imagePath);
 			// return true;
 		}else{
 			return false;

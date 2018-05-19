@@ -101,7 +101,8 @@ class RecipesModel {
             $uploadName = 'r'.$rid.'_u'.$uid.'_preview.'.$extension;
             $uploadPath = '/img/upload/'.$uploadName;
             if(!file_exists($uploadPath)) {
-                move_uploaded_file($imgTemp['tmp_name'], $_SERVER['DOCUMENT_ROOT'].'/infs3202project/public'.$uploadPath);
+                // move_uploaded_file($imgTemp['tmp_name'], $_SERVER['DOCUMENT_ROOT'].'/infs3202project/public'.$uploadPath);
+                move_uploaded_file($imgTemp['tmp_name'], dirname(APPROOT) . '/public'.$uploadPath);
                 return $uploadPath;
             }
         }
