@@ -212,7 +212,7 @@ class RecipesModel {
     }
 
     /**
-     * Returns recipes containing keywords specified by query string
+     * Returns recipes title and description containing keywords specified by query string
      * 
      * @param: query string keyword(s)
      * @return: associative object
@@ -222,6 +222,19 @@ class RecipesModel {
         $this->db->query('SELECT * FROM recipes WHERE ( title LIKE ? OR description LIKE ? )');
         $this->db->bind(1, $query);
         $this->db->bind(2, $query);
+        return $this->db->resultSet();
+    }
+
+    /**
+     * Returns recipes title only for keywords specified by query string
+     * 
+     * @param: query string keyword(s)
+     * @return: associative object
+     */
+    public function searchRecipesTitle($query) {
+        $query = '%'.$query.'%';
+        $this->db->query('SELECT * FROM recipes WHERE ( title LIKE ? )');
+        $this->db->bind(1, $query);
         return $this->db->resultSet();
     }
 

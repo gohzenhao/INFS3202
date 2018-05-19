@@ -12,7 +12,6 @@
             if(isset($_GET['query'])) {
                 $_GET = filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
                 $query = trim($_GET['query']);
-                echo 'query: ' . $query . '</br>';
 
                 $recipes = $this->recipesModel->searchRecipes($query);
 

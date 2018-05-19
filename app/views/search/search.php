@@ -7,29 +7,24 @@
         <h3>Display search results of recipes here</h3>
 
         <!-- Search bar -->
-        <form action="<?php echo URLROOT; ?>/search" method="GET" >
+        <form action="<?php echo URLROOT;?>/search" method="GET">
             <div class="input-group mb-3">
-                <input name="query" type="text" class="form-control" placeholder="Search for..." value="<?php echo $data['query'] ?>">
+                <input id="search-bar" name="query" type="text" class="form-control" placeholder="Search for..." value="<?php echo $data['query'] ?>">
                 <span class="input-group-btn">
                     <button class="btn btn-primary" type="submit">
                         <div class="row">
-                            <div class="col-lg-1">
-                            </div>
-                            <div class="col-lg-2">
-                                <i class="material-icons">search</i>
-                            </div>
-                            <div class="col-lg-1">
-                                Search
-                            </div>
-                            <div class="col-lg-1">
-                            </div>
+                            <div class="col-lg-1"></div>
+                            <div class="col-lg-2"><i class="material-icons">search</i></div>
+                            <div class="col-lg-1">Search</div>
+                            <div class="col-lg-1"></div>
                         </div>
                     </button>
                 </span>
             </div>
         </form>
-        
+        <p>Suggestions: <span id="hint"></span></p> 
 
+        <!-- Display output of search -->
         <div class="list-group">
             <?php
                 foreach($data['recipes'] as $item) {
@@ -54,3 +49,5 @@
     </div>
 
 <?php require APPROOT . '/views/includes/footer.php'; ?>
+
+<script src="<?php echo URLROOT; ?>/js/search/search.js"></script>
