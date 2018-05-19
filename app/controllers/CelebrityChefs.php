@@ -8,9 +8,8 @@ class CelebrityChefs extends Controller{
        * TODO: webscrapping gordon ramsey's recipe page for top  recipes
        */
       public function index(){
-            echo 'TODO: celeb chefs  page</br>';
-
             $data = [
+                  'title' => 'Gordon Ramsay\'s Top Recipes',
                   'baseurl' => 'https://www.gordonramsay.com'
             ];
 
@@ -18,11 +17,13 @@ class CelebrityChefs extends Controller{
             $html = file_get_html($data['baseurl'] . '/gr/recipes/');
             $recipesList = $html->find('.recipe');
 
-            // Crawl DOM for extract recipe data
+            // Crawl DOM and extract recipe data
             $topRecipes = [];
             for($i = 0; $i < count($recipesList); $i++) {
                   $item = $recipesList[$i]->find('.summary', 0);
+                  preg_match('#\((.*?)\)#', ($recipesList[$i]->find('.image', 0))->style, $src);
                   $value = [
+                        'src' => $src[1],
                         'href' => $item->find('a', 0)->href,
                         'title' => $item->find('h2',0)->plaintext,
                         'desc' => $item->find('p',0)->plaintext

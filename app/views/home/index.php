@@ -17,6 +17,7 @@
     </div>
     <div class="w-100 mt-1">
         <a class="btn btn-primary" href="<?php echo URLROOT; ?>/chat" role="button">Chat Room</a>
+        <a class="btn btn-primary" href="<?php echo URLROOT; ?>/celebritychefs" role="button">Gordon Ramsay's Recipes</a>
     </div>
 </div>
 
