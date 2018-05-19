@@ -22,7 +22,7 @@
     // Get recipes with title matching query
     $result = $dbModel->searchRecipesTitle($input);
     $elements = [];
-    for ($i = 0; $i < count($result) && $i < 3; $i++) {
+    for ($i = 0; $i < count($result) && $i < 5; $i++) {
         $elements[$i] = $result[$i]->title;
     }
 

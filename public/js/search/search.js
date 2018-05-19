@@ -1,3 +1,9 @@
+/**
+ * On key up query database for matching similar recipe titles to input in search bar and 
+ * append top 5 suggestions to "Suggestions: " display element
+ * 
+ * TODO: BUG - add escape character '\' before any ' characters from suggestionList[i]
+ */
 $('#search-bar').on('keyup', function(event) {
     var query = this.value;
     console.log(query);
@@ -20,7 +26,8 @@ $('#search-bar').on('keyup', function(event) {
         
             // ERROR: i will go out of bounds
             for (var i in suggestionList) {
-                var element = '<a class="btn btn-link" onclick="fillSearchInput(\'' + suggestionList[i] + '\')">' + suggestionList[i] + '</a>';
+                var element = '<a class="btn" style="text-decoration: underline;color: blue;" onclick="fillSearchInput(\'' + 
+                    suggestionList[i] + '\')">' + suggestionList[i] + '</a>';
                 suggestionHTML.append(element);
             }
             
@@ -28,6 +35,11 @@ $('#search-bar').on('keyup', function(event) {
     });
 });
 
+/**
+ * Fills value of search bar with text
+ * 
+ * @param {String}  
+ */
 function fillSearchInput($text) {
     console.log($text);
     var inputField = $('#search-bar');
