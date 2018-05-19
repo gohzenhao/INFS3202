@@ -11,10 +11,34 @@ html,body{
 }
 
 header.masthead {
-  padding-top: 10rem;
+  padding-top: 20rem;
   padding-bottom: calc(10rem - 56px);
   background-image: url('../img/header2.jpg');
-  background-position: center center;
+  width:100%;
+  height:90%;
+  background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  /* background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("../img/header2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    color: #fff;
+    height: 450px;
+    padding-top: 50px; */
+}
+
+header.featured{
+  padding-top: 20rem;
+  padding-bottom: calc(10rem - 56px);
+  background-image: url('../img/featured_recipe.jpg');
+  width:100%;
+  height:30%;
+  /* background-attachment: fixed; */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   /* background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("../img/header2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -153,7 +177,7 @@ header.masthead {
         height: 400px;
         width: 100%;
        }
-       
+
 .card-body span{
   float:right
 }

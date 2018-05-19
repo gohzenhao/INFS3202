@@ -14,7 +14,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">
-            <a class="navbar-text text-white nav-link dropdown-toggle" data-toggle="dropdown">Welcome <?php echo $_SESSION['user_name'] ?></a>
+            <a class="navbar-text text-white nav-link dropdown-toggle" data-toggle="dropdown" href="#">Welcome <?php echo $_SESSION['user_name'] ?></a>
             <div class="dropdown-menu dropdown-menu">
               <a class="dropdown-item" href="<?php echo URLROOT; ?>/account/edit">Edit profile</a>
               <a class="dropdown-item">Manage recipes</a>

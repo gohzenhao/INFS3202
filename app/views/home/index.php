@@ -1,8 +1,6 @@
 <?php require APPROOT . '/views/includes/header.php'; ?>
 
 
-<div class="container">
-
 <div class="jumbotron text-center">
     <?php flash('logout_success'); ?>
     <h1><?php echo $data['title']?></h1>
@@ -19,7 +17,7 @@
         <a class="btn btn-primary" href="<?php echo URLROOT; ?>/chat" role="button">Chat Room</a>
     </div>
 </div>
-
+<div class="container">
 <div class="row">
     <div class="col-lg-12">
         <nav class="navbar navbar-expand-lg navbar-dark">
@@ -50,6 +48,7 @@
         </div>
         </nav>
     </div>
+</div>
 </div>
 
 
@@ -88,6 +87,23 @@
     </div>
     </div>
 </header>
+
+<!-- featured thumbnails -->
+<div class="container">
+    <div class="row">
+      <div class="col-8-lg">
+        <header class="featured">
+          <div class="container">
+            <p>
+               sdfdsfsdfsdfsdbfsduofbsduoifb
+            </p>
+            <h1>asdfsdfsd</h1>
+          </div>
+        </header>
+      </div>
+    </div>
+</div>
+
 
 <!-- Category thumbnails -->
 <div class="container">
@@ -200,6 +216,9 @@
     </div>
     </div>
 </div>
+
+<div class="container">
+
 
 <!-- featured custom recipes -->
 <div class="row mt-3">
@@ -374,8 +393,9 @@
         </a>
     </div>
 </div>
+</div>
 
-</div><!-- Close container -->
+<!-- </div><!-- Close container --> -->
 
 <?php require APPROOT . '/views/includes/footer.php'; ?>
 

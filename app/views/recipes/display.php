@@ -80,6 +80,7 @@
                 <ol class="col-8 directions">
                   <iframe width="560" height="315" src="https://www.youtube.com/embed/' . $data['link'] .'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </ol>
+                <a href="'.URLROOT.'/recipes/videos?more='. $data['link'] .'">More similar videos</a>
             </div>';
           }
             ?>
