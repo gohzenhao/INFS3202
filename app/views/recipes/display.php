@@ -5,7 +5,7 @@
         <!-- Title of recipe -->
         <div class="py-3 text-center row">
             <h1 class="mx-auto"><?php echo $data['title']?></h1>
-            <a class="btn btn-link" role="button" href="<?php echo URLROOT;?>/pdf/download/<?php echo $data['rid'];?>"><i class="fa fa-print"></i> Print PDF</a> 
+            <a class="btn btn-link" role="button" href="<?php echo URLROOT;?>/pdf/download/<?php echo $data['rid'];?>" target="_blank"><i class="fa fa-print"></i> Print PDF</a> 
         </div>
 
         <div class="col mb-3">

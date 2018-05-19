@@ -5,7 +5,8 @@
 		}
 
 		public function index() {
-			redirect('recipes/create');
+			//TODO: handle index
+			echo 'Error 404: page not found';
 		}
 
 		/**
@@ -35,6 +36,7 @@
 					if($this->recipesModel->createNewRecipe($data)) {
 						// Return to account page
 						redirect('account');
+						print_r($data);
 					} else {
 						// PDOException was thrown
 						$this->view('recipes/create', $data);

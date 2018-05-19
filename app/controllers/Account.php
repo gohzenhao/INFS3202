@@ -19,7 +19,7 @@
 		/**
 		 * TODO: documentaion and comments
 		 */
-		public function index(){
+		public function index() {
 			$uri = $_SERVER['REQUEST_URI'];
 			$category = substr($uri,strpos($uri,'?')+1);
 
@@ -29,8 +29,8 @@
 				if($result){
 					flash('delete_success', "Recipe deleted!");
 					redirect("account/index");
-				}
-				else{
+				} else {
+					//TODO
 					echo 'boo';
 				}
 			}
@@ -42,9 +42,7 @@
 					'name' => $_SESSION['user_name'],
 					'recipes' => $result,
 					'uri' => $uri,
-					'category' => $category,
-					// 'truth' =>$truth,
-					// 'number' =>$number
+					'category' => $category
 				];
 
 				$this->view('account/index', $data);
