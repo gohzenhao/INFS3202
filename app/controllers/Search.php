@@ -21,7 +21,10 @@
                     'recipes' => $recipes
                 ];
 
+                $this->view('includes/header');
                 $this->view('search/search', $data);
+                $this->view('includes/footer');
+                $this->script('search/search');
             } else {
                 $recipes = $this->recipesModel->getAllRecipes();
 
@@ -31,7 +34,10 @@
                     'recipes' => $recipes
                 ];
 
+                $this->view('includes/header');
                 $this->view('search/search', $data);
+                $this->view('includes/footer');
+                $this->script('search/search');
             }
         }
 

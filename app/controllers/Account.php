@@ -1,6 +1,6 @@
 <?php
 	/**
-	 * TODO
+	 * TODO: comments and docs
 	 */
 	class Account extends Controller{
 
@@ -45,8 +45,9 @@
 					'category' => $category
 				];
 
+				$this->view('includes/header');
 				$this->view('account/index', $data);
-
+				$this->view('includes/footer');
 			}
 
 		}
@@ -84,7 +85,9 @@
 					}
 				}else{
 					// Display errors
-					$this->view('account/edit',$data);
+					$this->view('includes/header');
+					$this->view('account/edit', $data);
+					$this->view('includes/footer');
 				}
 
 			}else{
@@ -98,10 +101,16 @@
 					'error_email' => '',
 				];
 
-				$this->view('account/edit',$data);
+				$this->view('includes/header');
+				$this->view('account/edit', $data);
+				$this->view('includes/footer');
 			}
 
 		}
+
+
+		//---------------------------------------- HELPER FUNCTIONS -----------------------------------------//
+
 
 		/**
 		 *

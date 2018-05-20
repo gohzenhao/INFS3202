@@ -1,5 +1,3 @@
-<?php require APPROOT . '/views/includes/header.php'; ?>
-
 <div class="container">
   <div class="row">
     <div class="col-lg-6 mx-auto">
@@ -97,39 +95,6 @@
         <?php
         ?>
 
-
-        <!-- <div class="row">
-          <div class="col">
-            <input type="submit" value="Register" class="btn btn-success btn-block">
-          </div>
-          <div class="col">
-            <a href="<?php //echo URLROOT; ?>/users/login" class="btn btn-light btn-block">Have an account? Login</a>
-          </div>
-        </div> -->
-
-
     </div>
   </div>
 </div>
-
-
-<?php require APPROOT . '/views/includes/footer.php'; ?>
-
-<script>
-  if (jQuery) {
-      console.log('jQuery is loaded');
-  } else {
-    console.log('jQuery is NOT loaded');
-  }
-
-  // Is this what u wanted to do? just add editButton to class of each element
-  $(document).on("click", ".editButton", function (event) {
-    var inputField = $(event.target).prev();
-    console.log(inputField);
-    inputField.prop("disabled", false);
-    inputField.focus();
-    inputField.next().prop("hidden", true);
-    inputField.next().next().prop("hidden", false);
-  });
-
-</script>

@@ -1,6 +1,3 @@
-<?php require APPROOT . '/views/includes/header.php'; ?>
-
-
 <div class="container">
 
 <div class="jumbotron text-center">
@@ -377,7 +374,3 @@
 </div>
 
 </div><!-- Close container -->
-
-<?php require APPROOT . '/views/includes/footer.php'; ?>
-
-<script src="<?php echo URLROOT; ?>/js/home/rating.js"></script>

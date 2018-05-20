@@ -5,7 +5,8 @@
 		}
 
 		/**
-		 * Loads data from model and renders view with model's data as input
+		 * Example page
+		 * DO NOT USE
 		 */
 		public function index(){
 			$users = $this->testModel->getUsers();
@@ -15,6 +16,8 @@
 				'users' => $users
 			];
 
+			$this->view('includes/header');
 			$this->view('example/example', $data);
+			$this->view('includes/footer');
 		}
 	}

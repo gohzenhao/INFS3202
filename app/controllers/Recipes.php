@@ -5,8 +5,51 @@
 		}
 
 		public function index() {
-			//TODO: handle index
+			//TODO: handle index (nicer 404 page)
 			echo 'Error 404: page not found';
+		}
+
+		/**
+		 * Displays recipe based on recipe id, if none is provided, redirect to recipe/search page.
+		 * If user is not logged in do not display comments section.
+		 * 
+		 * @param: recipe id
+		 */
+		public function display($recipeID = null) {
+			// Redirect to recipe search page (default) if no recipe id is provided
+			if($recipeID == null) {
+				redirect('recipes');
+			}
+
+			// Get recipe data
+			$recipeData = $this->recipesModel->getRecipeData($recipeID);
+
+			// If recipe does not exist redirect to search page
+			if($recipeData == null) {
+				redirect('recipes');
+			}
+
+			$comments = $this->recipesModel->getAllComments($recipeID);
+
+			// Display recipe by recipe id
+			$data = [
+				'rid' => $recipeID,
+				'title' => $recipeData->title,
+				'ownerid' => $recipeData->owner_username,
+				'description' => $recipeData->description,
+				'prepTime' => $recipeData->prepTime,
+				'servingSize' => $recipeData->servingSize,
+				'imagePath' => $recipeData->imagePath,
+				'ingredients' => $recipeData->ingredients,
+				'directions' => $recipeData->directions,
+				'comments' => $comments,
+				'link' => $recipeData->link
+			];
+
+			$this->view('includes/header');
+			$this->view('recipes/display', $data);
+			$this->view('includes/footer');
+			$this->script('recipes/comment');
 		}
 
 		/**
@@ -39,12 +82,18 @@
 						print_r($data);
 					} else {
 						// PDOException was thrown
+						$this->view('includes/header');
 						$this->view('recipes/create', $data);
+						$this->view('includes/footer');
+						$this->script('recipes/create');
 					}
 				} else {
 					// Display form with errors
 					// TODO: handle reloading ingredients and directions lists
+					$this->view('includes/header');
 					$this->view('recipes/create', $data);
+					$this->view('includes/footer');
+					$this->script('recipes/create');
 				}
 			}else{
 				$data = [
@@ -65,9 +114,17 @@
 					'img_error' => '',
 					'link_error' => ''
 				];
+				
+				$this->view('includes/header');
 				$this->view('recipes/create', $data);
+				$this->view('includes/footer');
+				$this->script('recipes/create');
 			}
 		}
+
+
+		//---------------------------------------- HELPER FUNCTIONS -----------------------------------------//
+
 
 		/**
 		 * Sanitizes to avoid form injection in recipe creation page
@@ -186,46 +243,6 @@
 				return 'File has an error (Error: '.$imgTemp['error'].')';
 			}
 			return '';
-		}
-
-
-		/**
-		 * Displays recipe based on recipe id, if none is provided, redirect to recipe/search page
-		 *
-		 * If user is not logged in do not display comments section
-		 */
-		public function display($recipeID = null) {
-			// Redirect to recipe search page (default) if no recipe id is provided
-			if($recipeID == null) {
-				redirect('recipes');
-			}
-
-			// Get recipe data
-			$recipeData = $this->recipesModel->getRecipeData($recipeID);
-
-			// If recipe does not exist redirect to search page
-			if($recipeData == null) {
-				redirect('recipes');
-			}
-
-			$comments = $this->recipesModel->getAllComments($recipeID);
-
-			// Display recipe by recipe id
-			$data = [
-				'rid' => $recipeID,
-				'title' => $recipeData->title,
-				'ownerid' => $recipeData->owner_username,
-				'description' => $recipeData->description,
-				'prepTime' => $recipeData->prepTime,
-				'servingSize' => $recipeData->servingSize,
-				'imagePath' => $recipeData->imagePath,
-				'ingredients' => $recipeData->ingredients,
-				'directions' => $recipeData->directions,
-				'comments' => $comments,
-				'link' => $recipeData->link
-			];
-
-			$this->view('recipes/display', $data);
 		}
 
 

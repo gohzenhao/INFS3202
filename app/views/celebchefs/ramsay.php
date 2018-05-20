@@ -1,6 +1,6 @@
 <div class="container">
     <h1 class="mx-auto text-center my-3"><?php echo $data['title']?></h1>
-    <div class="row">
+    <div class="row mb-3">
         <?php foreach($data['list'] as $key=>$value): ?>
             <div class="card col-6 my-2 ">
                 <img class="card-img-top preview-img img-thumbnail" style="object-fit:cover;height: 200px; max-width: 100%;" src="<?php echo $data['baseurl'].$value['src']; ?>" alt="missing image">

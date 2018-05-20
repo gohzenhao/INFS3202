@@ -1,6 +1,3 @@
-<?php require APPROOT . '/views/includes/header.php'; ?>
-
-
 <div class="jumbotron">
     <h1><?php echo $data['title']?></h1>
 
@@ -16,6 +13,3 @@
         <?php endforeach; ?>
     </ul>
 </div>
-
-
-<?php require APPROOT . '/views/includes/footer.php'; ?>

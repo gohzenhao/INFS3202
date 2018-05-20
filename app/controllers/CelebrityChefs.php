@@ -5,7 +5,9 @@ require_once APPROOT.'/helpers/simple_html_dom.php';
 class CelebrityChefs extends Controller{
 
       /**
-       * TODO: webscrapping gordon ramsey's recipe page for top  recipes
+       * Scrape https://www.gordonramsay.com for top recipes
+       * and create preview with external links
+       * 
        */
       public function index(){
             $data = [
