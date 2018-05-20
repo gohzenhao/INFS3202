@@ -109,7 +109,7 @@
     <div class="row">
         <div class="col-lg-12 text-center">
         <h1 class="display-3 text-white">Search all of our 50,000 recipes</h1>
-        <p class="lead text-white">Perfection starts from home</p>
+        <p class="lead text-white">Perfection starts at home</p>
         </div>
     </div>
     <div class="row">
@@ -139,24 +139,26 @@
 </header>
 
 <!-- featured thumbnails -->
-<div class="container">
-    <div class="row">
-      <div class="col-8-lg">
-        <header class="featured">
+
+
+    <div class="container">
+
+        <div class="featured" style="outline:3px solid #fff;outline-offset:-20px">
           <div class="container">
-            <p>
-               sdfdsfsdfsdfsdbfsduofbsduoifb
+            <div style="background-color:orange;width:40%;height:40%;margin-left:2rem;padding:1rem;">
+            <h1>Recipe of the week : Chicken Pad Thai</h1>
+            <p class="lead">
+              By : Bobby Smith
             </p>
-            <h1>asdfsdfsd</h1>
+            </div>
           </div>
-        </header>
-      </div>
+        </div>
     </div>
-</div>
+
 
 
 <!-- Category thumbnails -->
-<div class="container">
+<!-- <div class="container">
 
     <div class="row mt-3" >
     <div class="col-lg-12 text-center">
@@ -265,13 +267,13 @@
         </a>
     </div>
     </div>
-</div>
+</div> -->
 
-<div class="container">
+
 
 
 <!-- featured custom recipes -->
-<div class="row mt-3">
+<div class="row mt-3 pl-4 pr-4">
     <div class="col-lg-12 text-center">
         <h3> <u> Featured custom recipes </u> </h3>
     </div>
@@ -297,7 +299,9 @@
                         </span></h5>
 
 
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                    This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                  </p>
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
                     </div>
@@ -442,7 +446,6 @@
         <span class="sr-only">Next</span> -->
         </a>
     </div>
-</div>
 </div>
 
 <!-- </div><!-- Close container --> -->

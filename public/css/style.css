@@ -45,11 +45,12 @@ header #navbar {
   box-sizing:border-box;
   transition:.5s;
   z-index:1;
+  display:inline-flex;
 
 }
 
 header .container{
-  padding-top:24em;
+  padding-top:22em;
 }
 
 header #navbar a{
@@ -62,12 +63,14 @@ header #navbar a{
 }
 
 header #navbar.black{
-  background:rgba(0,0,0,0.8);
+  background:rgba(255,165,0,0.8);
   height:100px;
   padding: 10px 100px;
 }
 
-header.featured{
+div.featured{
+  margin-top:5rem;
+  margin-bottom:5rem;
   padding-top: 20rem;
   padding-bottom: calc(10rem - 56px);
   background-image: url('../img/featured_recipe.jpg');
