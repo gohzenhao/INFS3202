@@ -116,20 +116,14 @@
 <?php require APPROOT . '/views/includes/footer.php'; ?>
 
 <script>
-  if (jQuery) {
-      console.log('jQuery is loaded');
-  } else {
-    console.log('jQuery is NOT loaded');
-  }
 
-  // Is this what u wanted to do? just add editButton to class of each element
-  $(document).on("click", ".editButton", function (event) {
-    var inputField = $(event.target).prev();
-    console.log(inputField);
-    inputField.prop("disabled", false);
-    inputField.focus();
-    inputField.next().prop("hidden", true);
-    inputField.next().next().prop("hidden", false);
-  });
+$(window).on('scroll',function(){
+  if($(window).scrollTop()) {
+    $('#navbar').addClass('black');
+  }
+  else{
+    $('#navbar').removeClass('black');
+  }
+});
 
 </script>

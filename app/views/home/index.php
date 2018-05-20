@@ -1,7 +1,28 @@
-<?php require APPROOT . '/views/includes/header.php'; ?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title><?php echo SITENAME?></title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="<?php echo URLROOT; ?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- My Own stylesheet -->
+    <link href="<?php echo URLROOT; ?>/vendor/bootstrap/css/header.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+  </head>
+
+  <body>
 
 
-<div class="jumbotron text-center">
+<!-- <div class="jumbotron text-center">
     <?php flash('logout_success'); ?>
     <h1><?php echo $data['title']?></h1>
     <a class="btn btn-secondary" href="<?php echo URLROOT; ?>/home/about" role="button">Empty About</a>
@@ -16,45 +37,74 @@
     <div class="w-100 mt-1">
         <a class="btn btn-primary" href="<?php echo URLROOT; ?>/chat" role="button">Chat Room</a>
     </div>
-</div>
-<div class="container">
-<div class="row">
-    <div class="col-lg-12">
-        <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="#"> Recipes </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="#">Quick & Easy</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="#">Healthy</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="#">Baking</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="#">Entertaining</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="#">Menus</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="#">Fresh</a>
-            </li>
-            </ul>
-        </div>
-        </nav>
-    </div>
-</div>
-</div>
+</div> -->
+
 
 
 <!-- Page Content -->
 
 <header class="masthead">
+  <nav class="navbar navbar-expand-lg mb-2">
+    <div class="row" id="navbar">
+
+      <!-- Logo/title button to return to home page -->
+
+      <a class="navbar-brand mt-3" href="<?php echo URLROOT; ?>/home">The Recipes Project</a>
+
+      <!-- Hamburger button only becomes visible when screen size becomes smaller -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+          aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <?php if(isset($_SESSION['user_id'])) : ?>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="navbar-text text-white nav-link dropdown-toggle" data-toggle="dropdown" href="#">Welcome <?php echo $_SESSION['user_name'] ?></a>
+              <div class="dropdown-menu dropdown-menu">
+                <a class="dropdown-item" href="<?php echo URLROOT; ?>/account/edit">Edit profile</a>
+                <a class="dropdown-item">Manage recipes</a>
+                <!-- <div class="dropdown-divider"></div>
+                <a class="dropdown-item">Logout</a> -->
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+
+      <?php else : ?>
+        <!-- Hamburder collapsable menu -->
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown">Sign In</a>
+              <div class="dropdown-menu dropdown-menu-right" style="width: 400px;">
+                <form class="px-4 py-3" action="<?php echo URLROOT; ?>/users/login" method="POST">
+                  <div class="form-group">
+                    <label for="username_email">Email address</label>
+                    <input type="text" name="username_email" class="form-control" placeholder="E-mail">
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="form-control" placeholder="Password">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Sign in</button>
+                </form>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="<?php echo URLROOT; ?>">Forgot password?</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo URLROOT; ?>/users/registration">Register</a>
+            </li>
+          </ul>
+        </div>
+      <?php endif; ?>
+    </div>
+  </nav>
     <div class="container">
     <div class="row">
         <div class="col-lg-12 text-center">
@@ -400,3 +450,15 @@
 <?php require APPROOT . '/views/includes/footer.php'; ?>
 
 <script src="<?php echo URLROOT; ?>/js/home/rating.js"></script>
+<script>
+
+$(window).on('scroll',function(){
+  if($(window).scrollTop()) {
+    $('#navbar').addClass('black');
+  }
+  else{
+    $('#navbar').removeClass('black');
+  }
+});
+
+</script>
