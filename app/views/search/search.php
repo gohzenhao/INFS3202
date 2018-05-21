@@ -7,12 +7,10 @@
         <div class="input-group mb-3">
             <input id="search-bar" name="query" type="text" class="form-control" placeholder="Search for..." value="<?php echo $data['query'] ?>">
             <span class="input-group-btn">
-                <button class="btn btn-primary" type="submit">
+                <button class="btn btn-primary px-5" type="submit">
                     <div class="row">
-                        <div class="col-lg-1"></div>
                         <div class="col-lg-2"><i class="material-icons">search</i></div>
                         <div class="col-lg-1">Search</div>
-                        <div class="col-lg-1"></div>
                     </div>
                 </button>
             </span>

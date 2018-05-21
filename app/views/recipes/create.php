@@ -78,21 +78,19 @@
                 <span class="invalid-feedback"><?php echo $data['directions_error'] ?></span>
                 <button class="direction-add-more btn btn-primary col-12">Add another step</button>
             </div>
+
             <hr/>
+
+            <!-- Upload youtube link -->
             <div class="row mb-3">
                 <div class="col form-group form-inline">
-                <h3 class="col-12">Have a video on how to follow your recipe?</h3>
-                    <label for="youtubeLink" class="pr-2"> Youtube link : </label>
+                    <h5 class="col-12">Have a video on how to follow your recipe?</h5>
+                    <label for="youtubeLink" class="pr-2"> Youtube link: </label>
                     <input id="youtubeLink" name="youtubeLink" type="text" placeholder="Paste URL here" class="w-50 form-control form-control-sm">
                     <span class="invalid-feedback"><?php echo $data['link_error'] ?></span>
                 </div>
-
             </div>
-            <!-- <div>
-                <iframe id="videoObject" type="text/html" width="500" height="265" frameborder="0" allowfullscreen></iframe>
-            </div> -->
 
-            <!-- Submit -->
             <div class="row">
                 <button class="btn btn-success btn-lg ml-auto mb-5" type="submit">Save</button>
             </div>

@@ -164,46 +164,46 @@
 			// Check input for injections
 			$data = $this->sanitizeInput();
 			// Check for empty input
-			if(empty($data['title'])) {
+			if (empty($data['title'])) {
 				$data['title_error'] = 'Please enter the name of your recipe';
 			}
-			if(empty($data['description'])) {
+			if (empty($data['description'])) {
 				$data['description_error'] = 'Please enter a description of your recipe';
 			}
-			if(empty($data['prepTime'])) {
+			if (empty($data['prepTime'])) {
 				$data['prepTime_error'] = 'Please enter the time taken to prepare';
 			}
-			if(empty($data['servingSize'])) {
+			if (empty($data['servingSize'])) {
 				$data['servingSize_error'] = 'Please enter the serving size';
 			}
 
 			// Check for at least 1 non empty ingredient, max 25 ingredients
 			$hasIngredients = false;
-			for($i = 0; $i < count($data['ingredients']); $i++ ) {
+			for ($i = 0; $i < count($data['ingredients']); $i++ ) {
 				//echo '</br>#'.$i.' = '. $data['ingredients'][$i].'#';
 				if(!empty($data['ingredients'][$i])) {
 					$hasIngredients = true;
 				}
 			}
-			if(!$hasIngredients) {
+			if (!$hasIngredients) {
 				$data['ingredients_error'] = 'Please enter at least 1 ingredient';
 			}
-			if(count($data['ingredients']) > 25) {
+			if (count($data['ingredients']) > 25) {
 				$data['ingredients_error'] = 'Sorry no more than 25 ingredients allowed';
 			}
 
 			// Check for at least 1 non empty step, max 20 steps in directions
 			$hasDirections = false;
-			for($i = 0; $i < count($data['directions']); $i++ ) {
+			for ($i = 0; $i < count($data['directions']); $i++ ) {
 				//echo '</br>#'.$i.' = '. $data['directions'][$i].'#';
 				if(!empty($data['directions'][$i])) {
 					$hasDirections = true;
 				}
 			}
-			if(!$hasDirections) {
+			if (!$hasDirections) {
 				$data['directions_error'] = 'Please enter at least 1 step in directions';
 			}
-			if(count($data['directions']) > 20) {
+			if (count($data['directions']) > 20) {
 				$data['directions_error'] = 'Sorry no more than 20 steps allowed';
 			}
 
@@ -213,13 +213,10 @@
 			//Check youtube link
 			$pattern = '/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/';
 			$url = $data['link'];
-			if(!empty($data['link'])){
-				if(preg_match($pattern,$url,$matches)){
-
+			if (!empty($data['link'])) {
+				if (preg_match($pattern,$url,$matches)) {
 					$data['link'] = $matches[2];
-
-				}
-				else{
+				} else {
 					$data['link_error'] = 'Please enter a valid Youtube link';
 				}
 			}
