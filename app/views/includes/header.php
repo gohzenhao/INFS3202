@@ -22,4 +22,4 @@
   <body>
 
 <?php require APPROOT . '/views/includes/navbar.php'?>
-<div id="container" class="container">
+<!-- <div id="container" class="container"> -->
