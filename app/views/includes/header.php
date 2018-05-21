@@ -9,11 +9,11 @@
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo URLROOT; ?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- My Own stylesheet -->
     <link href="<?php echo URLROOT; ?>/vendor/bootstrap/css/header.css" rel="stylesheet">
+    <!-- My Own stylesheet -->
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css">
 
     <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>

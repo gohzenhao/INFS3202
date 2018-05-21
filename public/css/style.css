@@ -36,7 +36,11 @@ header.masthead {
     padding-top: 50px; */
 }
 
-header #navbar {
+header .container{
+  padding-top:22em;
+}
+
+#navbar {
   margin-bottom:18rem;
   background:rgba(0,0,0,0.3);
   position:fixed;
@@ -51,11 +55,8 @@ header #navbar {
 
 }
 
-header .container{
-  padding-top:22em;
-}
 
-header #navbar a{
+#navbar a{
   text-decoration:none;
   text-transform: uppercase;
   transition: .3s;
@@ -64,7 +65,7 @@ header #navbar a{
   vertical-align:baseline;
 }
 
-header #navbar.black{
+#navbar.black{
   background:rgba(255,165,0,0.8);
   height:100px;
   padding: 10px 100px;
@@ -214,7 +215,7 @@ div.featured{
   height: 400px;
   width: 100%;
 }
-       
+
 .card-body span{
   float:right
 }
@@ -228,4 +229,3 @@ div.featured{
 .input-group-text  {
   background-color:#ccc;
 }
-
