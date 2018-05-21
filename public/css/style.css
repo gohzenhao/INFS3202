@@ -37,13 +37,12 @@ header.masthead {
 }
 
 header .container{
-  padding-top:22em;
+  padding-top:18em;
 }
 
 #navbar {
-  margin-bottom:18rem;
-  background:rgba(0,0,0,0.3);
-  position:fixed;
+  /* margin-bottom:18rem; */
+  background:rgba(255,165,0);
   top:0;
   width:100%;
   height:100px;
@@ -65,14 +64,7 @@ header .container{
   vertical-align:baseline;
 }
 
-#navbar.black{
-  background:rgba(255,165,0,0.8);
-  height:100px;
-  padding: 10px 100px;
-}
-
 div.featured{
-  margin-top:2.5rem;
   margin-bottom:2.5rem;
   padding-top: 20rem;
   padding-bottom: calc(10rem - 56px);

@@ -364,9 +364,8 @@
 </div>
 </div>
 
-<!-- </div><!-- Close container -->
 
-<div class="container mt-2 pt-2 mb-2 pb-2">
+<!-- <div class="container mt-2 pt-2 mb-2 pb-2">
   <div class="row">
       <div class="col-lg-3">
           <a href="#">
@@ -406,20 +405,8 @@
       </div>
   </div>
 
-</div>
+</div> -->
 
 <?php require APPROOT . '/views/includes/footer.php'; ?>
 
 <script src="<?php echo URLROOT; ?>/js/home/rating.js"></script>
-<script>
-
-$(window).on('scroll',function(){
-  if($(window).scrollTop()) {
-    $('#navbar').addClass('black');
-  }
-  else{
-    $('#navbar').removeClass('black');
-  }
-});
-
-</script>
