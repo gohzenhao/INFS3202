@@ -1,9 +1,11 @@
 <!-- Container for displaying recipe information -->
-<div class="container col-lg-8 col-md-10 col-sm-12">
+<div class="container col-lg-10 col-md-12">
     <!-- Title of recipe -->
     <div class="py-3 text-center row">
         <h1 class="mx-auto"><?php echo $data['title']?></h1>
-        <a class="btn btn-link" role="button" href="<?php echo URLROOT;?>/pdf/download/<?php echo $data['rid'];?>" target="_blank"><i class="fa fa-print"></i> Print PDF</a> 
+        <a class="btn btn-link" role="button" href="<?php echo URLROOT;?>/pdf/download/<?php echo $data['rid'];?>" target="_blank">
+            <i class="fa fa-print"></i> Print PDF
+        </a> 
     </div>
 
     <div class="col mb-3">
@@ -42,32 +44,40 @@
                 </div>
             </div>
         </div>
+
         <hr/>
 
-        <!-- Ingredients -->
-        <div class="row mb-3">
-            <h5 class="w-100">Ingredients: </h5>
-            <ul class="col-8 ingredients">
-                <?php
-                    foreach($data['ingredients'] as $item) {
-                        echo '<li><p class="w-100">' . $item['value'] . '</p></li>';
-                    }
-                ?>
-            </ul>
+        <div class="row">
+            <!-- Ingredients -->
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <!-- <div class="row mb-3"> -->
+                    <h5 class="w-100">Ingredients: </h5>
+                    <ul class="ingredients">
+                        <?php
+                            foreach($data['ingredients'] as $item) {
+                                echo '<li><p class="w-100">' . $item['value'] . '</p></li>';
+                            }
+                        ?>
+                    </ul>
+                <!-- </div> -->
+            </div>
+            <hr/>
+            <!-- Directions -->
+            <div class="col-lg-8 col-md-8 ">
+                <!-- <div class="row mb-3"> -->
+                    <h5 class="w-100">Directions: </h5>
+                    <ol class="directions">
+                        <?php
+                            foreach($data['directions'] as $item) {
+                                echo '<li><p class="w-100 my-1">' . $item['description'] . '</p></li>';
+                            }
+                        ?>
+                    </ol>
+                <!-- </div> -->
+            </div>
         </div>
-        <hr/>
 
-        <!-- Directions -->
-        <div class="row mb-3">
-            <h5 class="w-100">Directions: </h5>
-            <ol class="col-8 directions">
-                <?php
-                    foreach($data['directions'] as $item) {
-                        echo '<li><p class="w-100 my-1">' . $item['description'] . '</p></li>';
-                    }
-                ?>
-            </ol>
-        </div>
+        <hr/>
 
         <!-- Youtube Video -->
         <?php if(!empty($data['link'])) : ?>
@@ -124,17 +134,7 @@
     <?php  endif; ?>
 
     <!-- Display Comments below -->
-    <div id="commentsArea" class="col-8 mx-auto">
-
-        <!-- Template -->
-        <!-- <div class="card mb-3">
-            <div class="card-body">
-                <div class="stars-outer"><div class="stars-inner" style="width: 50%;"></div></div>
-                <p class="card-text">Comment: </p>
-                <h6 class="card-title">Author: username </h6>
-                <small class="card-subtitle text-muted">Date: </small>
-            </div>
-        </div> -->
+    <div id="commentsArea" class="col-lg-10 col-md-12 col-sm-12 mx-auto">
 
         <?php
             foreach($data['comments'] as $comment) {
@@ -147,8 +147,6 @@
                         </div>
                     </div>';
             }
-
-
         ?>
 
     </div>

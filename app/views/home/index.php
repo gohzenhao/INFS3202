@@ -1,7 +1,8 @@
 <div class="container">
 
-<div class="jumbotron text-center">
-    <?php flash('logout_success'); ?>
+<?php flash('logout_success'); ?>
+<!-- <div class="jumbotron text-center">
+    
     <h1><?php echo $data['title']?></h1>
     <a class="btn btn-secondary" href="<?php echo URLROOT; ?>/home/about" role="button">Empty About</a>
     <a class="btn btn-primary" href="<?php echo URLROOT; ?>/users/registration" role="button">Register</a>
@@ -16,7 +17,7 @@
         <a class="btn btn-primary" href="<?php echo URLROOT; ?>/chat" role="button">Chat Room</a>
         <a class="btn btn-primary" href="<?php echo URLROOT; ?>/celebritychefs" role="button">Gordon Ramsay's Recipes</a>
     </div>
-</div>
+</div> -->
 
 
 <!-- Page Content -->
