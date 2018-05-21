@@ -27,3 +27,13 @@ for(let rating in ratings){
 }
 
 }
+
+$(window).on('scroll',function(){
+    if($(window).scrollTop()) {
+      $('#navbar').addClass('black');
+    }
+    else{
+      $('#navbar').removeClass('black');
+    }
+  });
+  

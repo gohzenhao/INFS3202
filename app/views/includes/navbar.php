@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+<nav class="navbar navbar-expand-lg mb-2">
   <div class="container">
 
     <!-- Logo/title button to return to home page -->
@@ -14,10 +14,10 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">
-            <a class="navbar-text text-white nav-link dropdown-toggle" data-toggle="dropdown">Welcome <?php echo $_SESSION['user_name'] ?></a>
+            <a class="navbar-text nav-link dropdown-toggle" data-toggle="dropdown" href="#">Welcome <?php echo $_SESSION['user_name'] ?></a>
             <div class="dropdown-menu dropdown-menu">
-              <a class="dropdown-item" href="<?php echo URLROOT; ?>/account/edit">Edit profile</a>
-              <a class="dropdown-item">Manage recipes</a>
+              <a class="dropdown-item" href="<?php echo URLROOT; ?>/account">My Account</a>
+              <a class="dropdown-item" href="<?php echo URLROOT; ?>/account">Create Recipe</a>
               <!-- <div class="dropdown-divider"></div>
               <a class="dropdown-item">Logout</a> -->
             </div>
@@ -56,75 +56,5 @@
         </ul>
       </div>
     <?php endif; ?>
-
-
-      <!-- Modal element for Sign up form -->
-    <!--
-    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="signupModalLabel">TheRecipeProject Registration</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form action="includes/signup.php" method="POST">
-
-              <div class="form-group">
-                <label class="control-label col-lg-4">Name</label>
-                <div class="col-lg-10">
-                  <div class="input-group">
-                    <span class="signup_icon"> <i class="fas fa-user"></i></span>
-                    <input type="text" class="form-control" name="name" id="name" placeholder="Enter your name"/>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="control-label col-lg-4">Email</label>
-                <div class="col-lg-10">
-                  <div class="input-group">
-                    <span class="signup_icon"><i class="fas fa-envelope"></i></span>
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Enter your email"/>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="control-label col-lg-4">Username</label>
-                <div class="col-lg-10">
-                  <div class="input-group">
-                    <span class="signup_icon"><i class="fas fa-users"></i></span>
-                    <input type="text" class="form-control" name="username" id="username" placeholder="Enter your username"/>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="control-label col-lg-4">Password</label>
-                <div class="col-lg-10">
-                  <div class="input-group">
-                    <span class="signup_icon"><i class="fas fa-lock"></i></span>
-                    <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password"/>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="control-label col-lg-8">Confirm Password</label>
-                <div class="col-lg-10">
-                  <div class="input-group">
-                    <span class="signup_icon"><i class="fas fa-lock"></i></span>
-                    <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Enter your password again"/>
-                  </div>
-                </div>
-              </div>
-          </div>
-          <div class="modal-footer mx-auto">
-            <button type="submit" class="btn btn-primary" name="submit">Register</button>
-          </div>
-          </form>
-        </div>
-      </div>
-    </div> -->
-
   </div>
 </nav>

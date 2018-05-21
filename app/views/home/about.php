@@ -5,7 +5,7 @@
     <a class="btn btn-primary" href="<?php echo URLROOT; ?>/users/login" role="button">Login</a>
 </div>
 
-<div class="row">
+<!-- <div class="row">
 	<form action="<?php echo URLROOT; ?>/home/about" method="POST">
 		<div class="form-group">
 			<label>Subject</label>
@@ -17,6 +17,10 @@
 		</div>
 		<input type="submit" value="Send" class="btn btn-success btn-block">
 	</form>
+</div> -->
+
+<div>
+  
 </div>
 
 
