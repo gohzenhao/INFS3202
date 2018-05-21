@@ -71,7 +71,7 @@ class AccountModel {
 		if($this->db->execute()){
 			// Remove image if not placeholder
 			if($target->imagePath != '/upload/placeholder.jpg') {
-				unlink(dirname(APPROOT) . '/public/img/' . $target->imagePath);
+				unlink(dirname(APPROOT) . '/public/img' . $target->imagePath);
 			}
 			return true;
 		}else{
