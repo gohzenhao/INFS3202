@@ -23,4 +23,4 @@
 
 <?php require APPROOT . '/views/includes/navbar.php'?>
 
-<div id="container" class="container-fluid" style="padding-right:0;padding-left:0;">
+<div id="rootContainer" class="container-fluid">

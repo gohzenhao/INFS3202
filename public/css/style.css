@@ -1,14 +1,13 @@
-/* body {
-    background: rgb(230, 230, 230);
-} */
-
+/* Ensures content between Header & Footer takes up whole page */
 html,body{
   height: 100%;
   width: 100%;
 }
 
-#container{
+#rootContainer{
   min-height: 100%;
+  padding-right:0;
+  padding-left:0;
 }
 
 body{
@@ -38,7 +37,6 @@ header.masthead {
 
 
 #navbar {
-  /* margin-bottom:18rem; */
   background:rgba(255,165,0);
   top:0;
   width:100%;

@@ -87,6 +87,8 @@ class RecipesModel {
      * Image upload names given format 'r{rid}_u{uid}_preview'
      * If no image is provided (size is 0) then return placeholder img path: /img/beef.jpg
      *
+     * TODO: upload path - remove /img/upload - should be default
+     * 
      * @param: recipe id of new recipe
      * @param: user id of creator
      * @param: $_FILES['imageName']
@@ -106,7 +108,7 @@ class RecipesModel {
                 return $uploadPath;
             }
         }
-        // Default placeholder image path
+        // Default placeholder image path - TODO: add placeholder into uploads
         return '/img/beef.jpg';;
     }
 

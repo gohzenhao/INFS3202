@@ -52,6 +52,8 @@ class AccountModel {
 	 * Deletes recipe by rid and all ingredients and directions. 
 	 * Also removes file from file system of the uploaded image
 	 * 
+	 * TODO: do not remove if not inside uploads folder
+	 * 
 	 * @param: rid
 	 * 
 	 * @return: true on success
@@ -67,7 +69,6 @@ class AccountModel {
 		$this->db->bind(":rid", $rid);
 
 		if($this->db->execute()){
-			// unlink($_SERVER['DOCUMENT_ROOT'].'/infs3202project/public'.$target->imagePath);
 			unlink(dirname(APPROOT) . '/public' . $target->imagePath);
 			// return true;
 		}else{
