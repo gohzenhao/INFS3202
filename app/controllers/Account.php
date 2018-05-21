@@ -1,6 +1,6 @@
 <?php
 	/**
-	 *
+	 * TODO: comments and docs
 	 */
 	class Account extends Controller{
 
@@ -17,15 +17,11 @@
 		}
 
 		/**
-		 *
+		 * TODO: documentaion and comments
 		 */
-		public function index(){
-
-
+		public function index() {
 			$uri = $_SERVER['REQUEST_URI'];
 			$category = substr($uri,strpos($uri,'?')+1);
-
-
 
 			if(strpos($category,'delete')!==false){
 				$recipeID =(int) substr($category,strpos($category,'=')+1);
@@ -33,8 +29,8 @@
 				if($result){
 					flash('delete_success', "Recipe deleted!");
 					redirect("account/index");
-				}
-				else{
+				} else {
+					//TODO
 					echo 'boo';
 				}
 			}
@@ -46,19 +42,18 @@
 					'name' => $_SESSION['user_name'],
 					'recipes' => $result,
 					'uri' => $uri,
-					'category' => $category,
-					// 'truth' =>$truth,
-					// 'number' =>$number
+					'category' => $category
 				];
 
+				$this->view('includes/header');
 				$this->view('account/index', $data);
-
+				$this->view('includes/footer');
 			}
 
 		}
 
 		/**
-		 *
+		 * TODO: docs and comments
 		 */
 		public function edit(){
 			if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -90,7 +85,9 @@
 					}
 				}else{
 					// Display errors
-					$this->view('account/edit',$data);
+					$this->view('includes/header');
+					$this->view('account/edit', $data);
+					$this->view('includes/footer');
 				}
 
 			}else{
@@ -104,10 +101,16 @@
 					'error_email' => '',
 				];
 
-				$this->view('account/edit',$data);
+				$this->view('includes/header');
+				$this->view('account/edit', $data);
+				$this->view('includes/footer');
 			}
 
 		}
+
+
+		//---------------------------------------- HELPER FUNCTIONS -----------------------------------------//
+
 
 		/**
 		 *

@@ -4,17 +4,17 @@ class AccountModel {
 
 	private $db;
 
-	public function __construct(){
+	public function __construct() {
 		$this->db = new Database();
 	}
 
-	public function getCurrentUser(){
+	public function getCurrentUser() {
 		$this->db->query("SELECT * FROM users WHERE user_name = :username");
-		$this->db->bind(':username',$_SESSION['user_name']);
+		$this->db->bind(':username', $_SESSION['user_name']);
 		return $this->db->single();
 	}
 
-	public function updateProfile($data){
+	public function updateProfile($data) {
 		$this->db->query('UPDATE users SET user_name = :name, user_username = :username,
 			user_email = :email WHERE user_id = :id');
 
@@ -31,42 +31,48 @@ class AccountModel {
 
 	}
 
-	public function findUserByEmail($email){
+	public function findUserByEmail($email) {
 		$this->db->query("SELECT * FROM users WHERE user_email = :email");
-		$this->db->bind(":email",$email);
+		$this->db->bind(":email", $email);
 		$row = $this->db->single();
-		if($this->db->rowCount()>0){
+		if($this->db->rowCount() > 0){
 			return true;
 		}else{
 			return false;
 		}
 	}
 
-	public function getRecipes(){
+	public function getRecipes() {
 		$this->db->query("SELECT * FROM recipes WHERE ownerid = :id");
-		$this->db->bind(":id",$_SESSION['user_id']);
-		$row = $this->db->resultSet(true);
-		return $row;
+		$this->db->bind(":id", $_SESSION['user_id']);
+		return $this->db->resultSet(true);
 	}
 
-	public function deleteRecipe($rid){
-		$this->db->query("DELETE FROM recipes WHERE rid= :rid");
-		$this->db->bind(":rid",$rid);
+	/**
+	 * Deletes recipe by rid and all ingredients and directions. 
+	 * Also removes file from file system of the uploaded image
+	 * 
+	 * @param: rid
+	 * 
+	 * @return: true on success
+	 * @return: false on fail
+	 */
+	public function deleteRecipe($rid) {
+		$this->db->query("SELECT imagePath FROM recipes WHERE rid=:rid");
+		$this->db->bind(":rid", $rid);
+		$target = $this->db->single();
+		print_r( $target->imagePath);
+
+		$this->db->query("DELETE FROM recipes WHERE rid=:rid");
+		$this->db->bind(":rid", $rid);
 
 		if($this->db->execute()){
-			return true;
+			// unlink($_SERVER['DOCUMENT_ROOT'].'/infs3202project/public'.$target->imagePath);
+			unlink(dirname(APPROOT) . '/public' . $target->imagePath);
+			// return true;
 		}else{
 			return false;
 		}
-		}
-
-
-
-
+	}
 
 }
-
-
-
-
- ?>

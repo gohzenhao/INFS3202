@@ -1,28 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title><?php echo SITENAME?></title>
+<div class="container">
 
-    <!-- Bootstrap core CSS -->
-    <link href="<?php echo URLROOT; ?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- My Own stylesheet -->
-    <link href="<?php echo URLROOT; ?>/vendor/bootstrap/css/header.css" rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css">
-
-    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
-  </head>
-
-  <body>
-
-
-<!-- <div class="jumbotron text-center">
+<div class="jumbotron text-center">
     <?php flash('logout_success'); ?>
     <h1><?php echo $data['title']?></h1>
     <a class="btn btn-secondary" href="<?php echo URLROOT; ?>/home/about" role="button">Empty About</a>
@@ -30,86 +8,25 @@
     <a class="btn btn-primary" href="<?php echo URLROOT; ?>/users/login" role="button">Login</a>
     <a class="btn btn-warning" href="<?php echo URLROOT; ?>/account" role="button">Account</a>
     <div class="w-100 mt-1">
-        <a class="btn btn-primary" href="<?php echo URLROOT; ?>/recipes" role="button">Search Recipe</a>
+        <a class="btn btn-primary" href="<?php echo URLROOT; ?>/search" role="button">Search Recipe</a>
         <a class="btn btn-warning" href="<?php echo URLROOT; ?>/recipes/create" role="button">Create Recipe</a>
         <a class="btn btn-warning" href="<?php echo URLROOT; ?>/recipes/display/1" role="button">Display Recipe</a>
     </div>
     <div class="w-100 mt-1">
         <a class="btn btn-primary" href="<?php echo URLROOT; ?>/chat" role="button">Chat Room</a>
+        <a class="btn btn-primary" href="<?php echo URLROOT; ?>/celebritychefs" role="button">Gordon Ramsay's Recipes</a>
     </div>
-</div> -->
-
+</div>
 
 
 <!-- Page Content -->
 
 <header class="masthead">
-  <nav class="navbar navbar-expand-lg mb-2">
-    <div class="row" id="navbar">
-
-      <!-- Logo/title button to return to home page -->
-
-      <a class="navbar-brand mt-3" href="<?php echo URLROOT; ?>/home">The Recipes Project</a>
-
-      <!-- Hamburger button only becomes visible when screen size becomes smaller -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-          aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <?php if(isset($_SESSION['user_id'])) : ?>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown">
-              <a class="navbar-text text-white nav-link dropdown-toggle" data-toggle="dropdown" href="#">Welcome <?php echo $_SESSION['user_name'] ?></a>
-              <div class="dropdown-menu dropdown-menu">
-                <a class="dropdown-item" href="<?php echo URLROOT; ?>/account/edit">Edit profile</a>
-                <a class="dropdown-item">Manage recipes</a>
-                <!-- <div class="dropdown-divider"></div>
-                <a class="dropdown-item">Logout</a> -->
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout">Logout</a>
-            </li>
-          </ul>
-        </div>
-
-      <?php else : ?>
-        <!-- Hamburder collapsable menu -->
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown">Sign In</a>
-              <div class="dropdown-menu dropdown-menu-right" style="width: 400px;">
-                <form class="px-4 py-3" action="<?php echo URLROOT; ?>/users/login" method="POST">
-                  <div class="form-group">
-                    <label for="username_email">Email address</label>
-                    <input type="text" name="username_email" class="form-control" placeholder="E-mail">
-                  </div>
-                  <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" class="form-control" placeholder="Password">
-                  </div>
-                  <button type="submit" class="btn btn-primary">Sign in</button>
-                </form>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="<?php echo URLROOT; ?>">Forgot password?</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo URLROOT; ?>/users/registration">Register</a>
-            </li>
-          </ul>
-        </div>
-      <?php endif; ?>
-    </div>
-  </nav>
     <div class="container">
     <div class="row">
         <div class="col-lg-12 text-center">
-        <h1 class="display-3 text-white">Search all of our 50,000 recipes</h1>
-        <p class="lead text-white">Perfection starts at home</p>
+            <h1 class="display-3 text-white">Search all of our 50,000 recipes</h1>
+            <p class="lead text-white">Perfection starts from home</p>
         </div>
     </div>
     <div class="row">
@@ -117,18 +34,10 @@
         <div class="input-group">
             <input type="text" class="form-control" placeholder="Search for...">
             <span class="input-group-btn">
-            <button class="btn btn-primary" type="button">
+            <button class="btn btn-primary px-5" type="button">
                 <div class="row">
-                <div class="col-lg-1">
-                </div>
-                <div class="col-lg-2">
-                    <i class="material-icons">search</i>
-                </div>
-                <div class="col-lg-1">
-                    Search
-                </div>
-                <div class="col-lg-1">
-                </div>
+                    <div class="col-lg-2"><i class="material-icons">search</i></div>
+                    <div class="col-lg-1">Search</div>
                 </div>
             </button>
             </span>
@@ -160,8 +69,6 @@
         <hr/>
 
     </div>
-
-
 
 <!-- Category thumbnails -->
 <!-- <div class="container">
@@ -278,7 +185,6 @@
 
 
 <div class="container">
-
 
 <!-- featured custom recipes -->
 <div class="row mt-4 pl-4 pr-4">
@@ -497,7 +403,6 @@
           </div>
           </a>
       </div>
-
   </div>
 
 </div>

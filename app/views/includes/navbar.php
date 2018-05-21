@@ -14,10 +14,10 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">
-            <a class="navbar-text text-white nav-link dropdown-toggle" data-toggle="dropdown" href="#">Welcome <?php echo $_SESSION['user_name'] ?></a>
+            <a class="navbar-text nav-link dropdown-toggle" data-toggle="dropdown" href="#">Welcome <?php echo $_SESSION['user_name'] ?></a>
             <div class="dropdown-menu dropdown-menu">
-              <a class="dropdown-item" href="<?php echo URLROOT; ?>/account/edit">Edit profile</a>
-              <a class="dropdown-item">Manage recipes</a>
+              <a class="dropdown-item" href="<?php echo URLROOT; ?>/account">My Account</a>
+              <a class="dropdown-item" href="<?php echo URLROOT; ?>/account">Create Recipe</a>
               <!-- <div class="dropdown-divider"></div>
               <a class="dropdown-item">Logout</a> -->
             </div>

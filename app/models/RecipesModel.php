@@ -36,7 +36,7 @@ class RecipesModel {
         $this->db->bind(':prepTime', $data['prepTime']);
         $this->db->bind(':servingSize', $data['servingSize']);
         $this->db->bind(':imagePath', $imgPath);
-        $this->db->bind(':link',$data['link']);
+        $this->db->bind(':link', $data['link']);
         // Execute query
         try {
             $this->db->execute();
@@ -101,7 +101,8 @@ class RecipesModel {
             $uploadName = 'r'.$rid.'_u'.$uid.'_preview.'.$extension;
             $uploadPath = '/img/upload/'.$uploadName;
             if(!file_exists($uploadPath)) {
-                move_uploaded_file($imgTemp['tmp_name'], $_SERVER['DOCUMENT_ROOT'].'/TheRecipesProject/public'.$uploadPath);
+                // move_uploaded_file($imgTemp['tmp_name'], $_SERVER['DOCUMENT_ROOT'].'/infs3202project/public'.$uploadPath);
+                move_uploaded_file($imgTemp['tmp_name'], dirname(APPROOT) . '/public'.$uploadPath);
                 return $uploadPath;
             }
         }
@@ -155,6 +156,8 @@ class RecipesModel {
      * - image path for preview image
      * - list of ingredients
      * - list of directions
+     * 
+     * TODO: fetch ownerid's username
      *
      * @param: recipe id to fetch
      * @return: all data of recipe as associative stdClass Object
@@ -206,6 +209,33 @@ class RecipesModel {
     public function getAllRecipes() {
         $this->db->query('SELECT * FROM recipes');
         $this->db->execute();
+        return $this->db->resultSet();
+    }
+
+    /**
+     * Returns recipes title and description containing keywords specified by query string
+     * 
+     * @param: query string keyword(s)
+     * @return: associative object
+     */
+    public function searchRecipes($query) {
+        $query = '%'.$query.'%';
+        $this->db->query('SELECT * FROM recipes WHERE ( title LIKE ? OR description LIKE ? )');
+        $this->db->bind(1, $query);
+        $this->db->bind(2, $query);
+        return $this->db->resultSet();
+    }
+
+    /**
+     * Returns recipes title only for keywords specified by query string
+     * 
+     * @param: query string keyword(s)
+     * @return: associative object
+     */
+    public function searchRecipesTitle($query) {
+        $query = '%'.$query.'%';
+        $this->db->query('SELECT * FROM recipes WHERE ( title LIKE ? )');
+        $this->db->bind(1, $query);
         return $this->db->resultSet();
     }
 

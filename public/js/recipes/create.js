@@ -1,9 +1,3 @@
-if (jQuery) {  
-console.log('jQuery is loaded');
-} else {
-    console.log('jQuery is NOT loaded');
-}
-
 // Add handlers for initial elements
 addRemoveMeHandler($('button.remove-me'));
 addIngredientEnterKeyHandler($('input.ingredient-input'));

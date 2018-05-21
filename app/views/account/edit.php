@@ -1,5 +1,3 @@
-<?php require APPROOT . '/views/includes/header.php'; ?>
-
 <div class="container">
   <div class="row">
     <div class="col-lg-6 mx-auto">
@@ -97,33 +95,6 @@
         <?php
         ?>
 
-
-        <!-- <div class="row">
-          <div class="col">
-            <input type="submit" value="Register" class="btn btn-success btn-block">
-          </div>
-          <div class="col">
-            <a href="<?php //echo URLROOT; ?>/users/login" class="btn btn-light btn-block">Have an account? Login</a>
-          </div>
-        </div> -->
-
-
     </div>
   </div>
 </div>
-
-
-<?php require APPROOT . '/views/includes/footer.php'; ?>
-
-<script>
-
-$(window).on('scroll',function(){
-  if($(window).scrollTop()) {
-    $('#navbar').addClass('black');
-  }
-  else{
-    $('#navbar').removeClass('black');
-  }
-});
-
-</script>

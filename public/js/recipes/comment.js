@@ -27,8 +27,8 @@ var saveComment = function(rid){
 
     if(isValidComment) {
         // Prepare url
-        // url = "http://localhost/infs3202project/app/api/addComment.php?rid={0}&comment={1}&rating={2}".format(rid, comment, rating.value);
-        url = "http://localhost/TheRecipesProject/app/api/addComment.php?rid={0}&comment={1}&rating={2}".format(rid, comment, rating.value);
+        url = "http://localhost/infs3202project/app/api/addComment.php?rid={0}&comment={1}&rating={2}".format(rid, comment, rating.value);
+        // url = "http://localhost/TheRecipesProject/app/api/addComment.php?rid={0}&comment={1}&rating={2}".format(rid, comment, rating.value);
         // url = "https://infs3202-df3fe271.uqcloud.net/infs3202project/app/api/addComment.php?rid={0}&comment={1}&rating={2}".format(rid, comment, rating.value);
         // Ajax request
         $.ajax({

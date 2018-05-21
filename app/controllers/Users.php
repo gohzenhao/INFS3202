@@ -48,7 +48,9 @@
                     }
                 } else {
                     // Load view with errors
+                    $this->view('includes/header');
                     $this->view('users/registration', $data);
+                    $this->view('includes/footer');
                 }
 
             } else {
@@ -66,7 +68,9 @@
                     'confirm_password_error' => '',
                 ];
 
+                $this->view('includes/header');
                 $this->view('users/registration', $data);
+                $this->view('includes/footer');
             }
         }
 
@@ -92,11 +96,15 @@
                     } else {
                         // Incorrect password
                         $data['password_error'] = 'Password incorrect';
+                        $this->view('includes/header');
                         $this->view('users/login', $data);
+                        $this->view('includes/footer');
                     }
                 } else {
                     // Load view with errors
+                    $this->view('includes/header');
                     $this->view('users/login', $data);
+                    $this->view('includes/footer');
                 }
             } else {
                 // Display registration form
@@ -106,8 +114,9 @@
                     'username_email_error' => '',
                     'password_error' => '',
                 ];
-
+                $this->view('includes/header');
                 $this->view('users/login', $data);
+                $this->view('includes/footer');
             }
         }
 
