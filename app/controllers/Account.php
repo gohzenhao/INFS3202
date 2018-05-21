@@ -30,11 +30,10 @@
 					flash('delete_success', "Recipe deleted!");
 					redirect("account/index");
 				} else {
-					//TODO
+					//TODO: show error message
 					echo 'boo';
 				}
-			}
-			else{
+			} else{
 				$result = $this->accountModel->getRecipes();
 				$result = (array)$result;
 				

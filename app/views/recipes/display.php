@@ -14,7 +14,7 @@
             <div class="col-5">
                 <h5 class="row">Recipe Picture: </h5>
                 <div class="m-auto" >
-                <img src="<?php echo URLROOT.$data['imagePath']?>" class="px-3 img-fluid" style="object-fit:cover;height: 200px; max-width: 90%;" alt="Recipe Preview Image Here">
+                <img src="<?php echo URLROOT.'/img/'.$data['imagePath']?>" class="px-3 img-fluid" style="object-fit:cover;height: 200px; max-width: 90%;" alt="Recipe Preview Image Here">
                 <!-- <img src="<?php //echo URLROOT.$data['imagePath']?>" style="object-fit:cover;height: 200px; max-width: 90%;" alt="Recipe Preview Image Here"> -->
                 </div>
             </div>

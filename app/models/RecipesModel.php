@@ -101,15 +101,15 @@ class RecipesModel {
             $orginalNameExplode = explode('.', $imgTemp['name']);
             $extension = end($orginalNameExplode);
             $uploadName = 'r'.$rid.'_u'.$uid.'_preview.'.$extension;
-            $uploadPath = '/img/upload/'.$uploadName;
+            $uploadPath = 'upload/'.$uploadName;
             if(!file_exists($uploadPath)) {
                 // move_uploaded_file($imgTemp['tmp_name'], $_SERVER['DOCUMENT_ROOT'].'/infs3202project/public'.$uploadPath);
-                move_uploaded_file($imgTemp['tmp_name'], dirname(APPROOT) . '/public'.$uploadPath);
+                move_uploaded_file($imgTemp['tmp_name'], dirname(APPROOT) . '/public/img/'.$uploadPath);
                 return $uploadPath;
             }
         }
         // Default placeholder image path - TODO: add placeholder into uploads
-        return '/img/beef.jpg';;
+        return '/upload/placeholder.jpg';;
     }
 
     /**

@@ -13,7 +13,7 @@
             echo '
               <div class="col-lg-3 m-3 text-center">
                 <div class="card" style="width: 18rem;">
-                  <img class="card-img-top" src="' . URLROOT.$recipe['imagePath'] . '" alt="Card image cap">
+                  <img class="card-img-top" src="' . URLROOT.'/img/'.$recipe['imagePath'] . '" alt="Card image cap">
                   <div class="card-body">
                     <h5 class="card-title">' . $recipe['title'] . '</h5>
                     <p class="card-text">' . $recipe['description'] . '</p>

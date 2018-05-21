@@ -69,8 +69,11 @@ class AccountModel {
 		$this->db->bind(":rid", $rid);
 
 		if($this->db->execute()){
-			unlink(dirname(APPROOT) . '/public' . $target->imagePath);
-			// return true;
+			// Remove image if not placeholder
+			if($target->imagePath != '/upload/placeholder.jpg') {
+				unlink(dirname(APPROOT) . '/public/img/' . $target->imagePath);
+			}
+			return true;
 		}else{
 			return false;
 		}
