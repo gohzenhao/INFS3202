@@ -246,7 +246,6 @@
 
 		/**
 		 * TODO: doc
-		 * Broken currently???
 		 */
 		public function videos() {
 
@@ -258,7 +257,7 @@
 
 			$uri = $_SERVER['REQUEST_URI'];
 			$category = substr($uri,strpos($uri,'?')+1);
-
+			
 			// This code will execute if the user entered a search query in the form
 			// and submitted the form. Otherwise, the page displays the form above.
 			if (strpos($category,'more')!==false) {
@@ -278,18 +277,19 @@
 
 			  	$htmlBody = '';
 			  	try {
-					// Call the search.list method to retrieve results matching the specified
-					// query term.
+					// Call the search.list method to retrieve results matching the specified query term.
 					$searchResponse = $youtube->search->listSearch('id,snippet',array(
-					'q' => $link,
-					'maxResults' => 5,
+						'q' => $link,
+						'maxResults' => 5,
 					));
 
 					$data = [
-							'videos' => $searchResponse['items']
-						];
+						'videos' => $searchResponse['items']
+					];
 
+					$this->view('includes/header');
 					$this->view('recipes/videos',$data);
+					$this->view('includes/footer');
 			  	} catch (Google_Service_Exception $e) {
 			    	$htmlBody .= sprintf('<p>A service error occurred: <code>%s</code></p>',
 			      	htmlspecialchars($e->getMessage()));
@@ -298,7 +298,9 @@
 					htmlspecialchars($e->getMessage()));
 				}
 			} else {
+				$this->view('includes/header');
 				$this->view('recipes/videos');
+				$this->view('includes/footer');
 			}
 		}
 

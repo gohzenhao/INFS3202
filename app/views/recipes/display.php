@@ -77,7 +77,7 @@
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $data['link']; ?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </ol>
             </div>
-            <a href="<?php URLROOT;?>/recipes/videos?more=<?php echo $data['link'];?>">More similar videos</a>
+            <a href="<?php echo URLROOT;?>/recipes/videos?more=<?php echo $data['link'];?>">More similar videos</a>
         <?php endif; ?>
 
     </div>
