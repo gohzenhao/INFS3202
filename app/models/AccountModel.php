@@ -54,7 +54,7 @@ class AccountModel {
 
 	 *
 	 * TODO: do not remove if not inside uploads folder
-	 * 
+	 *
 	 * @param: rid
 	 *
 	 * @return: true on success

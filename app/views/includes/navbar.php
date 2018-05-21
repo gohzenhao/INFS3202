@@ -44,7 +44,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown">Sign In</a>
+            <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown">Sign In</a>
             <div class="dropdown-menu dropdown-menu-right" style="width: 400px;">
               <form class="px-4 py-3" action="<?php echo URLROOT; ?>/users/login" method="POST">
                 <div class="form-group">
@@ -62,7 +62,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo URLROOT; ?>/users/registration">Register</a>
+            <a class="nav-link text-white" href="<?php echo URLROOT; ?>/users/registration">Register</a>
           </li>
         </ul>
       </div>

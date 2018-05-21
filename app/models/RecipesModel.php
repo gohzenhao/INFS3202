@@ -86,7 +86,7 @@ class RecipesModel {
      * Moves image from temporary location into public/img/upload/ directory
      * Image upload names given format 'r{rid}_u{uid}_preview'
      * If no image is provided (size is 0) then return placeholder img path: /img/beef.jpg
-     * 
+     *
      * @param: recipe id of new recipe
      * @param: user id of creator
      * @param: $_FILES['imageName']
@@ -273,15 +273,11 @@ class RecipesModel {
         return $this->db->single();
     }
 
-    public function getRecipeOfTheWeek(){
-      $this->db->query("SELECT * FROM recipes WHERE featured = :result");
-      $this->db->bind(':result',true);
-      $row = $this->db->single();
-      if($this->db->rowCount()>0){
-        return  (object) $row;
-      }else{
-        return false;
-      }
+    public function getFeaturedRecipes(){
+      $this->db->query("SELECT * FROM recipes ORDER BY rid DESC LIMIT :num");
+      $this->db->bind(':num',7);
+      return $this->db->resultSet();
+
     }
 
 }

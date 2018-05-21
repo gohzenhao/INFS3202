@@ -14,7 +14,8 @@ class Home extends Controller{
 	 */
 	public function __construct(){
 
-		$this->accountModel = $this->model('RecipesModel');
+		$this->recipesModel = $this->model('RecipesModel');
+		$this->userModel = $this->model('UserModel');
 	}
 
 	/**
@@ -22,11 +23,13 @@ class Home extends Controller{
 	 */
 	public function index(){
 
-		$result = $this->accountModel->getRecipeOfTheWeek();
+		$featured = $this->recipesModel->getFeaturedRecipes();
+		$ownerid = $featured[0]->ownerid;
+		$owner = $this->userModel->getUser($ownerid);
 		$data = [
 			'title' => 'Links for development purposes only...',
-			'featured-title' => $result->title,
-			'featured-image' => $result->imagePath
+			'featured' => $featured,
+			'owner' => $owner
 		];
 
 		$this->view('includes/header');
