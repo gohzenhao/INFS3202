@@ -25,6 +25,7 @@ header.masthead {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    margin-bottom:2.5em;
   /* background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("../img/header2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -69,8 +70,8 @@ header #navbar.black{
 }
 
 div.featured{
-  margin-top:5rem;
-  margin-bottom:5rem;
+  margin-top:2.5rem;
+  margin-bottom:2.5rem;
   padding-top: 20rem;
   padding-bottom: calc(10rem - 56px);
   background-image: url('../img/featured_recipe.jpg');
