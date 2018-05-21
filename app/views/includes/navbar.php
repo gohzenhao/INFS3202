@@ -1,4 +1,4 @@
-<nav id="navbar" class="navbar black navbar-expand-lg">
+<nav class="navbar black border-bottom navbar-expand-lg">
   <div class="container">
 
     <!-- Logo/title button to return to home page -->

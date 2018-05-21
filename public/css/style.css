@@ -17,15 +17,16 @@ body{
 }
 
 header.masthead {
-  padding-top: 15rem;
+  padding-top: 8rem;
   padding-bottom: 15rem;
   background-image: url('../img/header2.jpg');
   width:100%;
   height:100%;
   background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom:2.5em;
   /* background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("../img/header2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -35,10 +36,10 @@ header.masthead {
     padding-top: 50px; */
 }
 
+
 #navbar {
-  margin-bottom:18rem;
-  background:rgba(0,0,0,0.3);
-  position:fixed;
+  /* margin-bottom:18rem; */
+  background:rgba(255,165,0);
   top:0;
   width:100%;
   height:100px;
@@ -60,24 +61,17 @@ header.masthead {
   vertical-align:baseline;
 }
 
-#navbar.black{
-  background:rgba(255,165,0,0.8);
-  height:100px;
-  padding: 10px 100px;
-}
-
 div.featured{
-  margin-top:5rem;
-  margin-bottom:5rem;
+  margin-bottom:2.5rem;
   padding-top: 20rem;
   padding-bottom: calc(10rem - 56px);
   background-image: url('../img/featured_recipe.jpg');
   width:100%;
   height:30%;
   /* background-attachment: fixed; */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   /* background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("../img/header2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -210,7 +204,7 @@ div.featured{
   height: 400px;
   width: 100%;
 }
-       
+
 .card-body span{
   float:right
 }
@@ -224,4 +218,3 @@ div.featured{
 .input-group-text  {
   background-color:#ccc;
 }
-

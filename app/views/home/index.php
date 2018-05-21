@@ -32,21 +32,143 @@
 
 <!-- featured thumbnails -->
     <div class="container">
+
+      <hr/>
+
         <div class="featured" style="outline:3px solid #fff;outline-offset:-20px">
           <div class="container">
             <div style="background-color:orange;width:40%;height:40%;margin-left:2rem;padding:1rem;">
-            <h1>Recipe of the week : Chicken Pad Thai</h1>
+            <h1>Recipe of the week : </h1>
+            <h1>Chicken Pad Thai</h1>
             <p class="lead">
               By : Bobby Smith
             </p>
+            <p class="lead text-white"><a href="#" style="text-decoration:none;text-transform:uppercase;color:black;">View Recipe > </a></p>
             </div>
           </div>
         </div>
+        <hr/>
+
     </div>
 
+<!-- Category thumbnails -->
+<!-- <div class="container">
+
+    <div class="row mt-3" >
+    <div class="col-lg-12 text-center">
+
+        <h3> <u>Categories</u> </h3>
+    </div>
+    </div>
+    <div class="row mt-3">
+    <div class="col-lg-3">
+        <a href="#">
+        <div class="thumbnails">
+            <img src="<?php echo URLROOT; ?>/img/chicken.jpg" alt="chicken" style="width:100%;">
+            <div class="overlay">
+            <div class="text">
+                Chicken Recipes
+            </div>
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="col-lg-3">
+        <a href="#">
+        <div class="thumbnails">
+            <img src="<?php echo URLROOT; ?>/img/beef.jpg" alt="beef" style="width:100%;">
+            <div class="overlay">
+            <div class="text">
+                Beef Recipes
+            </div>
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="col-lg-3">
+        <a href="#">
+        <div class="thumbnails">
+            <img src="<?php echo URLROOT; ?>/img/seafood.jpg" alt="seafood" style="width:100%;">
+            <div class="overlay">
+            <div class="text">
+                Seafood Recipes
+            </div>
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="col-lg-3">
+        <a href="#">
+        <div class="thumbnails">
+            <img src="<?php echo URLROOT; ?>/img/lamb.jpg" alt="curry" style="width:100%;">
+            <div class="overlay">
+            <div class="text">
+                Lamb Recipes
+            </div>
+            </div>
+        </div>
+        </a>
+    </div>
+    </div>
+
+    <div class="row mt-5">
+    <div class="col-lg-3">
+        <a href="#">
+        <div class="thumbnails">
+            <img src="<?php echo URLROOT; ?>/img/curry.jpeg" alt="curry" style="width:100%;">
+            <div class="overlay">
+            <div class="text">
+                Curry Recipes
+            </div>
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="col-lg-3">
+        <a href="#">
+        <div class="thumbnails">
+            <img src="<?php echo URLROOT; ?>/img/pasta.jpg" alt="pasta" style="width:100%;">
+            <div class="overlay">
+            <div class="text">
+                Pasta Recipes
+            </div>
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="col-lg-3">
+        <a href="#">
+        <div class="thumbnails">
+            <img src="<?php echo URLROOT; ?>/img/pizza.jpg" alt="pizza" style="width:100%;">
+            <div class="overlay">
+            <div class="text">
+                Pizza Recipes
+            </div>
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="col-lg-3">
+        <a href="#">
+        <div class="thumbnails">
+            <img src="<?php echo URLROOT; ?>/img/taco.jpg" alt="taco" style="width:100%;">
+            <div class="overlay">
+            <div class="text">
+                Taco Recipes
+            </div>
+            </div>
+        </div>
+        </a>
+    </div>
+    </div>
+</div> -->
+
+
+
+<div class="container">
 
 <!-- featured custom recipes -->
-<div class="row mt-3 pl-4 pr-4">
+<div class="row mt-4 pl-4 pr-4">
     <div class="col-lg-12 text-center">
         <h3> <u> Featured custom recipes </u> </h3>
     </div>
@@ -220,5 +342,51 @@
         </a>
     </div>
 </div>
+</div>
+
+
+<!-- <div class="container mt-2 pt-2 mb-2 pb-2">
+  <div class="row">
+      <div class="col-lg-3">
+          <a href="#">
+          <div class="thumbnails">
+              <img src="<?php echo URLROOT; ?>/img/pasta.jpg" alt="pasta" style="width:200px;height:200px;border-radius:50%">
+              <div class="overlay">
+              <div class="text">
+                  Pasta Recipes
+              </div>
+              </div>
+          </div>
+          </a>
+      </div>
+      <div class="col-lg-3">
+          <a href="#">
+          <div class="thumbnails">
+              <img src="<?php echo URLROOT; ?>/img/pizza.jpg" alt="pizza" style="width:200px;height:200px;border-radius:50%">
+              <div class="overlay">
+              <div class="text">
+                  Pizza Recipes
+              </div>
+              </div>
+          </div>
+          </a>
+      </div>
+      <div class="col-lg-3">
+          <a href="#">
+          <div class="thumbnails">
+              <img src="<?php echo URLROOT; ?>/img/taco.jpg" alt="taco" style="width:200px;height:200px;border-radius:50%">
+              <div class="overlay">
+              <div class="text">
+                  Taco Recipes
+              </div>
+              </div>
+          </div>
+          </a>
+      </div>
+  </div>
+
+</div> -->
+
+<?php require APPROOT . '/views/includes/footer.php'; ?>
 
 <!-- </div> -->
