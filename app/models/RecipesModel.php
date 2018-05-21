@@ -86,7 +86,7 @@ class RecipesModel {
      * Moves image from temporary location into public/img/upload/ directory
      * Image upload names given format 'r{rid}_u{uid}_preview'
      * If no image is provided (size is 0) then return placeholder img path: /img/beef.jpg
-     *
+     * 
      * @param: recipe id of new recipe
      * @param: user id of creator
      * @param: $_FILES['imageName']
@@ -99,15 +99,14 @@ class RecipesModel {
             $orginalNameExplode = explode('.', $imgTemp['name']);
             $extension = end($orginalNameExplode);
             $uploadName = 'r'.$rid.'_u'.$uid.'_preview.'.$extension;
-            $uploadPath = '/img/upload/'.$uploadName;
+            $uploadPath = '/upload/'.$uploadName;
             if(!file_exists($uploadPath)) {
-                // move_uploaded_file($imgTemp['tmp_name'], $_SERVER['DOCUMENT_ROOT'].'/infs3202project/public'.$uploadPath);
-                move_uploaded_file($imgTemp['tmp_name'], dirname(APPROOT) . '/public'.$uploadPath);
+                move_uploaded_file($imgTemp['tmp_name'], dirname(APPROOT) . '/public/img'.$uploadPath);
                 return $uploadPath;
             }
         }
         // Default placeholder image path
-        return '/img/beef.jpg';;
+        return '/upload/placeholder.jpg';;
     }
 
     /**

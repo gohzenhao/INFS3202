@@ -1,56 +1,36 @@
-<!-- <div class="container"> -->
+<!-- <div class="container-fluid"> -->
 
-<!-- <div class="jumbotron text-center">
-    <?php flash('logout_success'); ?>
-
-    <h1><?php echo $data['title']?></h1>
-    <a class="btn btn-secondary" href="<?php echo URLROOT; ?>/home/about" role="button">Empty About</a>
-    <a class="btn btn-primary" href="<?php echo URLROOT; ?>/users/registration" role="button">Register</a>
-    <a class="btn btn-primary" href="<?php echo URLROOT; ?>/users/login" role="button">Login</a>
-    <a class="btn btn-warning" href="<?php echo URLROOT; ?>/account" role="button">Account</a>
-    <div class="w-100 mt-1">
-        <a class="btn btn-primary" href="<?php echo URLROOT; ?>/search" role="button">Search Recipe</a>
-        <a class="btn btn-warning" href="<?php echo URLROOT; ?>/recipes/create" role="button">Create Recipe</a>
-        <a class="btn btn-warning" href="<?php echo URLROOT; ?>/recipes/display/1" role="button">Display Recipe</a>
-    </div>
-    <div class="w-100 mt-1">
-        <a class="btn btn-primary" href="<?php echo URLROOT; ?>/chat" role="button">Chat Room</a>
-        <a class="btn btn-primary" href="<?php echo URLROOT; ?>/celebritychefs" role="button">Gordon Ramsay's Recipes</a>
-    </div>
-</div> -->
-
+<?php //flash('logout_success'); ?>
 
 <!-- Page Content -->
 
 <header class="masthead">
     <div class="container">
-    <div class="row">
-        <div class="col-lg-12 text-center">
-            <h1 class="display-3 text-white">Search all of our 50,000 recipes</h1>
-            <p class="lead text-white">Perfection starts at home</p>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1 class="display-3 text-white">Search all of our recipes</h1>
+                <p class="lead text-white">Perfection starts from home</p>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-8 mx-auto">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for...">
-            <span class="input-group-btn">
-            <button class="btn btn-primary px-5" type="button">
-                <div class="row">
-                    <div class="col-lg-2"><i class="material-icons">search</i></div>
-                    <div class="col-lg-1">Search</div>
-                </div>
-            </button>
-            </span>
-        </div><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
-    </div>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                <button class="btn btn-primary px-5" type="button">
+                    <div class="row">
+                        <div class="col-lg-2"><i class="material-icons">search</i></div>
+                        <div class="col-lg-1">Search</div>
+                    </div>
+                </button>
+                </span>
+            </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+        </div>
     </div>
 </header>
 
 <!-- featured thumbnails -->
-
-
     <div class="container">
 
       <hr/>
@@ -257,4 +237,4 @@
 
 <?php require APPROOT . '/views/includes/footer.php'; ?>
 
-<script src="<?php echo URLROOT; ?>/js/home/rating.js"></script>
+<!-- </div> -->

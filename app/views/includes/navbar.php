@@ -1,4 +1,5 @@
 <nav class="navbar black navbar-expand-lg bg-orange pt-2 pb-2">
+
   <div class="container">
 
     <!-- Logo/title button to return to home page -->
@@ -19,6 +20,7 @@
               <a class="dropdown-item" href="<?php echo URLROOT; ?>/account">My Account</a>
               <a class="dropdown-item" href="<?php echo URLROOT; ?>/recipes/create">Create Recipe</a>
               <div class="dropdown-divider"></div>
+              <a class="dropdown-item">Below are links for Dev purposes only</a>
               <a class="dropdown-item" href="<?php echo URLROOT; ?>/home/about">Empty About</a>
               <a class="dropdown-item" href="<?php echo URLROOT; ?>/users/registration">Register</a>
               <a class="dropdown-item" href="<?php echo URLROOT; ?>/users/login">Login</a>
