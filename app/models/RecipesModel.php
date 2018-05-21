@@ -156,7 +156,7 @@ class RecipesModel {
      * - image path for preview image
      * - list of ingredients
      * - list of directions
-     * 
+     *
      * TODO: fetch ownerid's username
      *
      * @param: recipe id to fetch
@@ -214,7 +214,7 @@ class RecipesModel {
 
     /**
      * Returns recipes title and description containing keywords specified by query string
-     * 
+     *
      * @param: query string keyword(s)
      * @return: associative object
      */
@@ -228,7 +228,7 @@ class RecipesModel {
 
     /**
      * Returns recipes title only for keywords specified by query string
-     * 
+     *
      * @param: query string keyword(s)
      * @return: associative object
      */
@@ -272,6 +272,17 @@ class RecipesModel {
         // Return the comment added from the INSERT operation above
         $this->db->query('SELECT * FROM comments WHERE comment_id = (SELECT MAX(comment_id) FROM comments)');
         return $this->db->single();
+    }
+
+    public function getRecipeOfTheWeek(){
+      $this->db->query("SELECT * FROM recipes WHERE featured = :result");
+      $this->db->bind(':result',true);
+      $row = $this->db->single();
+      if($this->db->rowCount()>0){
+        return  (object) $row;
+      }else{
+        return false;
+      }
     }
 
 }

@@ -37,7 +37,7 @@ header.masthead {
 }
 
 header .container{
-  padding-top:18em;
+  padding-top:20em;
 }
 
 #navbar {
@@ -75,13 +75,21 @@ div.featured{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-  /* background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("../img/header2.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    color: #fff;
-    height: 450px;
-    padding-top: 50px; */
+    outline:3px solid #fff;
+    outline-offset:-20px;
+    margin-top:2.5em;
+}
+
+.featured-box{
+  background-color:orange;
+  width:40%;
+  height:40%;
+  margin-left:2rem;
+  padding:1rem;
+}
+
+.bg-orange{
+  background-color: rgba(255,165,0);
 }
 
 .overlay {

@@ -49,11 +49,11 @@ class AccountModel {
 	}
 
 	/**
-	 * Deletes recipe by rid and all ingredients and directions. 
+	 * Deletes recipe by rid and all ingredients and directions.
 	 * Also removes file from file system of the uploaded image
-	 * 
+	 *
 	 * @param: rid
-	 * 
+	 *
 	 * @return: true on success
 	 * @return: false on fail
 	 */

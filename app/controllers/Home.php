@@ -12,13 +12,22 @@ class Home extends Controller{
 	/**
 	 * TODO: load latest 6 (by creation time) recipes into featured
 	 */
-	public function __construct(){}
+	public function __construct(){
+
+		$this->accountModel = $this->model('RecipesModel');
+	}
 
 	/**
 	 * Loads front page of website
 	 */
 	public function index(){
-		$data = ['title' => 'Links for development purposes only...'];
+
+		$result = $this->accountModel->getRecipeOfTheWeek();
+		$data = [
+			'title' => 'Links for development purposes only...',
+			'featured-title' => $result->title,
+			'featured-image' => $result->imagePath
+		];
 
 		$this->view('includes/header');
 		$this->view('home/index', $data);
@@ -44,17 +53,17 @@ class Home extends Controller{
 
 	/**
 	 * Send email email using mailhub.eait.uq.edu.au as relay host
-	 * 
+	 *
 	 * TODO: stylize email content and change address
-	 * 
+	 *
 	 * NOTE: only works when sent from uq zone
 	 */
 	private function sendMail($subject, $body) {
 		$mail = new PHPMailer(true);
 		try {
 			// Setup server settings
-			$mail->SMTPDebug = 2;                                 
-			$mail->isSMTP();              
+			$mail->SMTPDebug = 2;
+			$mail->isSMTP();
 			$mail->Host = 'mailhub.eait.uq.edu.au';
 			$mail->SMTPSecure = 'tls';
 			$mail->Port = 25;
@@ -75,5 +84,5 @@ class Home extends Controller{
 			echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 		}
 	}
-	
+
 }

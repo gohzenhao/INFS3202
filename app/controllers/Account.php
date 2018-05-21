@@ -37,7 +37,7 @@
 			else{
 				$result = $this->accountModel->getRecipes();
 				$result = (array)$result;
-				
+
 				$data = [
 					'name' => $_SESSION['user_name'],
 					'recipes' => $result,
