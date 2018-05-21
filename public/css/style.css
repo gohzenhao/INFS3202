@@ -2,6 +2,7 @@
 html,body{
   height: 100%;
   width: 100%;
+  min-height:100%;
 }
 
 #rootContainer{
@@ -69,6 +70,27 @@ header .container{
 
 }
 
+#sidebar ul li:hover{
+  background-color:rgba(255,165,0);
+  color:white;
+  width:100%;
+}
+
+
+#sidebar ul a{
+  transition: width 1.5s;
+  width:70%;
+}
+#sidebar ul a li h5{
+  padding: 1rem;
+}
+#side ul li a{
+  text-align:center;
+}
+#sidebar ul a:hover{
+  color:white;
+  width:100%;
+}
 .overlay {
   position: absolute;
   top: 0;
