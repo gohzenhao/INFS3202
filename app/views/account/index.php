@@ -1,14 +1,3 @@
-<div class="jumbotron">
-
-      <h1>Welcome <?php echo $data['name']?> to your Account page</h1>
-      <?php flash('update_success'); ?>
-      <?php flash('delete_success'); ?>
-      <a class="btn btn-warning" href="<?php echo URLROOT; ?>/account/edit" role="button">Edit Account</a>
-
-      <a class="btn btn-light" href="<?php echo URLROOT; ?>/recipes/create" role="button">Create new recipe</a>
-
-</div>
-
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
