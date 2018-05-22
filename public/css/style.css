@@ -46,6 +46,12 @@ header .container{
   outline:3px solid #fff;
   outline-offset:-20px;
   margin-top:2.5em;
+  opacity:0;
+  transition: all 400ms ease-in;
+}
+
+.featured-js-animate{
+  opacity:1;
 }
 
 .featured-box{
@@ -54,6 +60,15 @@ header .container{
   height:40%;
   margin-left:2rem;
   padding:1rem;
+}
+
+#feature-cards{
+  opacity:1;
+  transition: all 200ms ease-in;
+}
+
+.cards-js-animate{
+  opacity:1;
 }
 
 .bg-orange{
@@ -90,6 +105,28 @@ header .container{
 #featured-card a{
   text-decoration:none;
   color:black;
+}
+
+#featured-card a:hover{
+  animation : card-move 250ms linear;
+}
+
+@keyframes card-move{
+  0% {
+    transform: rotate(0);
+  }
+
+  33%{
+    transform: rotate(5deg);
+  }
+
+  66% {
+    transform: rotate(-5deg);
+  }
+
+  100%{
+    transform: rotate(0);
+  }
 }
 .overlay {
   position: absolute;

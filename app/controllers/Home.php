@@ -40,6 +40,7 @@ class Home extends Controller{
 		$this->view('home/index', $data);
 		$this->view('includes/footer');
 		$this->script('home/rating');
+		$this->script('home/waypoint');
 	}
 
 	/**

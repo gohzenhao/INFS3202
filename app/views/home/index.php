@@ -52,7 +52,7 @@
   </div>
 
 
-<div class="container">
+<div class="container" id="feature-cards">
 <div class="row mt-4 pl-4 pr-4">
     <div class="col-lg-12 text-center">
         <h3> <u> Featured custom recipes </u> </h3>
@@ -83,31 +83,11 @@
                   </div>';
                 }
                   ?>
-
-<div class="container">
-  <?php
-
-    var_dump($data['featured']);
-  ?>
-</div>
-
-
 </div>
 </div>
 
 <?php require APPROOT . '/views/includes/footer.php'; ?>
 <script>
-
-// function getRatings(){
-//
-// for(let rating in ratings){
-//
-//     const starPercentage = (ratings[rating] / totalStars) * 100;
-//
-//     const starPercentageRounded = `${Math.round(starPercentage /10 ) * 10}%`;
-//
-//     document.querySelector(`.${rating} .stars-inner`).style.width = starPercentageRounded;
-// }
   document.addEventListener('DOMContentLoaded',getRatings());
 
 function getRatings(){
