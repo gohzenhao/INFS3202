@@ -1,9 +1,9 @@
 <div class="container-fluid">
 <div class="row content">
-    <div class="col-lg-2">
+    <!-- <div class="col-lg-2">
 
-    </div>
-    <div class="col-lg-2" id="sidebar">
+    </div> -->
+    <div class="col-lg-3" id="sidebar">
       <h3 class="mt-3 mb-4 pl-3"><u>Activities</u></h3>
       <ul class="nav nav-pills nav-stacked">
         <a href="#section1"><li><h5>My Recipes</h5></h5></li></a>
