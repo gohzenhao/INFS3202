@@ -71,6 +71,15 @@ header .container{
   opacity:1;
 }
 
+#search-items a{
+
+  transition: margin 0.5s;
+}
+
+#search-items a:hover{
+  margin-left:5rem;
+}
+
 .bg-orange{
   background-color: rgba(255,165,0);
 

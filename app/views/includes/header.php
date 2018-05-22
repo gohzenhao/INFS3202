@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css">
 
     <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+
+    <link href="stylesheet" href="<?php echo URLROOT; ?>/css/hover.css">
   </head>
 
   <body>
