@@ -25,9 +25,15 @@ class Home extends Controller{
 		$featured = $this->recipesModel->getFeaturedRecipes();
 		$ownerid = $featured[0]->ownerid;
 		$owner = $this->userModel->getUser($ownerid);
+		$averageRatings = [];
+		for($x=0;$x<sizeof($featured);$x++){
+			$average = $this->recipesModel->getAverageRating($featured[$x]->rid);
+			$averageRatings[$x] = $average;
+		}
 		$data = [
 			'featured' => $featured,
-			'owner' => $owner
+			'owner' => $owner,
+			'average' => $averageRatings
 		];
 
 		$this->view('includes/header');
@@ -85,5 +91,5 @@ class Home extends Controller{
 			echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 		}
 	}
-	
+
 }

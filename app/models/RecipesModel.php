@@ -238,6 +238,20 @@ class RecipesModel {
         return $this->db->resultSet();
     }
 
+    public function getAverageRating($rid){
+      $comments = $this->getAllComments($rid);
+      $sum = 0;
+      if(sizeof($comments)!=0){
+        foreach($comments as $comment){
+          $sum += $comment->rating;
+        }
+        return $sum/sizeof($comments);
+      }
+      else{
+        return $sum;
+      }
+    }
+
     /**
      * Returns all comments on recipe given by recipe id
      *
@@ -275,7 +289,7 @@ class RecipesModel {
 
     /**
      * TODO: dont use hard coded value
-     * 
+     *
      * @return: object of recipe data
      */
     public function getFeaturedRecipes(){

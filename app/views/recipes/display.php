@@ -5,13 +5,15 @@
         <h1 class="mx-auto"><?php echo $data['title']?></h1>
         <a class="btn btn-link" role="button" href="<?php echo URLROOT;?>/pdf/download/<?php echo $data['rid'];?>" target="_blank">
             <i class="fa fa-print"></i> Print PDF
-        </a> 
+        </a>
     </div>
 
     <div class="col mb-3">
         <div class="row mb-4">
             <!-- Recipe Preview Image -->
-            <div class="col-5">
+            <div class="col-3">
+            </div>
+            <div class="col-3">
                 <h5 class="row">Recipe Picture: </h5>
                 <div class="m-auto" >
                 <img src="<?php echo URLROOT.'/img'.$data['imagePath']?>" class="px-3 img-fluid" style="object-fit:cover;height: 200px; max-width: 90%;" alt="Recipe Preview Image Here">
@@ -20,27 +22,26 @@
             </div>
 
             <!-- Recipe details -->
-            <div class="col-7">
+            <div class="col-6">
                 <!-- Author -->
-                <div class="row">
+                <div class="row mb-4">
                     <h5 class="row">Author:</h5>
                     <p class="w-100 mh-80"><?php echo $data['ownerid'];?></p>
                 </div>
                 <!-- Description -->
-                <div class="row">
+                <div class="row mb-4">
                     <h5 class="row">Description:</h5>
                     <p class="w-100 mh-80"><?php echo $data['description'];?></p>
                 </div>
                 <!-- Preparation time and Serving size -->
-                <div class="row">
-                    <div class="col">
+                <div class="row mb-4">
+
                         <h5 class="row">Preparation Time: </h5>
                         <span class="w-100"><?php echo $data['prepTime'];?></span>
-                    </div>
-                    <div class="col">
+                </div>
+                <div class="row mb-4">
                         <h5 class="row">Serving Size: </h5>
                         <span class="w-100"><?php echo $data['servingSize'];?></span>
-                    </div>
                 </div>
             </div>
         </div>
@@ -48,8 +49,10 @@
         <hr/>
 
         <div class="row">
+          <div class="col-lg-3">
+          </div>
             <!-- Ingredients -->
-            <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="col-lg-3 col-md-3 col-sm-12">
                 <!-- <div class="row mb-3"> -->
                     <h5 class="w-100">Ingredients: </h5>
                     <ul class="ingredients">
@@ -63,7 +66,7 @@
             </div>
             <hr/>
             <!-- Directions -->
-            <div class="col-lg-8 col-md-8 ">
+            <div class="col-lg-6 col-md-6 ">
                 <!-- <div class="row mb-3"> -->
                     <h5 class="w-100">Directions: </h5>
                     <ol class="directions">

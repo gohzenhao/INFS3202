@@ -1,19 +1,20 @@
 <div class="row">
 
-    <div class="col-lg-3" id="sidebar">
+    <div class="col-lg-3 ml-5" id="sidebar">
         <h3 class="mt-3 mb-4 pl-3"><u>Activities</u></h3>
         <ul class="nav nav-pills nav-stacked">
-            <a href="#section1"><li><h5>My Recipes</h5></h5></li></a>
-            <a href="#section2"><li><h5>Create Recipe</h5></li></a>
-            <a href="#section1"><li><h5>Edit Profile</h5></li></a>
+            <a href="<?php echo URLROOT; ?>/home/index"><li><h5>Main Page</h5></h5></li></a>
+            <a href="<?php echo URLROOT; ?>/account/index"><li><h5>My Recipes</h5></h5></li></a>
+            <a href="<?php echo URLROOT; ?>/recipes/create"><li><h5>Create Recipe</h5></li></a>
+            <a href="<?php echo URLROOT; ?>/account/edit"><li><h5>Edit Profile</h5></li></a>
         </ul>
         <br><hr/>
     </div>
 
     <!-- Create Recipe Form Area -->
-    <div class="container col-lg-8 col-md-10 col-sm-12">
+    <div class="container col-lg-8 col-md-10 col-sm-12 ml-6 border-left">
 
-        <div class="py-3 text-center">
+        <div class="py-3 text-center col-8">
             <h1>New Recipe</h1>
         </div>
 
@@ -26,7 +27,7 @@
                     </div>
                     <small class="" style="color: #dc3545;"><?php echo $data['img_error'] ?></small>
                 </div>
-                <div class="col-7">
+                <div class="col-6 mr-4">
                     <div class="row form-group">
                         <label for="title">Title:</label>
                         <input name="title" type="text" class="form-control <?php echo (!empty($data['title_error'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['title']?>">
@@ -59,7 +60,7 @@
             <!-- Add Ingredients form -->
             <div class="row mb-3">
                 <label class="col-12" for="ingredients">Ingredients: </label>
-                <ul class="col-5 ingredients <?php echo (!empty($data['ingredients_error'])) ? 'form-control is-invalid' : ''; ?>">
+                <ul class="col-8 ingredients <?php echo (!empty($data['ingredients_error'])) ? 'form-control is-invalid' : ''; ?>">
                     <li class="form-group">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend drag-me"><span class="input-group-text fa fa-bars"></span></div>
@@ -69,7 +70,7 @@
                     </li>
                 </ul>
                 <span class="invalid-feedback"><?php echo $data['ingredients_error'] ?></span>
-                <button class="ingred-add-more btn btn-primary col-12">Add more ingredients</button>
+                <button class="ingred-add-more btn btn-primary col-5">Add more ingredients</button>
             </div>
             <hr/>
 
@@ -87,7 +88,7 @@
                     </li>
                 </ol>
                 <span class="invalid-feedback"><?php echo $data['directions_error'] ?></span>
-                <button class="direction-add-more btn btn-primary col-12">Add another step</button>
+                <button class="direction-add-more btn btn-primary col-5">Add another step</button>
             </div>
 
             <hr/>
@@ -103,7 +104,7 @@
             </div>
 
             <div class="row">
-                <button class="btn btn-success btn-lg ml-auto mb-5" type="submit">Save</button>
+                <button class="btn btn-success btn-lg mb-5 col-8" type="submit">Save</button>
             </div>
         </form>
     </div>
