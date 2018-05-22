@@ -125,7 +125,10 @@
 		}
 
 		/**
-		 * TODO
+		 * Updates recipe specified by rid in url
+		 * Handles both loading old form page and loading user input via POST
+		 * 
+		 * @param: recipe id
 		 */
 		public function edit($recipeID = null) {
 			$recipeData = $this->recipesModel->getRecipeData($recipeID);
@@ -161,13 +164,13 @@
 						empty($data['ingredients_error']) && empty($data['directions_error']) &&
 						empty($data['img_error']) && empty($data['link_error']) ){
 					// Update recipe on database
-					if(true) {//TODO
+					if($this->recipesModel->updateRecipe($data)) {
 						// Return to account page
 						//TODO: flash
-						// redirect('account');
-						echo 'noice ;)</br>TODO: actually UPDATE db';
+						redirect('account');
 					} else {
 						// TODO: PDOException was thrown
+						echo 'uh-oh: PDOException was thrown';
 						$this->view('includes/header');
 						$this->view('recipes/edit', $data);
 						$this->view('includes/footer');
@@ -297,7 +300,7 @@
 				'servingSize' => trim($_POST['servingSize']),
 				'ingredients' => $_POST['ingredients'],
 				'directions' => $_POST['directions'],
-				'link' => $_POST['youtubeLink'],
+				'link' => trim($_POST['youtubeLink']),
                 'title_error' => '',
                 'description_error' => '',
                 'prepTime_error' => '',
@@ -311,7 +314,7 @@
 		}
 
 		/**
-		 * Verifies input data from recipes create form and assigns error message if any required
+		 * Verifies input data from recipes create form and assigns error message if required
 		 *
 		 * @return: $data for form data with error messages
 		 */
@@ -373,7 +376,7 @@
 		}
 
 		/**
-		 * TODO
+		 * Checks input data from recipes edit form and assigns error messages if required
 		 * 
 		 * @return: $data containing user input values, and errors (if any)
 		 */
@@ -430,7 +433,9 @@
 		}
 
 		/**
-		 * TODO: docs
+		 * Checks if text user entered is a valid youtube address
+		 * If no link provided sets link_error to empty string
+		 * Valid: 'https://www.youtube.com/watch?v=...'
 		 * 
 		 * @param: pass $data by reference
 		 */
@@ -443,6 +448,8 @@
 				} else {
 					$data['link_error'] = 'Please enter a valid Youtube link';
 				}
+			} else {
+				$data['link_error'] = '';
 			}
 		}
 

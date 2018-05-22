@@ -95,7 +95,7 @@
                 <div class="col form-group form-inline">
                     <h5 class="col-12">Have a video on how to follow your recipe?</h5>
                     <label for="youtubeLink" class="pr-2"> Youtube link: </label>
-                    <input id="youtubeLink" class="w-50 form-control form-control-sm" name="youtubeLink" type="text" placeholder="Paste URL here" value="<?php echo $data['link']?>">
+                    <input id="youtubeLink" class="w-50 form-control form-control-sm <?php echo (!empty($data['link_error'])) ? 'form-control is-invalid' : ''; ?>" name="youtubeLink" type="text" placeholder="Paste URL here" value="<?php echo $data['link']?>">
                     <span class="invalid-feedback"><?php echo $data['link_error'] ?></span>
                 </div>
             </div>

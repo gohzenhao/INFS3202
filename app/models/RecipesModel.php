@@ -46,7 +46,7 @@ class RecipesModel {
         }
 
         // Insert ingredients
-        $ingredQueryArray = $this->getIngredientsQueries($newRecipeID, $data['ingredients']);
+        $ingredQueryArray = $this->convertIngredientsFormat($newRecipeID, $data['ingredients']);
         $ingredQueryString = 'INSERT INTO ingredients (rid,ingredientid,value) VALUES ' . implode(", ", $ingredQueryArray) . ';';
         // echo $ingredQueryString;
         $this->db->query($ingredQueryString);
@@ -63,7 +63,7 @@ class RecipesModel {
         }
 
         // Insert directions
-        $direcQueryArray = $this->getDirectionsQueries($newRecipeID, $data['directions']);
+        $direcQueryArray = $this->convertDirectionsFormat($newRecipeID, $data['directions']);
         $direcQueryString = 'INSERT INTO directions (rid,stepNum,description) VALUES ' . implode(", ", $direcQueryArray) . ';';
         // echo $direcQueryString;
         $this->db->query($direcQueryString);
@@ -77,6 +77,53 @@ class RecipesModel {
         } catch (PDOException $e) {
             echo '</br>FAILED directions: ' . $e->getMessage() . '</br>';
             return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Updates recipe specified by rid in parameters
+     * Performs 1 update for 'recipe' table, and 1 for each 'ingredients' and 1 for each 'directions'
+     * 
+     * @param: $data associate array containing all recipe information to update
+     * 
+     * @return: true if recipe successfully updated, false otherwise
+     */
+    public function updateRecipe($data) {
+        // Prepare sql query for new recipe entry
+        $this->db->query('UPDATE recipes SET title=:title, description=:description, prepTime=:prepTime, servingSize=:servingSize, link=:link WHERE rid=:rid;');
+        // Bind values for prepared statement
+        $this->db->bind(':title', $data['title']);
+        $this->db->bind(':description', $data['description']);
+        $this->db->bind(':prepTime', $data['prepTime']);
+        $this->db->bind(':servingSize', $data['servingSize']);
+        $this->db->bind(':link', $data['link']);
+        $this->db->bind(':rid', $data['rid']);
+        // Execute query
+        try {
+            $this->db->execute();
+        } catch (PDOException $e) {
+            echo '</br>FAILED recipe: ' . $e->getMessage() . '</br>';
+            return false;
+        }
+
+        // Update Ingredients table 
+        for($i = 0; $i < count($data['ingredients']); $i++) {
+            $this->db->query('UPDATE ingredients SET value=:value WHERE rid=:rid AND ingredientid=:iid;');
+            $this->db->bind(':value', $data['ingredients'][$i]);
+            $this->db->bind(':rid', $data['rid']);
+            $this->db->bind(':iid', $i+1);
+            $this->db->execute();
+        }
+
+        // Update Directions table
+        for($i = 0; $i < count($data['directions']); $i++) {
+            $this->db->query('UPDATE directions SET description=:desc WHERE rid=:rid AND stepNum=:stepNum;');
+            $this->db->bind(':desc', $data['directions'][$i]);
+            $this->db->bind(':rid', $data['rid']);
+            $this->db->bind(':stepNum', $i+1);
+            $this->db->execute();
         }
 
         return true;
@@ -115,13 +162,14 @@ class RecipesModel {
      * Convert ingredients array to sql value template.
      * Each element follows format: '(rid, x, :valuex)'
      * where x increments from 1 to number of ingredients
+     * To use in sql query: implode(", ", convertIngredientsFormat($rid, $data['ingredients']))
      *
      * @param: rid
      * @param: non-associative array of ingredients
      *
      * @return: array containing query values template
      */
-    private function getIngredientsQueries($rid, $ingredients) {
+    private function convertIngredientsFormat($rid, $ingredients) {
         $result = [];
         for($i = 1; $i < count($ingredients) + 1; $i++) {
             $result[$i - 1] = '(' . $rid . ', ' . $i . ', :value' . $i . ')';
@@ -134,13 +182,14 @@ class RecipesModel {
      * Convert directions array to sql value template.
      * Each element follows format: '(rid, x, :valuex)'
      * where x increments from 1 to number of directions
+     * To use in sql query: implode(", ", convertDirectionsFormat($rid, $data['directions']))
      *
      * @param: rid
      * @param: non-associative array of directions
      *
      * @return: array containing query values template
      */
-    private function getDirectionsQueries($rid, $directions) {
+    private function convertDirectionsFormat($rid, $directions) {
         $result = [];
         for($i = 1; $i < count($directions) + 1; $i++) {
             $result[$i - 1] = '(' . $rid . ', ' . $i . ', :value' . $i . ')';
@@ -242,17 +291,6 @@ class RecipesModel {
     }
 
     /**
-     * Returns all comments on recipe given by recipe id
-     *
-     * @return: associative object
-     */
-    public function getAllComments($rid) {
-        $this->db->query('SELECT * FROM comments WHERE recipe_id = :rid ORDER BY date DESC');
-        $this->db->bind(':rid', $rid);
-        return $this->db->resultSet();
-    }
-
-    /**
      * Adds new comment to comments table
      *
      * @param: $data containing rid, comment, rating in an associative array
@@ -274,6 +312,17 @@ class RecipesModel {
         // Return the comment added from the INSERT operation above
         $this->db->query('SELECT * FROM comments WHERE comment_id = (SELECT MAX(comment_id) FROM comments)');
         return $this->db->single();
+    }
+
+    /**
+     * Returns all comments on recipe given by recipe id
+     *
+     * @return: associative object
+     */
+    public function getAllComments($rid) {
+        $this->db->query('SELECT * FROM comments WHERE recipe_id = :rid ORDER BY date DESC');
+        $this->db->bind(':rid', $rid);
+        return $this->db->resultSet();
     }
 
     /**
