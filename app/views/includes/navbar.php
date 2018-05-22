@@ -1,8 +1,9 @@
-<nav class="navbar black border-bottom navbar-expand-lg">
+<nav class="navbar black navbar-expand-lg bg-orange pt-2 pb-2">
+
   <div class="container">
 
     <!-- Logo/title button to return to home page -->
-    <a class="navbar-brand" href="<?php echo URLROOT; ?>/home">TheRecipesProject</a>
+    <a class="navbar-brand text-white" href="<?php echo URLROOT; ?>/home"><h3>The Recipes Project</h3></a>
 
     <!-- Hamburger button only becomes visible when screen size becomes smaller -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -14,7 +15,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">
-            <a class="navbar-text nav-link dropdown-toggle" data-toggle="dropdown" href="#">Welcome <?php echo $_SESSION['user_name'] ?></a>
+            <a class="navbar-text nav-link dropdown-toggle text-white" data-toggle="dropdown" href="#">Welcome <?php echo $_SESSION['user_name'] ?></a>
             <div class="dropdown-menu dropdown-menu">
               <a class="dropdown-item" href="<?php echo URLROOT; ?>/account">My Account</a>
               <a class="dropdown-item" href="<?php echo URLROOT; ?>/recipes/create">Create Recipe</a>
@@ -33,7 +34,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout">Logout</a>
+            <a class="nav-link text-white" href="<?php echo URLROOT; ?>/users/logout">Logout</a>
           </li>
         </ul>
       </div>
@@ -43,7 +44,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown">Sign In</a>
+            <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown">Sign In</a>
             <div class="dropdown-menu dropdown-menu-right" style="width: 400px;">
               <form class="px-4 py-3" action="<?php echo URLROOT; ?>/users/login" method="POST">
                 <div class="form-group">
@@ -61,7 +62,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo URLROOT; ?>/users/registration">Register</a>
+            <a class="nav-link text-white" href="<?php echo URLROOT; ?>/users/registration">Register</a>
           </li>
         </ul>
       </div>

@@ -86,7 +86,7 @@ class RecipesModel {
      * Moves image from temporary location into public/img/upload/ directory
      * Image upload names given format 'r{rid}_u{uid}_preview'
      * If no image is provided (size is 0) then return placeholder img path: /img/beef.jpg
-     * 
+     *
      * @param: recipe id of new recipe
      * @param: user id of creator
      * @param: $_FILES['imageName']
@@ -155,7 +155,7 @@ class RecipesModel {
      * - image path for preview image
      * - list of ingredients
      * - list of directions
-     * 
+     *
      * TODO: fetch ownerid's username
      *
      * @param: recipe id to fetch
@@ -213,7 +213,7 @@ class RecipesModel {
 
     /**
      * Returns recipes title and description containing keywords specified by query string
-     * 
+     *
      * @param: query string keyword(s)
      * @return: associative object
      */
@@ -227,7 +227,7 @@ class RecipesModel {
 
     /**
      * Returns recipes title only for keywords specified by query string
-     * 
+     *
      * @param: query string keyword(s)
      * @return: associative object
      */
@@ -271,6 +271,18 @@ class RecipesModel {
         // Return the comment added from the INSERT operation above
         $this->db->query('SELECT * FROM comments WHERE comment_id = (SELECT MAX(comment_id) FROM comments)');
         return $this->db->single();
+    }
+
+    /**
+     * TODO: dont use hard coded value
+     * 
+     * @return: object of recipe data
+     */
+    public function getFeaturedRecipes(){
+      $this->db->query("SELECT * FROM recipes ORDER BY rid DESC LIMIT :num");
+      $this->db->bind(':num', 7);
+      return $this->db->resultSet();
+
     }
 
 }
