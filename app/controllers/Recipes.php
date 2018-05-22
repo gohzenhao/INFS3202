@@ -4,6 +4,9 @@
 			$this->recipesModel = $this->model('RecipesModel');
 		}
 
+		/**
+		 * Error 404 page
+		 */
 		public function index() {
 			//TODO: handle index (nicer 404 page)
 			echo 'Error 404: page not found';
@@ -79,7 +82,6 @@
 					if($this->recipesModel->createNewRecipe($data)) {
 						// Return to account page
 						redirect('account');
-						print_r($data);
 					} else {
 						// PDOException was thrown
 						$this->view('includes/header');
@@ -95,7 +97,7 @@
 					$this->view('includes/footer');
 					$this->script('recipes/create');
 				}
-			}else{
+			} else {
 				$data = [
 					'title' => '',
 					'description' => '',
@@ -119,6 +121,100 @@
 				$this->view('recipes/create', $data);
 				$this->view('includes/footer');
 				$this->script('recipes/create');
+			}
+		}
+
+		/**
+		 * TODO
+		 */
+		public function edit($recipeID = null) {
+			$recipeData = $this->recipesModel->getRecipeData($recipeID);
+
+			// Redirect to error 404 page if nonexistent id or no id specified
+			if($recipeData == null) {
+				redirect('recipes');
+			}
+
+			// Check logged in and user is the owner of recipe
+			if(!isLoggedIn()) {
+				redirect('users/login');
+			} elseif($_SESSION['user_id'] != $recipeData->ownerid) {
+				$this->view('includes/header');
+				// TODO: error page
+				echo 'TODO: Page - Sorry you cannot edit someone else\'s recipe';
+				$this->view('includes/footer');
+				return;
+			}
+			
+			if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+				// Validate input
+				$data = $this->validateEditRecipe();
+				$data['rid'] = $recipeID;
+				$data['imagePath'] = $recipeData->imagePath;
+				// echo '</br>PAST VALIDATE</br>';
+				// var_dump($data);
+				
+				// If no errors then upload
+				if(empty($data['title_error']) && empty($data['description_error']) &&
+						empty($data['prepTime_error']) && empty($data['servingSize_error']) &&
+						empty($data['ingredients_error']) && empty($data['directions_error']) &&
+						empty($data['img_error']) && empty($data['link_error']) ){
+					// Update recipe on database
+					if(true) {//TODO
+						// Return to account page
+						//TODO: flash
+						// redirect('account');
+						echo 'noice ;)</br>TODO: actually UPDATE db';
+					} else {
+						// TODO: PDOException was thrown
+						$this->view('includes/header');
+						$this->view('recipes/edit', $data);
+						$this->view('includes/footer');
+					}
+				} else {
+					// Display form with errors
+					$this->view('includes/header');
+					$this->view('recipes/edit', $data);
+					$this->view('includes/footer');
+				}
+			} else {
+
+				//Convert ingredients and directions into simple array
+				// Since html needs to handle reloading incorrect forms
+				$ingredientsList = [];
+				foreach ($recipeData->ingredients as $key=>$item) {
+					$ingredientsList[$key] = $item['value'];
+				}
+				$directionsList = [];
+				foreach ($recipeData->directions as $key=>$item) {
+					$directionsList[$key] = $item['description'];
+				}
+				
+				$data = [
+					'rid' => $recipeID,
+					'title' => $recipeData->title,
+					'description' => $recipeData->description,
+					'prepTime' => $recipeData->prepTime,
+					'servingSize' => $recipeData->servingSize,
+					'link' => $recipeData->link,
+					'imagePath' => $recipeData->imagePath,
+					'ingredients' => $ingredientsList,
+					'directions' => $directionsList,
+
+					'title_error' => '',
+					'description_error' => '',
+					'prepTime_error' => '',
+					'servingSize_error' => '',
+					'ingredients_error' => '',
+					'directions_error' => '',
+					'img_error' => '',
+					'link_error' => ''
+				];
+				
+				$this->view('includes/header');
+				$this->view('recipes/edit', $data);
+				$this->view('includes/footer');
 			}
 		}
 
@@ -222,6 +318,7 @@
 		private function validateCreateRecipe() {
 			// Check input for injections
 			$data = $this->sanitizeInput();
+
 			// Check for empty input
 			if (empty($data['title'])) {
 				$data['title_error'] = 'Please enter the name of your recipe';
@@ -270,15 +367,46 @@
 			$data['img_error'] = $this->checkImageUpload($_FILES['imgPreview']);
 
 			//Check youtube link
-			$pattern = '/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/';
-			$url = $data['link'];
-			if (!empty($data['link'])) {
-				if (preg_match($pattern,$url,$matches)) {
-					$data['link'] = $matches[2];
-				} else {
-					$data['link_error'] = 'Please enter a valid Youtube link';
+			$this->checkYoutubeLink($data);
+			
+			return $data;
+		}
+
+		/**
+		 * TODO
+		 * 
+		 * @return: $data containing user input values, and errors (if any)
+		 */
+		private function validateEditRecipe() {
+			// Check input for injections
+			$data = $this->sanitizeInput();
+
+			// Check for empty input
+			if (empty($data['title'])) {
+				$data['title_error'] = 'Please enter the name of your recipe';
+			}
+			if (empty($data['description'])) {
+				$data['description_error'] = 'Please enter a description of your recipe';
+			}
+			if (empty($data['prepTime'])) {
+				$data['prepTime_error'] = 'Please enter the time taken to prepare';
+			}
+			if (empty($data['servingSize'])) {
+				$data['servingSize_error'] = 'Please enter the serving size';
+			}
+			foreach ($data['ingredients'] as $item) {
+				if (empty($item)) {
+					$data['ingredients_error'] = 'Please enter the an ingredient for all items';
 				}
 			}
+			foreach ($data['directions'] as $item) {
+				if (empty($item)) {
+					$data['directions_error'] = 'Please enter the a direction for all items';
+				}
+			}
+
+			// Validate youtube link
+			$this->checkYoutubeLink($data);
 
 			return $data;
 		}
@@ -299,6 +427,23 @@
 				return 'File has an error (Error: '.$imgTemp['error'].')';
 			}
 			return '';
+		}
+
+		/**
+		 * TODO: docs
+		 * 
+		 * @param: pass $data by reference
+		 */
+		private function checkYoutubeLink(& $data) {
+			$pattern = '/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/';
+			$url = $data['link'];
+			if (!empty($data['link'])) {
+				if (preg_match($pattern,$url,$matches)) {
+					$data['link'] = $matches[2];
+				} else {
+					$data['link_error'] = 'Please enter a valid Youtube link';
+				}
+			}
 		}
 
 }

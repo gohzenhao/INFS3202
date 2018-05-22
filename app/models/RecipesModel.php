@@ -83,6 +83,7 @@ class RecipesModel {
     }
 
     /**
+     * HELPER FUNCTION
      * Moves image from temporary location into public/img/upload/ directory
      * Image upload names given format 'r{rid}_u{uid}_preview'
      * If no image is provided (size is 0) then return placeholder img path: /img/beef.jpg
@@ -110,6 +111,7 @@ class RecipesModel {
     }
 
     /**
+     * HELPER FUNCTION
      * Convert ingredients array to sql value template.
      * Each element follows format: '(rid, x, :valuex)'
      * where x increments from 1 to number of ingredients
@@ -128,6 +130,7 @@ class RecipesModel {
     }
 
     /**
+     * HELPER FUNCTION
      * Convert directions array to sql value template.
      * Each element follows format: '(rid, x, :valuex)'
      * where x increments from 1 to number of directions
