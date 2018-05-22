@@ -14,18 +14,21 @@
         </div>
         <div class="row">
             <div class="col-lg-8 mx-auto">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for...">
-                <span class="input-group-btn">
-                <button class="btn btn-primary px-5" type="button">
-                    <div class="row">
-                        <div class="col-lg-2"><i class="material-icons">search</i></div>
-                        <div class="col-lg-1">Search</div>
+                <!-- Search bar - opens search page to display results -->
+                <form action="<?php echo URLROOT;?>/search" method="GET">
+                    <div class="input-group mb-3">
+                        <input id="search-bar" name="query" type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary px-5" type="submit">
+                                <div class="row">
+                                    <div class="col-lg-2"><i class="material-icons">search</i></div>
+                                    <div class="col-lg-1">Search</div>
+                                </div>
+                            </button>
+                        </span>
                     </div>
-                </button>
-                </span>
-            </div><!-- /input-group -->
-            </div><!-- /.col-lg-6 -->
+                </form>
+            </div>
         </div>
     </div>
 </header>
