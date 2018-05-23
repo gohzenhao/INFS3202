@@ -15,7 +15,7 @@
 		/**
 		 * Displays recipe based on recipe id, if none is provided, redirect to recipe/search page.
 		 * If user is not logged in do not display comments section.
-		 * 
+		 *
 		 * @param: recipe id
 		 */
 		public function display($recipeID = null) {
@@ -80,8 +80,9 @@
 					$data['uid'] = $_SESSION['user_id'];
 					// Upload recipe to database
 					if($this->recipesModel->createNewRecipe($data)) {
+						flash('create_success', "Recipe created successfully!");
 						// Return to account page
-						redirect('account');
+						redirect('account/index');
 					} else {
 						// PDOException was thrown
 						$this->view('includes/header');
@@ -116,7 +117,7 @@
 					'img_error' => '',
 					'link_error' => ''
 				];
-				
+
 				$this->view('includes/header');
 				$this->view('recipes/create', $data);
 				$this->view('includes/footer');
@@ -127,7 +128,7 @@
 		/**
 		 * Updates recipe specified by rid in url
 		 * Handles both loading old form page and loading user input via POST
-		 * 
+		 *
 		 * @param: recipe id
 		 */
 		public function edit($recipeID = null) {
@@ -147,7 +148,7 @@
 				$this->view('includes/footer');
 				return;
 			}
-			
+
 			if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 				// Validate input
@@ -156,7 +157,7 @@
 				$data['imagePath'] = $recipeData->imagePath;
 				// echo '</br>PAST VALIDATE</br>';
 				// var_dump($data);
-				
+
 				// If no errors then upload
 				if(empty($data['title_error']) && empty($data['description_error']) &&
 						empty($data['prepTime_error']) && empty($data['servingSize_error']) &&
@@ -191,7 +192,7 @@
 				foreach ($recipeData->directions as $key=>$item) {
 					$directionsList[$key] = $item['description'];
 				}
-				
+
 				$data = [
 					'rid' => $recipeID,
 					'title' => $recipeData->title,
@@ -212,7 +213,7 @@
 					'img_error' => '',
 					'link_error' => ''
 				];
-				
+
 				$this->view('includes/header');
 				$this->view('recipes/edit', $data);
 				$this->view('includes/footer');
@@ -232,7 +233,7 @@
 
 			$uri = $_SERVER['REQUEST_URI'];
 			$category = substr($uri,strpos($uri,'?')+1);
-			
+
 			// This code will execute if the user entered a search query in the form
 			// and submitted the form. Otherwise, the page displays the form above.
 			if (strpos($category,'more')!==false) {
@@ -369,13 +370,13 @@
 
 			//Check youtube link
 			$this->checkYoutubeLink($data);
-			
+
 			return $data;
 		}
 
 		/**
 		 * Checks input data from recipes edit form and assigns error messages if required
-		 * 
+		 *
 		 * @return: $data containing user input values, and errors (if any)
 		 */
 		private function validateEditRecipe() {
@@ -434,7 +435,7 @@
 		 * Checks if text user entered is a valid youtube address
 		 * If no link provided sets link_error to empty string
 		 * Valid: 'https://www.youtube.com/watch?v=...'
-		 * 
+		 *
 		 * @param: pass $data by reference
 		 */
 		private function checkYoutubeLink(& $data) {
