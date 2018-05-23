@@ -236,11 +236,4 @@
             return $data;
         }
 
-        /**
-         * TODO: use PHPmailer library
-         */
-        public function sendConfirmationEmail($email) {
-            
-
-        }
 	}

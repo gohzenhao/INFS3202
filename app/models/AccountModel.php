@@ -9,16 +9,22 @@ class AccountModel {
 	}
 
 	/**
+	 * Return user entries using current session username
 	 * 
+	 * @return: user entries
 	 */
 	public function getCurrentUser() {
 		$this->db->query("SELECT * FROM users WHERE user_name = :username");
-		$this->db->bind(':username', $_SESSION['user_name']);
+		$this->db->bind(':username', $_SESSION['user_username']);
 		return $this->db->single();
 	}
 
 	/**
+	 * Update user entries specified by user id
 	 * 
+	 * @param: associative array of columns name, username, email, id
+	 * 
+	 * @return: true on success, else false
 	 */
 	public function updateProfile($data) {
 		$this->db->query('UPDATE users SET user_name = :name, user_username = :username,
@@ -38,7 +44,9 @@ class AccountModel {
 	}
 
 	/**
+	 * Retuns user entries associated to email
 	 * 
+	 * @param: email
 	 */
 	public function findUserByEmail($email) {
 		$this->db->query("SELECT * FROM users WHERE user_email = :email");
@@ -66,8 +74,6 @@ class AccountModel {
 	/**
 	 * Deletes recipe by rid and all ingredients and directions. 
 	 * Also removes file from file system of the uploaded image
-	 * 
-	 * TODO: do not remove if not inside uploads folder
 	 * 
 	 * @param: rid
 	 * 

@@ -14,7 +14,7 @@
                 <a class="col" href="<?php echo URLROOT; ?>/search">Search Recipe</a>
                 <a class="col" href="<?php echo URLROOT; ?>/recipes/create">Create Recipe</a>
                 <a class="col" href="<?php echo URLROOT; ?>/chat">Chat Room</a>
-                <a class="col" href="<?php echo URLROOT; ?>/celebritychefs">Gordon Ramsay's Recipes</a>
+                <a class="col" href="<?php echo URLROOT; ?>/celebrityChefs">Gordon Ramsay's Recipes</a>
             </div>
         </div>
 

@@ -208,9 +208,8 @@ class RecipesModel {
      * - list of ingredients
      * - list of directions
      *
-     * TODO: fetch ownerid's username
-     *
      * @param: recipe id to fetch
+     * 
      * @return: all data of recipe as associative stdClass Object
      */
     public function getRecipeData($rid) {
@@ -267,6 +266,7 @@ class RecipesModel {
      * Returns recipes title and description containing keywords specified by query string
      *
      * @param: query string keyword(s)
+     * 
      * @return: associative object
      */
     public function searchRecipes($query) {
@@ -281,6 +281,7 @@ class RecipesModel {
      * Returns recipes title only for keywords specified by query string
      *
      * @param: query string keyword(s)
+     * 
      * @return: associative object
      */
     public function searchRecipesTitle($query) {
@@ -330,17 +331,21 @@ class RecipesModel {
         }
 
         // Return the comment added from the INSERT operation above
-        $this->db->query('SELECT * FROM comments WHERE comment_id = (SELECT MAX(comment_id) FROM comments)');
+        //$this->db->query('SELECT * FROM comments WHERE comment_id = (SELECT MAX(comment_id) FROM comments)');
+        $this->db->query('SELECT comments.*, users.user_username FROM comments JOIN users ON ownerid=user_id WHERE comment_id = (SELECT MAX(comment_id) FROM comments)');
         return $this->db->single();
     }
 
     /**
-     * Returns all comments on recipe given by recipe id
+     * Returns all comments on recipe given by recipe id, will also fetch username associated to ownerid
+     * 
+     * @param: recipe id
      *
      * @return: associative object
      */
     public function getAllComments($rid) {
-        $this->db->query('SELECT * FROM comments WHERE recipe_id = :rid ORDER BY date DESC');
+        $this->db->query('SELECT comments.*, users.user_username FROM comments JOIN users ON ownerid=user_id 
+                WHERE recipe_id = :rid  ORDER BY date DESC');
         $this->db->bind(':rid', $rid);
         return $this->db->resultSet();
     }

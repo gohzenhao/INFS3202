@@ -145,7 +145,7 @@
                         <div class="card-body">
                             <div class="stars-outer"><div class="stars-inner" style="width: '.($comment->rating*20).'%;"></div></div>
                             <p class="card-text">'.$comment->comment_description.'</p>
-                            <h6 class="card-title">Author: '.$comment->ownerid.'</h6>
+                            <h6 class="card-title">Author: '.$comment->user_username.'</h6>
                             <small class="card-subtitle text-muted">Date: '.$comment->date.'</small>
                         </div>
                     </div>';

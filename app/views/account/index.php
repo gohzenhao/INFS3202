@@ -18,9 +18,10 @@
         <div class="col-lg-10 text-center">
             <h3> <u> My Recipes </u> </h3>
         </div>
-
-        <?php flash('update_success'); ?>
       </div>
+
+      <?php flash('update_success'); ?>
+      <?php flash('delete_success');?>
 
       <div class="row">
 

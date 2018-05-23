@@ -12,6 +12,8 @@
 
         /**
          * Inserts a new user into the database
+         * 
+         * @param: associative array of user details to insert
          *
          * @return: true on success, false on fail
          */
@@ -33,6 +35,9 @@
 
         /**
          * Login in a user via username or email
+         * 
+         * @param: username
+         * @param: password
          *
          * @return: user data row from sql on success, false on fail
          */
@@ -53,6 +58,8 @@
 
         /**
          * Find user by email
+         * 
+         * @param: email
          *
          * @return: boolean
          */
@@ -72,6 +79,8 @@
         /**
          * Find user by username
          *
+         * @param: username
+         * 
          * @return: boolean
          */
         public function findUserByUsername($username) {
@@ -91,6 +100,7 @@
          * Retreive user's information
          * 
          * @param: user id
+         * 
          * @return: object for user data
          */
         public function getUser($oid){

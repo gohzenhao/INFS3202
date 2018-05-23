@@ -9,7 +9,9 @@
 		 * TODO: handle index (nicer 404 page)
 		 */
 		public function index() {
-			echo 'Error 404: page not found';
+			$this->view('includes/header');
+			echo '<div class="col-12 text-center">Error 404: page not found</div>';
+			$this->view('includes/footer');
 		}
 
 		/**
@@ -220,7 +222,8 @@
 		}
 
 		/**
-		 * TODO: doc
+		 * Loads related videos view 
+		 * NOTE: contains API keys (Remove before submission)
 		 */
 		public function videos() {
 

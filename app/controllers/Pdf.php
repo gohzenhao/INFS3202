@@ -13,11 +13,13 @@ class Pdf extends Controller{
      * Redirct to recipes index page (Error 404)
      */
     public function index(){
-        redirect('recipes');
+        $this->view('includes/header');
+        echo '<div class="col-12 text-center">Error 404: page not found</div>';
+        $this->view('includes/footer');
     }
     
     /**
-     * 
+     * Generates PDF specified by recipe id and loads it into the page
      */
     public function download($recipeID = null) {
         // Redirect to recipe search page (default) if no recipe id is provided
