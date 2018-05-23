@@ -291,6 +291,26 @@ class RecipesModel {
     }
 
     /**
+     * Returns average of all comment ratings associated to rid
+     * 
+     * @param: recipe id
+     * 
+     * @return: average rating out of 5
+     */
+    public function getAverageRating($rid){
+        $comments = $this->getAllComments($rid);
+        $sum = 0;
+        if(sizeof($comments)!=0){
+            foreach($comments as $comment){
+                $sum += $comment->rating;
+            }
+            return $sum/sizeof($comments);
+        } else {
+            return $sum;
+        }
+    }
+
+    /**
      * Adds new comment to comments table
      *
      * @param: $data containing rid, comment, rating in an associative array
@@ -327,7 +347,7 @@ class RecipesModel {
 
     /**
      * TODO: dont use hard coded value
-     * 
+     *
      * @return: object of recipe data
      */
     public function getFeaturedRecipes(){

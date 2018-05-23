@@ -17,6 +17,11 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css">
 
     <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+
+    <!-- third party stylesheets -->
+    <link href="stylesheet" href="<?php echo URLROOT; ?>/css/hover.css">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   </head>
 
   <body>

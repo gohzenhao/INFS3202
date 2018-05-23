@@ -34,7 +34,7 @@
 					echo 'boo';
 				}
 			} else{
-				$result = $this->accountModel->getRecipes();
+				$result = $this->accountModel->getUserRecipes();
 				$result = (array)$result;
 				
 				$data = [

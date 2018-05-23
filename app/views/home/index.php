@@ -52,79 +52,68 @@
   </div>
 
 
-<div class="container">
+<div class="container" id="feature-cards">
 <div class="row mt-4 pl-4 pr-4">
     <div class="col-lg-12 text-center">
         <h3> <u> Featured custom recipes </u> </h3>
     </div>
 
-    <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
-        <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="card-deck w-95 mx-auto">
-                  <?php
-                  for($x = 1;$x<4;$x++){
-                    echo '<div class="card">
-                      <img class="card-img-top" src="' . URLROOT.'/img'. $data['featured'][$x]->imagePath .'" alt="Card image cap">
-                      <div class="card-body">
+        <?php
+        for($x = 1;$x<sizeof($data['featured']);$x++){
+        echo '
+        <div class="col-lg-4 mt-4 mr-1d-flex">
 
-                          <h5 class="card-title ml-auto">' . $data['featured'][$x]->title . '<span class="featured1">
-                          <div class="stars-outer">
-                              <div class="stars-inner">
-                              </div>
-                          </div>
-                          </span></h5>
-                      <p class="card-text">' . $data['featured'][$x]->description.'</p>
-                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                      </div>
-                  </div>';
-                }
-                  ?>
+        <div class="card d-flex w-100" id="featured-card">
+        <a href="' . URLROOT.'/recipes/display/'.$data['featured'][$x]->rid. '">
+            <img class="card-img-top" src="' . URLROOT.'/img'. $data['featured'][$x]->imagePath .'" alt="Card image cap" style="object-fit:cover;height:200px">
+            <div class="card-body">
 
+                <h5 class="card-title ml-auto">' . $data['featured'][$x]->title . '<span id="featured' . $x .'">
+                <div class="stars-outer">
+                    <div class="stars-inner">
+                    </div>
                 </div>
+                </span></h5>
+            <p class="card-text">' . $data['featured'][$x]->description.'</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
-
-            <div class="carousel-item">
-                <div class="card-deck w-95 mx-auto">
-
-                  <?php
-                  for($x = 4;$x<sizeof($data['featured']);$x++){
-                    echo '<div class="card">
-                      <img class="card-img-top" src="' . URLROOT.'/img' . $data['featured'][$x]->imagePath .'" alt="Card image cap">
-                      <div class="card-body">
-
-                          <h5 class="card-title ml-auto">' . $data['featured'][$x]->title . '<span class="featured1">
-                          <div class="stars-outer">
-                              <div class="stars-inner">
-                              </div>
-                          </div>
-                          </span></h5>
-                      <p class="card-text">' . $data['featured'][$x]->description.'</p>
-                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                      </div>
-                  </div>';
-                }
-                  ?>
-
-                </div>
-            </div>
+            </a>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <i class="material-icons md-48">chevron_left</i>
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <i class="material-icons md-48">chevron_right</i>
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-        </a>
-    </div>
+        </div>';
+    }?>
 </div>
 </div>
 
 <?php require APPROOT . '/views/includes/footer.php'; ?>
+<script>
+  document.addEventListener('DOMContentLoaded',getRatings());
+
+function getRatings(){
+
+  var jArray= <?php echo json_encode($data['average'] ); ?>;
+
+  const ratings = {
+      featured1: jArray[1],
+      featured2: jArray[2],
+      featured3: jArray[3],
+      featured4: jArray[4],
+      featured5: jArray[5],
+      featured6: jArray[6],
+
+  }
+
+for(let rating in ratings){
+
+  const totalStars = 5.0;
+
+
+    const starPercentage = (ratings[rating] / totalStars) * 100;
+
+    const starPercentageRounded = `${Math.round(starPercentage /10 ) * 10}%`;
+
+    document.getElementById(`${rating}`).getElementsByClassName("stars-inner")[0].style.width = starPercentageRounded;
+
+}
+
+}
+</script>

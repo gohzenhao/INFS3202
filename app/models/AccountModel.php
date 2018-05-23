@@ -8,12 +8,18 @@ class AccountModel {
 		$this->db = new Database();
 	}
 
+	/**
+	 * 
+	 */
 	public function getCurrentUser() {
 		$this->db->query("SELECT * FROM users WHERE user_name = :username");
 		$this->db->bind(':username', $_SESSION['user_name']);
 		return $this->db->single();
 	}
 
+	/**
+	 * 
+	 */
 	public function updateProfile($data) {
 		$this->db->query('UPDATE users SET user_name = :name, user_username = :username,
 			user_email = :email WHERE user_id = :id');
@@ -31,6 +37,9 @@ class AccountModel {
 
 	}
 
+	/**
+	 * 
+	 */
 	public function findUserByEmail($email) {
 		$this->db->query("SELECT * FROM users WHERE user_email = :email");
 		$this->db->bind(":email", $email);
@@ -42,7 +51,13 @@ class AccountModel {
 		}
 	}
 
-	public function getRecipes() {
+	/**
+	 * Get recipes user created
+	 * User id selected by session
+	 * 
+	 * @return: array of recipe entries
+	 */
+	public function getUserRecipes() {
 		$this->db->query("SELECT * FROM recipes WHERE ownerid = :id");
 		$this->db->bind(":id", $_SESSION['user_id']);
 		return $this->db->resultSet(true);
