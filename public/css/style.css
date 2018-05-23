@@ -47,12 +47,8 @@ header .container{
   outline-offset:-20px;
   margin-top:2.5em;
   opacity:0;
-  transition: all 400ms ease-in;
 }
 
-.featured-js-animate{
-  opacity:1;
-}
 
 .featured-box{
   background-color:orange;
@@ -63,13 +59,9 @@ header .container{
 }
 
 #feature-cards{
-  opacity:1;
-  transition: all 200ms ease-in;
+  opacity:0;
 }
 
-.cards-js-animate{
-  opacity:1;
-}
 
 #search-items a{
 
@@ -117,24 +109,40 @@ header .container{
 }
 
 #featured-card a:hover{
-  animation : card-move 250ms linear;
+  animation : pulse 400ms linear;
 }
 
-@keyframes card-move{
-  0% {
-    transform: rotate(0);
+@-webkit-keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
   }
 
-  33%{
-    transform: rotate(5deg);
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
   }
 
-  66% {
-    transform: rotate(-5deg);
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
   }
 
-  100%{
-    transform: rotate(0);
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
   }
 }
 .overlay {
