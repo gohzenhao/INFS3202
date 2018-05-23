@@ -1,17 +1,22 @@
 
-<div class="row container">
+<div class="container">
+  <h3 class="">Submit Enquiries </h3>
+  <?php flash('email_success');?>
 	<form action="<?php echo URLROOT; ?>/home/about" method="POST">
 		<div class="form-group">
 			<label>Subject:</label>
-			<input type="text" name="subject" class="form-control">
-		</div>
+			<input type="text" name="subject" class="form-control <?php echo (!empty($data['subject_error'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['subject']?>">
+      <span class="invalid-feedback"><?php echo $data['subject_error'] ?></span>
+    </div>
 		<div class="form-group">
-			<label>Enquiry:</label>
-			<textarea type="text" name="body" class="form-control"></textarea>
+			<label>Message:</label>
+      <textarea type="text" name="body" class="form-control <?php echo (!empty($data['body_error'])) ? 'is-invalid' : ''; ?>"><?php echo $data['body']?></textarea>
+      <span class="invalid-feedback"><?php echo $data['body_error'] ?></span>
     </div>
     <div class="form-group">
-			<label>Your email:</label>
-			<input type="text" name="replyTo" class="form-control">
+			<label>Your E-mail:</label>
+      <input type="text" name="replyTo" class="form-control <?php echo (!empty($data['replyTo_error'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['replyTo']?>">
+      <span class="invalid-feedback"><?php echo $data['replyTo_error'] ?></span>
 		</div>
 		<input type="submit" value="Send" class="btn btn-success btn-block">
 	</form>

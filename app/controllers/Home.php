@@ -9,9 +9,6 @@ require_once dirname(APPROOT).'/public/vendor/autoload.php';
  * Views are located in /views/home/ folder
  */
 class Home extends Controller{
-	/**
-	 * TODO: load latest 6 (by creation time) recipes into featured
-	 */
 	public function __construct(){
 		$this->recipesModel = $this->model('RecipesModel');
 		$this->userModel = $this->model('UserModel');
@@ -44,15 +41,49 @@ class Home extends Controller{
 	}
 
 	/**
-	 * TODO
+	 * Loads About page, with form for sending email query to admin
 	 */
 	public function about(){
-		if($_SERVER['REQUEST_METHOD'] == 'POST') {
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-			$this->sendMail($_POST['subject'], $_POST['body'], $_POST['replyTo']);
-			$data = ['title' => 'POSTed'];
+			$data = [
+				'subject' => trim($_POST['subject']),
+				'body' => trim($_POST['body']),
+				'replyTo' => trim($_POST['replyTo']),
+
+				'subject_error' => '',
+				'body_error' => '',
+				'replyTo_error' => '',
+			];
+			// Validate input
+			if(empty($data['subject'])) {
+                $data['subject_error'] = 'Please enter a subject';
+			}
+			if(empty($data['body'])) {
+                $data['body_error'] = 'Please enter a message';
+			}
+			if(empty($data['replyTo'])) {
+                $data['replyTo_error'] = 'Please enter your email to reply to';
+            } else if (!filter_var($data['replyTo'], FILTER_VALIDATE_EMAIL)) {
+				$data['replyTo_error'] = 'Please enter a valid email';
+			}
+			// If no errors then send email
+			if (empty($data['subject_error']) && empty($data['body_error']) && empty($data['replyTo_error'])) {
+				$result = $this->sendMail($data['subject'], $data['body'], $data['replyTo'] );
+				if ($result) {
+					flash('email_success', 'Your enquiry has been successfully sent');
+				}
+			}
 		} else {
-			$data = ['title' => 'Welcome to the About page! Test email'];
+			$data = [
+				'subject' => '',
+				'body' => '',
+				'replyTo' => '',
+
+				'subject_error' => '',
+				'body_error' => '',
+				'replyTo_error' => '',
+			];
 		}
 
 		$this->view('includes/header');
@@ -63,15 +94,19 @@ class Home extends Controller{
 	/**
 	 * Send email email using mailhub.eait.uq.edu.au as relay host
 	 *
-	 * TODO: stylize email content and change address
-	 *
 	 * NOTE: only works when sent from uq zone
+	 * 
+	 * @param subject 
+	 * @param message/body
+	 * @param replyTo
+	 * 
+	 * @return
 	 */
 	private function sendMail($subject, $body, $replyTo) {
 		$mail = new PHPMailer(true);
 		try {
 			// Setup server settings
-			$mail->SMTPDebug = 2;
+			//$mail->SMTPDebug = 2;
 			$mail->isSMTP();
 			$mail->Host = 'mailhub.eait.uq.edu.au';
 			$mail->SMTPSecure = 'tls';
@@ -79,18 +114,19 @@ class Home extends Controller{
 
 			// Set recipients
 			$mail->setFrom('noreply@its.uq.edu.au', 'TheRecipesProject');
-			$mail->addAddress('yuliang.zhou@uqconnect.edu.au', 'Test User');
-			$mail->addReplyTo('info@example.com', 'Information');
+			$mail->addAddress('yuliang.zhou@uqconnect.edu.au', 'Admin');
+			$mail->addReplyTo($replyTo, 'Anonymous User');
 
 			// Content
 			$mail->isHTML(true);
-			$mail->Subject = $subject;
-			$mail->Body = 'This is the HTML message body <b>'.$body.'</b>';
+			$mail->Subject = 'Enquiry: '.$subject;
+			$mail->Body = 'Enquiry Message below: <hr/></br>'.$body.'</br><hr/>From: Anonymous User';
 
 			$mail->send();
-			echo 'Message has been sent';
+			return true;
 		} catch (Exception $e) {
-			echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+			echo 'Message could not be sent: ', $mail->ErrorInfo;
+			return true;
 		}
 	}
 

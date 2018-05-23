@@ -15,9 +15,11 @@
     </div>
     <div class="col-lg-9">
       <div class="row mt-3">
-          <div class="col-lg-10 text-center">
-              <h3> <u> My Recipes </u> </h3>
-          </div>
+        <div class="col-lg-10 text-center">
+            <h3> <u> My Recipes </u> </h3>
+        </div>
+
+        <?php flash('update_success'); ?>
       </div>
 
       <div class="row">

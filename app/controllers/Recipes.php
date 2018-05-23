@@ -6,9 +6,9 @@
 
 		/**
 		 * Error 404 page
+		 * TODO: handle index (nicer 404 page)
 		 */
 		public function index() {
-			//TODO: handle index (nicer 404 page)
 			echo 'Error 404: page not found';
 		}
 
@@ -143,8 +143,7 @@
 				redirect('users/login');
 			} elseif($_SESSION['user_id'] != $recipeData->ownerid) {
 				$this->view('includes/header');
-				// TODO: error page
-				echo 'TODO: Page - Sorry you cannot edit someone else\'s recipe';
+				echo '<div class="col-12 text-center">Sorry you cannot edit someone else\'s recipe</div>';
 				$this->view('includes/footer');
 				return;
 			}
@@ -166,11 +165,10 @@
 					// Update recipe on database
 					if($this->recipesModel->updateRecipe($data)) {
 						// Return to account page
-						//TODO: flash
+						flash('update_success', 'You have successfully updated your recipe');
 						redirect('account');
 					} else {
-						// TODO: PDOException was thrown
-						echo 'uh-oh: PDOException was thrown';
+						echo 'TODO: uh-oh: PDOException was thrown';
 						$this->view('includes/header');
 						$this->view('recipes/edit', $data);
 						$this->view('includes/footer');
