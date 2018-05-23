@@ -1,33 +1,25 @@
-<div class="jumbotron text-center">
-    <h1><?php echo $data['title']?></h1>
-    <a class="btn btn-secondary" href="<?php echo URLROOT; ?>/home/about" role="button">Empty About</a>
-    <a class="btn btn-primary" href="<?php echo URLROOT; ?>/users/registration" role="button">Register</a>
-    <a class="btn btn-primary" href="<?php echo URLROOT; ?>/users/login" role="button">Login</a>
-</div>
 
-<!-- <div class="row">
+<div class="row container">
 	<form action="<?php echo URLROOT; ?>/home/about" method="POST">
 		<div class="form-group">
-			<label>Subject</label>
+			<label>Subject:</label>
 			<input type="text" name="subject" class="form-control">
 		</div>
 		<div class="form-group">
-			<label>Body</label>
-			<input type="text" name="body" class="form-control">
+			<label>Enquiry:</label>
+			<textarea type="text" name="body" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+			<label>Your email:</label>
+			<input type="text" name="replyTo" class="form-control">
 		</div>
 		<input type="submit" value="Send" class="btn btn-success btn-block">
 	</form>
-</div> -->
-
-<div>
-  
 </div>
 
 
 <h3>My Google Maps Demo</h3>
-<div id="map">
-
-</div>
+<div id="map"></div>
 
 
 <script>

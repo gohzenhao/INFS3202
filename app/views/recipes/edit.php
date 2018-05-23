@@ -21,7 +21,7 @@
             <div class="row mb-3">
                 <div class="col-5">
                     <label for="imgPreview">Recipe Picture: </label>
-                    <img src="<?php echo URLROOT.'/img'.$data['imagePath'];?>" alt="">
+                    <img src="<?php echo URLROOT.'/img'.$data['imagePath'];?>" alt="image missing" style="object-fit:cover;height:200px;width:90%;">
                     <!-- <div class="previewPic m-auto" >
                         <input name="imgPreview" type="file"  accept="image/jpeg, image/png">
                     </div> -->

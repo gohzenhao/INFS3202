@@ -18,19 +18,8 @@
             <a class="navbar-text nav-link dropdown-toggle text-white" data-toggle="dropdown" href="#">Welcome <?php echo $_SESSION['user_name'] ?></a>
             <div class="dropdown-menu dropdown-menu">
               <a class="dropdown-item" href="<?php echo URLROOT; ?>/account">My Account</a>
-              <a class="dropdown-item" href="<?php echo URLROOT; ?>/recipes/create">Create Recipe</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item">Below are links for Dev purposes only</a>
-              <a class="dropdown-item" href="<?php echo URLROOT; ?>/home/about">Empty About</a>
-              <a class="dropdown-item" href="<?php echo URLROOT; ?>/users/registration">Register</a>
-              <a class="dropdown-item" href="<?php echo URLROOT; ?>/users/login">Login</a>
-              <a class="dropdown-item" href="<?php echo URLROOT; ?>/account">Account</a>
-              <a class="dropdown-item" href="<?php echo URLROOT; ?>/search">Search Recipe</a>
               <a class="dropdown-item" href="<?php echo URLROOT; ?>/recipes/create">Create Recipe</a>
-              <a class="dropdown-item" href="<?php echo URLROOT; ?>/recipes/display/1">Display Recipe</a>
-              <a class="dropdown-item" href="<?php echo URLROOT; ?>/chat">Chat Room</a>
-              <a class="dropdown-item" href="<?php echo URLROOT; ?>/celebritychefs">Gordon Ramsay's Recipes</a>
-              <!-- <a class="dropdown-item">Logout</a> -->
             </div>
           </li>
           <li class="nav-item">

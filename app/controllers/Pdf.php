@@ -46,7 +46,7 @@ class Pdf extends Controller{
         $pdf->AddPage();
         $html = '<h1 style="text-align:center">'.$recipe->title.'</h1>
         <p style="text-align:center">Author: '.$recipe->ownerid.'</p>
-        <img src="'.URLROOT.$recipe->imagePath.'" style="text-align:center;object-fit:cover;height: 200px; max-width: 90%;" alt="Recipe Preview Image Here">
+        <img src="'.URLROOT.'/img'.$recipe->imagePath.'" style="text-align:center;object-fit:cover;height: 200px; max-width: 90%;" alt="Recipe Preview Image Here">
         <h4>Description: </h4><p>'.$recipe->description.'</p>
         <h4>Preparation Time: </h4><p>'.$recipe->prepTime.'</p>
         <h4>Serving Size: </h4><p>'.$recipe->servingSize.'</p>

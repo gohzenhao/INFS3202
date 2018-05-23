@@ -44,11 +44,12 @@ class Home extends Controller{
 	}
 
 	/**
-	 * Loads an abot page
+	 * TODO
 	 */
 	public function about(){
 		if($_SERVER['REQUEST_METHOD'] == 'POST') {
-			$this->sendMail($_POST['subject'], $_POST['body']);
+			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+			$this->sendMail($_POST['subject'], $_POST['body'], $_POST['replyTo']);
 			$data = ['title' => 'POSTed'];
 		} else {
 			$data = ['title' => 'Welcome to the About page! Test email'];
@@ -66,7 +67,7 @@ class Home extends Controller{
 	 *
 	 * NOTE: only works when sent from uq zone
 	 */
-	private function sendMail($subject, $body) {
+	private function sendMail($subject, $body, $replyTo) {
 		$mail = new PHPMailer(true);
 		try {
 			// Setup server settings
