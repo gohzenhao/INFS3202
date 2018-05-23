@@ -49,7 +49,6 @@ header .container{
   opacity:0;
 }
 
-
 .featured-box{
   background-color:orange;
   width:40%;
@@ -145,6 +144,7 @@ header .container{
     transform: scale3d(1, 1, 1);
   }
 }
+
 .overlay {
   position: absolute;
   top: 0;

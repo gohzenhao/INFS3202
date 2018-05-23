@@ -38,14 +38,16 @@
     <hr/>
     <?php echo '<div class="featured" id="feature">
       <div class="container">
+        <a href="'.URLROOT.'/recipes/display/'. $data['week']->rid .'" style="text-decoration:none;color:black;">
         <div class="featured-box">
         <h1>Recipe of the week : </h1>
         <h1>' . $data['week']->title . '</h1>
         <p class="lead">
           By : ' . $data['owner']->user_name .'
         </p>
-        <p class="lead text-white"><a href="'.URLROOT.'/recipes/display/'. $data['week']->rid .'" style="text-decoration:none;text-transform:uppercase;color:black;">View Recipe > </a></p>
+        <p class="lead" style="font-weight:bold;">---- VIEW RECIPE ----</p>
         </div>
+        </a>
       </div>
     </div>';
     ?>

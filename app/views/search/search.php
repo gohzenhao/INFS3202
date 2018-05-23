@@ -1,8 +1,12 @@
 <div class="container">
-    <h1><?php echo $data['title']?></h1>
-    <h3>Display search results of recipes here</h3>
+
+  <div class="row pt-4">
+
+    <h1 class="col-lg-12 text-center">Search for recipes</h1>
 
     <!-- Search bar -->
+    <div class="col-lg-12">
+
     <form action="<?php echo URLROOT;?>/search" method="GET">
         <div class="input-group mb-3">
             <input id="search-bar" name="query" type="text" class="form-control" placeholder="Search for..." value="<?php echo $data['query'] ?>">
@@ -16,8 +20,12 @@
             </span>
         </div>
     </form>
+  </div>
+  <div class="col-lg-12">
     <p>Suggestions: <span id="hint"></span></p>
-
+  </div>
+  </div>
+    <h3>Search results :</h3>
     <!-- Display output of search -->
     <div class="list-group" id="search-items">
         <?php
