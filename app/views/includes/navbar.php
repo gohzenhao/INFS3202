@@ -20,6 +20,8 @@
               <a class="dropdown-item" href="<?php echo URLROOT; ?>/account">My Account</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="<?php echo URLROOT; ?>/recipes/create">Create Recipe</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="<?php echo URLROOT; ?>/account/edit">Edit profile</a>
             </div>
           </li>
           <li class="nav-item">

@@ -38,14 +38,16 @@
     <hr/>
     <?php echo '<div class="featured" id="feature">
       <div class="container">
+        <a href="'.URLROOT.'/recipes/display/'. $data['week']->rid .'" style="text-decoration:none;color:black;">
         <div class="featured-box">
         <h1>Recipe of the week : </h1>
-        <h1>' . $data['featured'][0]->title . '</h1>
+        <h1>' . $data['week']->title . '</h1>
         <p class="lead">
           By : ' . $data['owner']->user_name .'
         </p>
-        <p class="lead text-white"><a href="'.URLROOT.'/recipes/display/'. $data['featured'][0]->rid .'" style="text-decoration:none;text-transform:uppercase;color:black;">View Recipe > </a></p>
+        <p class="lead" style="font-weight:bold;">---- VIEW RECIPE ----</p>
         </div>
+        </a>
       </div>
     </div>';
     ?>
@@ -58,10 +60,12 @@
         <h3> <u> Featured custom recipes </u> </h3>
     </div>
 
+        <div class="card-group">
+
         <?php
-        for($x = 1;$x<sizeof($data['featured']);$x++){
+        for($x = 0;$x<sizeof($data['featured']);$x++){
         echo '
-        <div class="col-lg-4 mt-4 mr-1d-flex">
+        <div class="col-lg-4 mt-4 d-flex">
 
         <div class="card d-flex w-100" id="featured-card">
         <a href="' . URLROOT.'/recipes/display/'.$data['featured'][$x]->rid. '">
@@ -81,10 +85,12 @@
         </div>
         </div>';
     }?>
+  </div>
 </div>
 </div>
 
 <?php require APPROOT . '/views/includes/footer.php'; ?>
+
 <script>
   document.addEventListener('DOMContentLoaded',getRatings());
 

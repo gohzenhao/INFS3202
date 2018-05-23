@@ -5,16 +5,14 @@
 
         <div class="container text-center">
             <div class="row w-80">
-                <h5 class="w-100 font-weight-bold text-white">TODO: organise footer </h5>
-                <p class="col text-center"><a href="<?php echo URLROOT; ?>/home">Home</a></p>
-                <p class="col text-center"><a href="<?php echo URLROOT; ?>/home/about">About Us</a></p>
-                <a class="col" href="<?php echo URLROOT; ?>/users/registration">Register</a>
-                <a class="col" href="<?php echo URLROOT; ?>/users/login">Login</a>
-                <a class="col" href="<?php echo URLROOT; ?>/account">Account</a>
-                <a class="col" href="<?php echo URLROOT; ?>/search">Search Recipe</a>
-                <a class="col" href="<?php echo URLROOT; ?>/recipes/create">Create Recipe</a>
-                <a class="col" href="<?php echo URLROOT; ?>/chat">Chat Room</a>
-                <a class="col" href="<?php echo URLROOT; ?>/celebrityChefs">Gordon Ramsay's Recipes</a>
+                <h5 class="w-100 font-weight-bold text-white">Useful links : </h5>
+                <p class="col text-center"><a href="<?php echo URLROOT; ?>/home" class="text-white">Home</a></p>
+                <p class="col text-center"><a href="<?php echo URLROOT; ?>/home/about" class="text-white">About Us</a></p>
+                <p class="col text-center"><a href="<?php echo URLROOT; ?>/chat" class="text-white">Chat Room</a></p>
+                <p class="col text-center"><a href="<?php echo URLROOT; ?>/celebritychefs" class="text-white">Gordon Ramsay's Recipes</a></p>
+                <p class="col text-center"><a href="<?php echo URLROOT; ?>/account" class="text-white">Account</a></p>
+                <p class="col text-center"><a href="<?php echo URLROOT; ?>/users/login" class="text-white">Login</a></p>
+                <p class="col text-center"><a href="<?php echo URLROOT; ?>/users/registration" class="text-white">Register</a></p>
             </div>
         </div>
 

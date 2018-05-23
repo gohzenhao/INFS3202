@@ -1,7 +1,9 @@
 <div class="container-fluid">
+      <?php flash('update_success'); ?>
+      <?php flash('delete_success');?>
+      <?php flash('create_success');?>
 <div class="row content">
     <!-- <div class="col-lg-2">
-
     </div> -->
     <div class="col-lg-3" id="sidebar">
       <h3 class="mt-3 mb-4 pl-3"><u>Activities</u></h3>
@@ -45,6 +47,6 @@
 
       </div>
     </div>
-    
+
   </div>
 </div>

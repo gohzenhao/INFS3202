@@ -19,8 +19,9 @@ class Home extends Controller{
 	 */
 	public function index(){
 
+		$recipe = $this->recipesModel->getAllRecipes();
 		$featured = $this->recipesModel->getFeaturedRecipes();
-		$ownerid = $featured[0]->ownerid;
+		$ownerid = $recipe[0]->ownerid;
 		$owner = $this->userModel->getUser($ownerid);
 		$averageRatings = [];
 		for($x=0;$x<sizeof($featured);$x++){
@@ -28,6 +29,7 @@ class Home extends Controller{
 			$averageRatings[$x] = $average;
 		}
 		$data = [
+			'week' => $recipe[0],
 			'featured' => $featured,
 			'owner' => $owner,
 			'average' => $averageRatings
@@ -38,6 +40,7 @@ class Home extends Controller{
 		$this->view('includes/footer');
 		$this->script('home/rating');
 		$this->script('home/waypoint');
+		$this->script('snackbar');
 	}
 
 	/**
@@ -95,11 +98,11 @@ class Home extends Controller{
 	 * Send email email using mailhub.eait.uq.edu.au as relay host
 	 *
 	 * NOTE: only works when sent from uq zone
-	 * 
-	 * @param subject 
+	 *
+	 * @param subject
 	 * @param message/body
 	 * @param replyTo
-	 * 
+	 *
 	 * @return
 	 */
 	private function sendMail($subject, $body, $replyTo) {

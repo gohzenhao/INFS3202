@@ -85,9 +85,9 @@ class RecipesModel {
     /**
      * Updates recipe specified by rid in parameters
      * Performs 1 update for 'recipe' table, and 1 for each 'ingredients' and 1 for each 'directions'
-     * 
+     *
      * @param: $data associate array containing all recipe information to update
-     * 
+     *
      * @return: true if recipe successfully updated, false otherwise
      */
     public function updateRecipe($data) {
@@ -108,7 +108,7 @@ class RecipesModel {
             return false;
         }
 
-        // Update Ingredients table 
+        // Update Ingredients table
         for($i = 0; $i < count($data['ingredients']); $i++) {
             $this->db->query('UPDATE ingredients SET value=:value WHERE rid=:rid AND ingredientid=:iid;');
             $this->db->bind(':value', $data['ingredients'][$i]);
@@ -293,9 +293,9 @@ class RecipesModel {
 
     /**
      * Returns average of all comment ratings associated to rid
-     * 
+     *
      * @param: recipe id
-     * 
+     *
      * @return: average rating out of 5
      */
     public function getAverageRating($rid){
@@ -357,7 +357,7 @@ class RecipesModel {
      */
     public function getFeaturedRecipes(){
       $this->db->query("SELECT * FROM recipes ORDER BY rid DESC LIMIT :num");
-      $this->db->bind(':num', 7);
+      $this->db->bind(':num', 6);
       return $this->db->resultSet();
 
     }
