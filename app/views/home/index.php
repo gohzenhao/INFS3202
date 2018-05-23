@@ -62,7 +62,7 @@
                   for($x = 1;$x<sizeof($data['featured']);$x++){
                     echo '
 
-                    <div class="col-lg-4 mt-4 d-flex">
+                    <div class="col-lg-4 mt-4 mr-1d-flex">
 
                     <div class="card d-flex w-100" id="featured-card">
                     <a href="' . URLROOT.'/recipes/display/'.$data['featured'][$x]->rid. '">
