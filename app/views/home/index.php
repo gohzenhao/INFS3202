@@ -54,32 +54,32 @@
   </div>
 
 
-<div class="container" id="feature-cards">
-<div class="row mt-4 pl-4 pr-4">
-    <div class="col-lg-12 text-center">
-        <h3> <u> Featured custom recipes </u> </h3>
-    </div>
-        <div class="card-group">
-        <?php for ($x = 0; $x < sizeof($data['featured']); $x++): ?>
-            <div class="col-lg-4 mt-4 d-flex">
-                <div class="card d-flex w-100" id="featured-card">
-                <a href="<?php echo URLROOT.'/recipes/display/'.$data['featured'][$x]->rid?>">
-                    <img class="card-img-top" src="<?php echo URLROOT.'/img'. $data['featured'][$x]->imagePath ?>" alt="Card image cap" style="object-fit:cover;height:200px">
-                    <div class="card-body">
-                        <h5 class="card-title ml-auto"><?php echo $data['featured'][$x]->title ?>
-                            <span id="featured<?php echo $x ?>">
-                                <div class="stars-outer"><div class="stars-inner"></div></div>
-                            </span>
-                        </h5>
-                    <p class="card-text"><?php echo $data['featured'][$x]->description ?></p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+<div class="container">
+    <div class="row mt-4 pl-4 pr-4">
+        <div class="col-lg-12 text-center">
+            <h3> <u> Featured custom recipes </u> </h3>
+        </div>
+            <div id="feature-cards" class="card-group">
+                <?php for ($x = 0; $x < sizeof($data['featured']); $x++): ?>
+                    <div class="col-lg-4 mt-4 d-flex">
+                        <div class="card d-flex w-100" id="featured-card">
+                        <a href="<?php echo URLROOT.'/recipes/display/'.$data['featured'][$x]->rid?>">
+                            <img class="card-img-top" src="<?php echo URLROOT.'/img'. $data['featured'][$x]->imagePath ?>" alt="Card image cap" style="object-fit:cover;height:200px">
+                            <div class="card-body">
+                                <h5 class="card-title ml-auto"><?php echo $data['featured'][$x]->title ?>
+                                    <span id="featured<?php echo $x ?>">
+                                        <div class="stars-outer"><div class="stars-inner"></div></div>
+                                    </span>
+                                </h5>
+                            <p class="card-text"><?php echo $data['featured'][$x]->description ?></p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                            </a>
+                        </div>
                     </div>
-                    </a>
-                </div>
+                <?php endfor;?>
             </div>
-        <?php endfor;?>
-  </div>
-</div>
+    </div>
 </div>
 
 <?php require APPROOT . '/views/includes/footer.php'; ?>
