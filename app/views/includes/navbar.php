@@ -3,7 +3,7 @@
   <div class="container">
 
     <!-- Logo/title button to return to home page -->
-    <a class="navbar-brand text-white" href="<?php echo URLROOT; ?>/home"><h3>The Recipes Project</h3></a>
+    <a class="navbar-brand text-white" href="<?php echo URLROOT; ?>/home"><h2>The Recipes Project</h2></a>
 
     <!-- Hamburger button only becomes visible when screen size becomes smaller -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -19,13 +19,14 @@
             <div class="dropdown-menu dropdown-menu">
               <a class="dropdown-item" href="<?php echo URLROOT; ?>/account">My Account</a>
               <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="<?php echo URLROOT; ?>/search?query=">Search Recipes</a>
+              <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="<?php echo URLROOT; ?>/recipes/create">Create Recipe</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="<?php echo URLROOT; ?>/account/edit">Edit profile</a>
+              <a class="dropdown-item" href="<?php echo URLROOT; ?>/account/edit">Edit Profile</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="<?php echo URLROOT; ?>/users/logout">Logout</a>
             </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="<?php echo URLROOT; ?>/users/logout">Logout</a>
           </li>
         </ul>
       </div>

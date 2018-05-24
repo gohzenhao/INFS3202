@@ -1,9 +1,9 @@
 <!-- Container for displaying recipe information -->
-<div class="container col-lg-10 col-md-12">
+<div class="container col-lg-12 col-md-12">
     <!-- Title of recipe -->
     <div class="py-3 text-center row">
         <h1 class="mx-auto"><?php echo $data['title']?></h1>
-        <a class="btn btn-link" role="button" href="<?php echo URLROOT;?>/pdf/download/<?php echo $data['rid'];?>" target="_blank">
+        <a class="btn btn-link pr-4" role="button" href="<?php echo URLROOT;?>/pdf/download/<?php echo $data['rid'];?>" target="_blank">
             <i class="fa fa-print"></i> Print PDF
         </a>
     </div>
@@ -52,7 +52,7 @@
           <div class="col-lg-3">
           </div>
             <!-- Ingredients -->
-            <div class="col-lg-3 col-md-3 col-sm-12">
+            <div class="col-lg-3 col-md-3 col-sm-4">
                 <!-- <div class="row mb-3"> -->
                     <h5 class="w-100">Ingredients: </h5>
                     <ul class="ingredients">
@@ -66,17 +66,20 @@
             </div>
             <hr/>
             <!-- Directions -->
-            <div class="col-lg-6 col-md-6 ">
+            <div class="col-lg-4 col-md-4 ">
                 <!-- <div class="row mb-3"> -->
                     <h5 class="w-100">Directions: </h5>
                     <ol class="directions">
                         <?php
                             foreach($data['directions'] as $item) {
-                                echo '<li><p class="w-100 my-1">' . $item['description'] . '</p></li>';
+                                echo '<li class="p-2"><p class="w-100 my-1">' . $item['description'] . '</p></li>';
                             }
                         ?>
                     </ol>
                 <!-- </div> -->
+            </div>
+            <div class="col-lg-2 col-md-2">
+
             </div>
         </div>
 
