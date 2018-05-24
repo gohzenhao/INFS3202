@@ -24,7 +24,7 @@ class Home extends Controller{
 		$ownerid = $recipe[0]->ownerid;
 		$owner = $this->userModel->getUser($ownerid);
 		$averageRatings = [];
-		for($x=0;$x<sizeof($featured);$x++){
+		for ($x = 0; $x < sizeof($featured); $x++) {
 			$average = $this->recipesModel->getAverageRating($featured[$x]->rid);
 			$averageRatings[$x] = $average;
 		}

@@ -59,32 +59,25 @@
     <div class="col-lg-12 text-center">
         <h3> <u> Featured custom recipes </u> </h3>
     </div>
-
         <div class="card-group">
-
-        <?php
-        for($x = 0;$x<sizeof($data['featured']);$x++){
-        echo '
-        <div class="col-lg-4 mt-4 d-flex">
-
-        <div class="card d-flex w-100" id="featured-card">
-        <a href="' . URLROOT.'/recipes/display/'.$data['featured'][$x]->rid. '">
-            <img class="card-img-top" src="' . URLROOT.'/img'. $data['featured'][$x]->imagePath .'" alt="Card image cap" style="object-fit:cover;height:200px">
-            <div class="card-body">
-
-                <h5 class="card-title ml-auto">' . $data['featured'][$x]->title . '<span id="featured' . $x .'">
-                <div class="stars-outer">
-                    <div class="stars-inner">
+        <?php for ($x = 0; $x < sizeof($data['featured']); $x++): ?>
+            <div class="col-lg-4 mt-4 d-flex">
+                <div class="card d-flex w-100" id="featured-card">
+                <a href="<?php echo URLROOT.'/recipes/display/'.$data['featured'][$x]->rid?>">
+                    <img class="card-img-top" src="<?php echo URLROOT.'/img'. $data['featured'][$x]->imagePath ?>" alt="Card image cap" style="object-fit:cover;height:200px">
+                    <div class="card-body">
+                        <h5 class="card-title ml-auto"><?php echo $data['featured'][$x]->title ?>
+                            <span id="featured<?php echo $x ?>">
+                                <div class="stars-outer"><div class="stars-inner"></div></div>
+                            </span>
+                        </h5>
+                    <p class="card-text"><?php echo $data['featured'][$x]->description ?></p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
+                    </a>
                 </div>
-                </span></h5>
-            <p class="card-text">' . $data['featured'][$x]->description.'</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
-            </a>
-        </div>
-        </div>';
-    }?>
+        <?php endfor;?>
   </div>
 </div>
 </div>
@@ -95,31 +88,27 @@
   document.addEventListener('DOMContentLoaded',getRatings());
 
 function getRatings(){
+    var jArray= <?php echo json_encode($data['average']); ?>;
+    const ratings = {
+        featured0: jArray[0],
+        featured1: jArray[1],
+        featured2: jArray[2],
+        featured3: jArray[3],
+        featured4: jArray[4],
+        featured5: jArray[5],
+    }
 
-  var jArray= <?php echo json_encode($data['average'] ); ?>;
+    console.log(jArray);
 
-  const ratings = {
-      featured1: jArray[1],
-      featured2: jArray[2],
-      featured3: jArray[3],
-      featured4: jArray[4],
-      featured5: jArray[5],
-      featured6: jArray[6],
+    const totalStars = 5.0;
+    for(let rating in ratings){
+        // Get rating bar 
+        let ratingBar = document.getElementById(`${rating}`).getElementsByClassName("stars-inner")[0];
 
-  }
-
-for(let rating in ratings){
-
-  const totalStars = 5.0;
-
-
-    const starPercentage = (ratings[rating] / totalStars) * 100;
-
-    const starPercentageRounded = `${Math.round(starPercentage /10 ) * 10}%`;
-
-    document.getElementById(`${rating}`).getElementsByClassName("stars-inner")[0].style.width = starPercentageRounded;
-
-}
+        var starPercentage = (ratings[rating] / totalStars) * 100;
+        // let starPercentageRounded = `${Math.round(starPercentage /10 ) * 10}%`;
+        ratingBar.style.width = `${Math.round(starPercentage /10 ) * 10}%`;
+    }
 
 }
 </script>
