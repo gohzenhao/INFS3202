@@ -28,7 +28,7 @@ composer update
 
 Yuliang Zhou – [@github](https://github.com/YuliangZhou7) – yuliangzhou7@gmail.com
 
-Jeffrey Goh - 
+Jeffrey Goh - [@github](https://github.com/gohzenhao) - gohzenhao@gmail.com
 
 ## Dependencies & Libraries
 
@@ -46,9 +46,13 @@ JQuery - https://jquery.com/
 
 Image Upload Preview - https://github.com/Gaohaoyang/Upload-Image-Preview-Plugin
 
-Google Maps API - 
+Google Maps API - https://cloud.google.com/maps-platform/maps/
 
-Youtube API - 
+Youtube API - https://developers.google.com/youtube/v3/
+
+Waypoint - http://imakewebthings.com/waypoints/
+
+Animate CSS - https://daneden.github.io/animate.css/
 
 Password hashing - Uses the bcrypt algorithm (default as of PHP 5.5.0)
 https://secure.php.net/manual/en/function.password-hash.php 
