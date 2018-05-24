@@ -84,7 +84,6 @@ class AccountModel {
 		$this->db->query("SELECT imagePath FROM recipes WHERE rid=:rid");
 		$this->db->bind(":rid", $rid);
 		$target = $this->db->single();
-		print_r( $target->imagePath);
 
 		$this->db->query("DELETE FROM recipes WHERE rid=:rid");
 		$this->db->bind(":rid", $rid);

@@ -13,9 +13,6 @@
         </div>
       </div>
 
-      <?php flash('update_success'); ?>
-      <?php flash('delete_success');?>
-
       <div class="row">
 
         <?php foreach($data['recipes'] as $recipe): ?>

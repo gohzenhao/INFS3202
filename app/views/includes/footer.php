@@ -9,7 +9,7 @@
                 <p class="col text-center"><a href="<?php echo URLROOT; ?>/home" class="text-white">Home</a></p>
                 <p class="col text-center"><a href="<?php echo URLROOT; ?>/home/about" class="text-white">About Us</a></p>
                 <p class="col text-center"><a href="<?php echo URLROOT; ?>/chat" class="text-white">Chat Room</a></p>
-                <p class="col text-center"><a href="<?php echo URLROOT; ?>/celebritychefs" class="text-white">Gordon Ramsay's Recipes</a></p>
+                <p class="col text-center"><a href="<?php echo URLROOT; ?>/celebrityChefs" class="text-white">Gordon Ramsay's Recipes</a></p>
                 <p class="col text-center"><a href="<?php echo URLROOT; ?>/account" class="text-white">Account</a></p>
                 <p class="col text-center"><a href="<?php echo URLROOT; ?>/users/login" class="text-white">Login</a></p>
                 <p class="col text-center"><a href="<?php echo URLROOT; ?>/users/registration" class="text-white">Register</a></p>

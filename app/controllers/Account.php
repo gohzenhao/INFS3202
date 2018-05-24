@@ -22,23 +22,22 @@ class Account extends Controller{
 
 		if(strpos($category,'delete')!==false){
 			$recipeID =(int) substr($category,strpos($category,'=')+1);
-			//$result = $this->accountModel->deleteRecipe($recipeID);
-			$result = true;
+			$result = $this->accountModel->deleteRecipe($recipeID);
 			if($result){
 				flash('delete_success', "Recipe deleted!");
 				$result = $this->accountModel->getUserRecipes();
-			$result = (array)$result;
-			
-			$data = [
-				'name' => $_SESSION['user_name'],
-				'recipes' => $result,
-				'uri' => $uri,
-				'category' => $category
-			];
+				$result = (array)$result;
+				
+				$data = [
+					'name' => $_SESSION['user_name'],
+					'recipes' => $result,
+					'uri' => $uri,
+					'category' => $category
+				];
 
-			$this->view('includes/header');
-			$this->view('account/index', $data);
-			$this->view('includes/footer');
+				$this->view('includes/header');
+				$this->view('account/index', $data);
+				$this->view('includes/footer');
 			} else {
 				//TODO: show error message
 				echo 'Error deleting recipe';

@@ -82,7 +82,7 @@
 					$data['uid'] = $_SESSION['user_id'];
 					// Upload recipe to database
 					if($this->recipesModel->createNewRecipe($data)) {
-						flash('create_success', "Recipe created successfully!");
+						flash('create_success', "Recipe successfully created!");
 						// Return to account page
 						redirect('account/index');
 					} else {
