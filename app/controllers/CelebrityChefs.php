@@ -23,7 +23,9 @@ class CelebrityChefs extends Controller{
 		$topRecipes = [];
 		for($i = 0; $i < count($recipesList); $i++) {
 			$item = $recipesList[$i]->find('.summary', 0);
-			preg_match('#\((.*?)\)#', ($recipesList[$i]->find('.image', 0))->style, $src);
+			// Get image src path
+			$img = $recipesList[$i]->find('.image', 0);
+			preg_match('#\((.*?)\)#', $img->style, $src);
 			$value = [
 				'src' => $src[1],
 				'href' => $item->find('a', 0)->href,
