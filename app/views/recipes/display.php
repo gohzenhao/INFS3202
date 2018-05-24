@@ -9,39 +9,37 @@
     </div>
 
     <div class="col mb-3">
-        <div class="row mb-4">
+        <div class="row">
             <!-- Recipe Preview Image -->
-            <div class="col-3">
+            <div class="col-lg-2 col-md-1 col-sm-0">
             </div>
-            <div class="col-3">
+            <div class="col-lg-5 col-md-5 col-sm-12 mb-3">
                 <h5 class="row">Recipe Picture: </h5>
-                <div class="m-auto" >
-                <img src="<?php echo URLROOT.'/img'.$data['imagePath']?>" class="px-3 img-fluid" style="object-fit:cover;height: 200px; max-width: 90%;" alt="Recipe Preview Image Here">
-                <!-- <img src="<?php //echo URLROOT.$data['imagePath']?>" style="object-fit:cover;height: 200px; max-width: 90%;" alt="Recipe Preview Image Here"> -->
+                <div class="m-auto">
+                    <img src="<?php echo URLROOT.'/img'.$data['imagePath']?>" class="px-3 img-fluid" style="object-fit:cover;height: 200px; max-width: 90%;" alt="Recipe Preview Image Here">
                 </div>
             </div>
 
             <!-- Recipe details -->
-            <div class="col-6">
+            <div class="col-lg-5 col-md-6 col-sm-12">
                 <!-- Author -->
-                <div class="row mb-4">
+                <div class="row mb-3">
                     <h5 class="row">Author:</h5>
                     <p class="w-100 mh-80"><?php echo $data['ownerid'];?></p>
                 </div>
                 <!-- Description -->
-                <div class="row mb-4">
+                <div class="row mb-3">
                     <h5 class="row">Description:</h5>
                     <p class="w-100 mh-80"><?php echo $data['description'];?></p>
                 </div>
                 <!-- Preparation time and Serving size -->
-                <div class="row mb-4">
-
-                        <h5 class="row">Preparation Time: </h5>
-                        <span class="w-100"><?php echo $data['prepTime'];?></span>
+                <div class="row mb-3">
+                    <h5 class="row">Preparation Time: </h5>
+                    <span class="w-100"><?php echo $data['prepTime'];?></span>
                 </div>
-                <div class="row mb-4">
-                        <h5 class="row">Serving Size: </h5>
-                        <span class="w-100"><?php echo $data['servingSize'];?></span>
+                <div class="row mb-3">
+                    <h5 class="row">Serving Size: </h5>
+                    <span class="w-100"><?php echo $data['servingSize'];?></span>
                 </div>
             </div>
         </div>
@@ -49,10 +47,9 @@
         <hr/>
 
         <div class="row">
-          <div class="col-lg-3">
-          </div>
+          <div class="col-lg-3 col-md-3 col-sm-0"></div>
             <!-- Ingredients -->
-            <div class="col-lg-3 col-md-3 col-sm-4">
+            <div class="col-lg-3 col-md-3 col-sm-12">
                 <!-- <div class="row mb-3"> -->
                     <h5 class="w-100">Ingredients: </h5>
                     <ul class="ingredients">
@@ -66,7 +63,7 @@
             </div>
             <hr/>
             <!-- Directions -->
-            <div class="col-lg-4 col-md-4 ">
+            <div class="col-lg-4 col-md-4 col-sm-12">
                 <!-- <div class="row mb-3"> -->
                     <h5 class="w-100">Directions: </h5>
                     <ol class="directions">
@@ -78,9 +75,7 @@
                     </ol>
                 <!-- </div> -->
             </div>
-            <div class="col-lg-2 col-md-2">
-
-            </div>
+            <div class="col-lg-2 col-md-2 col-sm-0"></div>
         </div>
 
         <hr/>

@@ -11,14 +11,14 @@
 
         <form class="col" action="<?php echo URLROOT; ?>/recipes/create" method="POST" enctype="multipart/form-data">
             <div class="row mb-3">
-                <div class="col-5">
+                <div class="col-lg-5 col-md-5 col-sm-12">
                     <label for="imgPreview">Recipe Picture: </label>
                     <div class="previewPic m-auto">
                         <input name="imgPreview" type="file" accept="image/jpeg, image/png">
                     </div>
                     <small class="" style="color: #dc3545;"><?php echo $data['img_error'] ?></small>
                 </div>
-                <div class="col-6 mr-4">
+                <div class="col-lg-6 col-md-6 col-sm-12 mr-4">
                     <div class="row form-group">
                         <label for="title">Title:</label>
                         <input name="title" type="text" class="form-control <?php echo (!empty($data['title_error'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['title']?>">
