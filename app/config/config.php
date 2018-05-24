@@ -3,8 +3,10 @@
     define('DB_HOST', 'localhost');
     define('DB_USER', 'root');
     define('DB_PASS', '');
+    // define('DB_USER', 'adminroot');
+    // define('DB_PASS', 'qwerty123');
     define('DB_NAME', 'recipe_project');
-    
+
     // Site Name
     define('SITENAME', 'TheRecipesProject');
 
