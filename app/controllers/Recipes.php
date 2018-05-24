@@ -246,7 +246,8 @@
 				* {{ Google Cloud Console }} <{{ https://cloud.google.com/console }}>
 				* Please ensure that you have enabled the YouTube Data API for your project.
 				*/
-				$DEVELOPER_KEY = 'AIzaSyDZSElRiT8kozTQVZhDC1jvH-KZEyR7Kdw';
+				// $DEVELOPER_KEY = 'AIzaSyDZSElRiT8kozTQVZhDC1jvH-KZEyR7Kdw';
+				$DEVELOPER_KEY = APIKEY_YOUTUBE;
 
 				$client = new Google_Client();
 				$client->setDeveloperKey($DEVELOPER_KEY);

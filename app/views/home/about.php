@@ -52,6 +52,9 @@
         });
       }
 </script>
-<script async defer
+<!-- <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwz6vxPaoNFbI1bVZ04QPHYaezuc176tE&callback=initMap">
+</script> -->
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=<?php echo APIKEY_MAPS; ?>&callback=initMap">
 </script>
