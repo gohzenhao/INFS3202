@@ -18,7 +18,7 @@
     
 
     // API keys
-    define('APIKEY_YOUTUBE', 'AIzaSyDZSElRiT8kozTQVZhDC1jvH-KZEyR7Kdw');
-    define('APIKEY_MAPS', 'AIzaSyAwz6vxPaoNFbI1bVZ04QPHYaezuc176tE');
+    define('APIKEY_YOUTUBE', '');
+    define('APIKEY_MAPS', '');
 
     
