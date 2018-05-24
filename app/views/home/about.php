@@ -1,6 +1,6 @@
 
-<div class="container">
-  <h3 class="">Submit Enquiries </h3>
+<div class="container pb-4 mb-4">
+  <h1 class="text-center p-4">Submit Enquiries </h1>
   <?php flash('email_success');?>
 	<form action="<?php echo URLROOT; ?>/home/about" method="POST">
 		<div class="form-group">
@@ -22,8 +22,20 @@
 	</form>
 </div>
 
+<div class="container pb-4">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-center p-4">Our office :</h1>
+    </div>
+    <div class="col-12">
+      <h3 class="text-center">The Recipes Project</h3>
+      <h3 class="text-center">130 William St, Brisbane City</h3>
+      <h3 class="text-center">QLD, 4000</h3>
+      <h3 class="text-center">Mon - Fri : 9:00AM - 5:00PM </h3>
+    </div>
+  </div>
 
-<h3>My Google Maps Demo</h3>
+</div>
 <div id="map"></div>
 
 

@@ -3,7 +3,7 @@
   <div class="container">
 
     <!-- Logo/title button to return to home page -->
-    <a class="navbar-brand text-white" href="<?php echo URLROOT; ?>/home"><h3>The Recipes Project</h3></a>
+    <a class="navbar-brand text-white" href="<?php echo URLROOT; ?>/home"><h2>The Recipes Project</h2></a>
 
     <!-- Hamburger button only becomes visible when screen size becomes smaller -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"

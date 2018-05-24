@@ -72,12 +72,12 @@ header .container{
 }
 
 .bg-orange{
-  background-color: rgba(255,165,0);
+  background-color: rgba(208,57,88);
 
 }
 
 #sidebar ul li:hover{
-  background-color:rgba(255,165,0);
+  background-color:rgba(208,57,88);
   color:white;
   width:100%;
 }
