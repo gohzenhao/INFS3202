@@ -336,6 +336,8 @@
 			}
 			if (empty($data['servingSize'])) {
 				$data['servingSize_error'] = 'Please enter the serving size';
+			} else if (filter_var($data['servingSize'], FILTER_VALIDATE_INT) === false) {
+				$data['servingSize_error'] = 'Please enter a number';
 			}
 
 			// Check for at least 1 non empty ingredient, max 25 ingredients
