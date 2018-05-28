@@ -37,6 +37,8 @@ class CelebrityChefs extends Controller{
 
 		// Add crawled data to input to view
 		$data['list'] = $topRecipes;
+
+		$html->clear();
 		
 		$this->view('includes/header');
 		$this->view('celebchefs/ramsay', $data);

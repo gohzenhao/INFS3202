@@ -1,14 +1,6 @@
 <div class="row">
 
-    <div class="col-lg-3" id="sidebar">
-        <h3 class="mt-3 mb-4 pl-3"><u>Activities</u></h3>
-        <ul class="nav nav-pills nav-stacked">
-            <a href="#section1"><li><h5>My Recipes</h5></h5></li></a>
-            <a href="#section2"><li><h5>Create Recipe</h5></li></a>
-            <a href="#section1"><li><h5>Edit Profile</h5></li></a>
-        </ul>
-        <br><hr/>
-    </div>
+    <?php require_once APPROOT.'/views/includes/sidenav.php'; ?>
 
     <!-- Create Recipe Form Area -->
     <div class="container col-lg-8 col-md-10 col-sm-12">
