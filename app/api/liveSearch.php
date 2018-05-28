@@ -15,6 +15,7 @@
         $jsonOutput = array(
             'topSuggestions'=> ''
         );
+        header('Content-Type: application/json');
         echo json_encode($jsonOutput);
         return;
     }
@@ -30,6 +31,7 @@
         'topSuggestions'=> $elements
     );
 
+    header('Content-Type: application/json');
     echo json_encode($jsonOutput);
     return;
 ?>

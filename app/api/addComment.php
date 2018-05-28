@@ -19,6 +19,7 @@
 
     // If result was false, PDO exception occurred
     if($result == false) {
+        header('Content-Type: application/json');
         echo json_encode(array('success' => false));
         return;
     }
@@ -37,5 +38,6 @@
         'content'=> $element
     );
 
+    header('Content-Type: application/json');
     echo json_encode($jsonOutput);
 ?>
